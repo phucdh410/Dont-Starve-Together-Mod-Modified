@@ -1,0 +1,103 @@
+[h1]Brings four new features: [b]Boat Cannon, Boat Floodlight, Turbine Engine and Boat Torches.[/b][/h1]
+
+[b]Nearly everything in this mod is configuratable. You can make everything as OP or as useless as you want.[/b]
+
+[h1]============================================================== [/h1]
+
+[table][tr][td] [h1]--=== BOAT CANNON ===--[/h1] [/td] [/tr][tr][td] 
+[img] https://i.imgur.com/g78Xmrt.png [/img]
+[img]           https://i.imgur.com/4yrnoH1.png [/img]       [img] https://i.imgur.com/YFYZxvH.png [/img]
+[/td][/tr][/table]
+
+
+Boat Cannon is used to launch Cannonballs to wreak everything! Cannonballs are devastating be careful while aiming! Cannon range is one screen.
+NOTE: You will need [b]Cannon Lighter[/b] and [b]Cannonballs[/b] to shoot Boat Cannon.
+
+How to shoot:
+1) Insert Cannonballs into Cannon
+2) Equip Cannon Lighter
+3) Aim and shoot! Both RMB and LMB make a shot!
+
+[h1]---=== CANNONBALLS ===---[/h1]
+[img] https://i.imgur.com/JzPso20.png [/img] [img] https://i.imgur.com/MjLoKaT.png [/img] [img] https://i.imgur.com/NbZ0ikW.png [/img]
+
+Cannonballs come in three variations:
+1) Rock CB - 150 damage. Wreacks stones/trees/structures.
+2) Fire CB - 200 damage. Creates fires and ignites. Wreacks stones/trees/structures.
+3) Moonglass CB - 400 damage. Requires Moon Altar to craft. Only damages mobs.
+4) Toad sleepsack - can be shoot via cannnon.
+5) All bombs from [b]Felix Bombs mod[/b] (https://steamcommunity.com/sharedfiles/filedetails/?id=796791445) can be fired via cannon.
+
+[h1]============================================================== [/h1]
+
+[table][tr][td] [h1]--== TURBINE ENGINE ==--[/h1][/td][/tr][tr][td] 
+[img]https://i.imgur.com/jWSvDQX.png[/img][/td][/tr][/table]
+
+Turbine Engine is an mechanical equvalent to Mast.
+1) Speeds boat way better than Mast
+2) Requires fuel to operate
+3) Engine heats up while working. Don't push it or it will explode!!!
+4) Has overdrive mode that allows to boost speed even futher in exchange of higher overheat rate!
+
+[h1]---=== Overheating ===---[/h1]
+[b]Temperature of engine should never reach 150! Or engine (and you!) will explode. I AM NOT JOCKING![/b]
+1) Engine will cool while not working.
+2) Engine can be cooled with [b]Ice[/b] and [b]Icecream[/b], it likes both.
+
+[h1]---=== Overdrive Mode ===---[/h1]
+1) Hammer turned on Engine to activate [b]overdrive[/b]. Hammer it once more to turn overdrive off!
+2) Increases speed of boat even futher.
+3) Heat rizes much faster in this mode taking around 120 seconds to overheat engine.
+4) Fuel depletes faster!
+
+[h1]---=== Uber Super Dooper Gunpowder Overdrive Mode ===---[/h1]
+1) Give Gunpowder to engine to active [b]uber overdrive[/b]. Turn off Engine to end overdrive.
+2) Boost boat speed way beyond beeing able to be steered by wheel.
+3) Heat rizes way faster (you will explode I gurantie that).
+4) Fuel depletes faster!
+
+
+
+
+[h1]============================================================== [/h1]
+
+[table][tr][td] [h1]------===== FLOODLIGHT =====------[/h1] [/td] [/tr][tr][td] 
+[img] https://i.imgur.com/yjmYND4.jpg?2 [/img]
+[img]           https://i.imgur.com/3fOr8Qh.png [/img]       [img] https://i.imgur.com/CaEhAty.png [/img]
+[/td][/tr][/table]
+
+
+Floodlight creates line of light in a one direction!
+1) Direction is based on steering wheel, same as masts.
+2) Used to navigate seas during night.
+3) Requires fuel to operate.
+[b]NOTE:[/b] Floodlight can be only placed on boat!
+
+How to use:
+1) Place it on boat
+2) Turn on
+3) Profit
+
+Floodlights come in two variations:
+1) Normal
+2) Moon - long range, wide light, lower fuel consumption. Requires Moon Altar to craft.
+
+
+[h1]============================================================== [/h1]
+
+[table][tr][td] [h1]-= BOAT TORCHES =-[/h1][/td][/tr][tr][td] 
+[img]https://i.imgur.com/t8Zj2fJ.png[/img][/td][/tr][/table]
+
+Boat torches light up your boat easily without taking any space.
+1) You place 4 torches by one crafting.
+2) Torches have shared fuel. Thus refueling one will refuel all of them.
+3) Turning on/off one torch will turn on/off all of them.
+[b]NOTE:[/b] Boat Torches can be only placed on boat!
+
+
+[h1]============================================================== [/h1]
+
+Fully compatable with [b]Large Boats mod[/b]! [https://steamcommunity.com/sharedfiles/filedetails/?id=1839858501]
+
+
+P.S. Don't say me textures are ugly. Code is even worse!

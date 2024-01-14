@@ -1,0 +1,77 @@
+name = "Birdcage Seed Config - DHPModified"
+description = "Configure drop seed from birdcage"
+author = "Sorry Late - DHPModified"
+version = "1.2"
+
+forumthread = ""
+
+api_version = 10
+
+icon_atlas = "modicon.xml"
+icon = "modicon.tex"
+
+dont_starve_compatible = false
+reign_of_giants_compatible = false
+shipwrecked_compatible = false
+dst_compatible = true
+
+
+all_clients_require_mod = true
+client_only_mod = false
+
+configuration_options =
+{
+	{
+		name = "seed_amount",
+		label = "Set seed amount",
+		options = 
+        {	
+			{description = "3", data = 3},
+			{description = "5", data = 5},
+			{description = "10", data = 10},
+			{description = "15", data = 15},
+     	 },
+	    default = 3,
+	},
+	
+	{
+		name = "drop_type",
+		label = "Set drop type",
+		options = 
+        {	
+			{description = "random", data = 1},
+			{description = "fixed", data = 2},
+     	 },
+	    default = 1,
+	},
+	
+	{
+		name = "regular_seed",
+		label = "Regular seed drop",
+		options = 
+        {	
+			{description = "enabled", data = 1},
+			{description = "disabled", data = 2},
+     	 },
+	    default = 2,
+	},
+	
+	{
+		name = "seed_chance",
+		label = "Set chance regular seed to drop",
+		options = 
+        {	
+			{description = "10%", data = 0.1},
+			{description = "20%", data = 0.2},
+			{description = "30%", data = 0.3},
+			{description = "40%", data = 0.4},
+			{description = "50%", data = 0.5},
+			{description = "60%", data = 0.6},
+			{description = "70%", data = 0.7},
+			{description = "80%", data = 0.8},
+			{description = "90%", data = 0.9},
+			{description = "100%", data = 1},
+     	 },
+	    default = 0.5,
+	},
+}
