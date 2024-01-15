@@ -2,7 +2,7 @@
 name ="Thermal Stone Plus - DHPModified"
 description = "Improves the thermal stone by tweaking its insulation values. This makes it stay warm/cold for longer durations of time."
 author = "fall - DHPModified"
-version = "1.0.3"
+version = "1.0.4"
 
 -- This is the URL name of the mod's thread on the forum; the part after the index.php? and before the first & in the URL
 -- Example:
@@ -41,6 +41,8 @@ configuration_options =
             			{description = "5x", data = 5},
 						{description = "10x", data = 10},
 						{description = "20x", data = 20},
+						{description = "50x", data = 50},
+						{description = "100x", data = 100},
 					},
 		default = 5,
 	},
