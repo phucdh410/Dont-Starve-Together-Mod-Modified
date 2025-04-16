@@ -173,7 +173,7 @@ elseif recipeconfig == 2 then
     }
 elseif recipeconfig == 3 then
     ingredients = {
-        Ingredient("greengem", 3),
+        Ingredient("gears", 3),
         Ingredient("glommerflower", 1),
         Ingredient("glommerwings", 1),
     }
