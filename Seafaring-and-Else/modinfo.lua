@@ -8,7 +8,7 @@ Sorry i can't modify or update anythings more!.
 ]]
 
 author = "Desblat & Trololarion - DHPModified"
-version = "1.1.12"
+version = "1.1.13"
 
 forumthread = ""
 
