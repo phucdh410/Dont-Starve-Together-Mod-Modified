@@ -12,7 +12,7 @@ Makes trees, boulders, and other resource sources drop more. Also Adds a configu
 ]]
 author = "Dante12129"
 edited = "Amnesiac"
-version = "1.1"
+version = "1.2"
 
 api_version = 6
 api_version_dst = 10
