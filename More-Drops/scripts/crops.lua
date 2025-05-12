@@ -6,8 +6,8 @@ local function ImproveCrop(component, inst)
 	component.Harvest = function(self, harvester)
 		--Give the product twice
 		if harvester ~= nil then
-			if utils.LootRandom(GetModConfigData("cropChance", KnownModIndex:GetModActualName("More Drops JEM"))) then
-				for i = 1, GetModConfigData("extracrops", KnownModIndex:GetModActualName("More Drops JEM")) do
+			if utils.LootRandom(GetModConfigData("cropChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))) then
+				for i = 1, GetModConfigData("extracrops", KnownModIndex:GetModActualName("More Drops JEM - DHPModified")) do
 					harvester.components.inventory:GiveItem(SpawnPrefab(self.product_prefab), nil, self.inst:GetPosition())
 				end
 			end

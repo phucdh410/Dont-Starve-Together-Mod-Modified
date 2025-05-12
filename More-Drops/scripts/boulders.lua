@@ -1,15 +1,15 @@
 local utils = require("utils")
 
 local boulders = {}
-local rockChance = GetModConfigData("rockChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local flintChance = GetModConfigData("flintChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local specialChance = GetModConfigData("specialChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local redChance = GetModConfigData("redChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local blueChance = GetModConfigData("blueChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local purpleChance = GetModConfigData("purpleChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local orangeChance = GetModConfigData("orangeChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local yellowChance = GetModConfigData("yellowChance", KnownModIndex:GetModActualName("More Drops JEM"))
-local greenChance = GetModConfigData("greenChance", KnownModIndex:GetModActualName("More Drops JEM"))
+local rockChance = GetModConfigData("rockChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local flintChance = GetModConfigData("flintChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local specialChance = GetModConfigData("specialChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local redChance = GetModConfigData("redChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local blueChance = GetModConfigData("blueChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local purpleChance = GetModConfigData("purpleChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local orangeChance = GetModConfigData("orangeChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local yellowChance = GetModConfigData("yellowChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local greenChance = GetModConfigData("greenChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
 
 boulders.ImproveRock = function(inst)
 	--Do these for each swing
