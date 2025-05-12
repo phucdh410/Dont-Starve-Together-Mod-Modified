@@ -5,12 +5,14 @@ From update version: 24 February 2025
 
 I updated with more options for loot amount (easier). 
 I also add Marble Tree & Marble Bean, Ice Glacier options
+
+All config for marble just applied to Highest Marble Shrub (Tall), so please wait to it fullgrowth
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "Dante12129"
 edited = "Amnesiac"
-version = "1.0"
+version = "1.1"
 
 api_version = 6
 api_version_dst = 10
@@ -362,6 +364,20 @@ configuration_options =
     name = "marbleAmount",
     label = "Extra Marble",
     hover = "How many extra marbles you can get",
+    options = amounts,
+    default = 1,
+  },
+  {
+    name = "marblebeanChance",
+    label = "Extra Marble Beans Chance",
+    hover = "Chance to get extra marble beans while mining",
+    options = chances,
+    default = .3
+  },
+  {
+    name = "marblebeanAmount",
+    label = "Extra Marble Bean",
+    hover = "How many extra marble beans you can get",
     options = amounts,
     default = 1,
   },
