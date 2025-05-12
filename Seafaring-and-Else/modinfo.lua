@@ -1,5 +1,12 @@
 name = "Seafaring and Else - Fix crash cannon - DHPModified"
-description = "I have fixed the bug caught crash when u craft cannonball. Sorry i can't modify or update anythings more!. Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=1910111177&searchtext=Seafaring"
+description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=1910111177&searchtext=Seafaring
+
+I have fixed the bug caught crash when u craft cannonball.
+
+Sorry i can't modify or update anythings more!.
+]]
+
 author = "Desblat & Trololarion - DHPModified"
 version = "1.1.12"
 
