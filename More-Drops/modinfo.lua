@@ -12,7 +12,7 @@ Makes trees, boulders, and other resource sources drop more. Also Adds a configu
 ]]
 author = "Dante12129"
 edited = "Amnesiac"
-version = "1.2"
+version = "1.3"
 
 api_version = 6
 api_version_dst = 10
@@ -356,7 +356,7 @@ configuration_options =
   {
     name = "marbleChance",
     label = "Extra Marbles Chance",
-    hover = "Chance to get extra marbles while mining",
+    hover = "Chance to get extra marbles when destroying marbleshrub",
     options = mining,
     default = .1
   },
@@ -370,7 +370,7 @@ configuration_options =
   {
     name = "marblebeanChance",
     label = "Extra Marble Beans Chance",
-    hover = "Chance to get extra marble beans while mining",
+    hover = "Chance to get extra marble beans when destroying marbleshrub",
     options = chances,
     default = .3
   },
