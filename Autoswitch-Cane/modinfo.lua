@@ -42,6 +42,8 @@ all_clients_require_mod = false
 client_only_mod = true
 
 dst_compatible = true
+dont_starve_compatible = false
+reign_of_giants_compatible = false
 
 icon_atlas = "icon.xml"
 icon = "icon.tex"
@@ -320,7 +322,7 @@ configuration_options = {
     },
     {
         name = "stars_staff",
-        label = or "stars_staff",
+        label = "stars_staff",
         options = {
             { description = "Disable", data = false, hover = "Will automatically switch the cane" },
             { description = "Enable", data = true, hover = "Will not automatically switch canes" }
@@ -329,7 +331,7 @@ configuration_options = {
     },
     {
         name = "fires_ice_staff",
-        label = or "fires_ice_staff",
+        label = "fires_ice_staff",
         options = {
             { description = "Disable", data = false, hover = "Will automatically switch the cane" },
             { description = "Enable", data = true, hover = "Will not automatically switch canes" }
@@ -365,7 +367,7 @@ configuration_options = {
     },
     {
         name = "sleep_fire_yellow_blowdart",
-        label =  or "sleep_fire_yellow_blowdart",
+        label =  "sleep_fire_yellow_blowdart",
         options = {
             { description = "Disable", data = false, hover = "Will automatically switch the cane" },
             { description = "Enable", data = true, hover = "Will not automatically switch canes" }
@@ -491,23 +493,16 @@ configuration_options = {
     },
     {
         name = "winona_telebrella",
-        label = or "winona_telebrella",
+        label = "winona_telebrella",
         options = {
             { description = "Disable", data = false, hover = "Will automatically switch the cane" },
             { description = "Enable", data = true, hover = "Will not automatically switch canes" }
         },
         default = true,
     },
-
-
-
-
-
-    -- -------------------------------------------------------------------- mod ------------------------------------------
-    -- 熔炉
     {
         name = "x2",
-        label =  or "mod-Follow items do not switch-furnace",
+        label =  "mod-Follow items do not switch-furnace",
         options = { {
                         description = "",
                         data = ""
