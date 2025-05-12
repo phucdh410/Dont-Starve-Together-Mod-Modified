@@ -1,5 +1,13 @@
-name = "More Drops JEM"
-description = "Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems."
+name = "More Drops JEM - DHPModified"
+description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3433071145&searchtext=More+Drops+JEM
+From update version: 24 February 2025
+
+I updated with more options for loot amount (easier). 
+I also add Marble Tree & Marble Bean, Ice Glacier options
+-----------------------------------------------
+Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
+]]
 author = "Dante12129"
 edited = "Amnesiac"
 version = "1.0"
@@ -81,7 +89,13 @@ amounts =
 	{description = "1", data = 1},
 	{description = "2", data = 2},
 	{description = "3", data = 3},
-	{description = "4", data = 4}
+	{description = "4", data = 4},
+	{description = "5", data = 5},
+	{description = "6", data = 6},
+	{description = "7", data = 7},
+	{description = "8", data = 8},
+	{description = "9", data = 9},
+	{description = "10", data = 10}
 }
 
 local empty_options = {{description = "", data = 0 }}
@@ -103,7 +117,7 @@ configuration_options =
 {
   {
     name = "infinitefertilize",
-    label = "Infinite Regrowth",
+    label = "Infinite Fertilized",
     hover = "Whether or not replanted plants need to be fertilized only once",
     options = 
       {
@@ -319,5 +333,36 @@ configuration_options =
     hover = "Chance to get green gems while mining",
     options = mining,
 	default = 0.0002
-  }   
+  },
+  
+  SEPARATOR,
+  
+  {
+    name = "glacierChance",
+    label = "Extra Glaciers Chance",
+    hover = "Chance to get extra glaciers while mining",
+    options = mining,
+    default = .1
+  },
+  {
+    name = "glacierAmount",
+    label = "Extra Ice",
+    hover = "How many extra ices you can get",
+    options = amounts,
+    default = 1,
+  },
+  {
+    name = "marbleChance",
+    label = "Extra Marbles Chance",
+    hover = "Chance to get extra marbles while mining",
+    options = mining,
+    default = .1
+  },
+  {
+    name = "marbleAmount",
+    label = "Extra Marble",
+    hover = "How many extra marbles you can get",
+    options = amounts,
+    default = 1,
+  },
 }

@@ -29,6 +29,15 @@ utils.DropLootRandom = function(inst, prefab, chance)
     return true
 	end
 end
+utils.DropLootRandomWithAmount = function(inst, prefab, chance, amount)
+	local rand = math.random() - chance
+	if rand <= 0 then
+		for i = 1, amount do
+			inst.components.lootdropper:SpawnLootPrefab(prefab)
+		end
+    return true
+	end
+end
 utils.DropLootRandomPick = function(inst, prefab_list, chances)
 	assert(#prefab_list == #chances, "Number of prefab_list specified does not match number of chances specified")
 	local rand = math.random(#prefab_list)

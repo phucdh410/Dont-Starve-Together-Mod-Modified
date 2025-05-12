@@ -4,6 +4,7 @@ local pickables = GLOBAL.require("pickables")
 local boulders = GLOBAL.require("boulders")
 local ImproveTree = GLOBAL.require("trees")
 local ImproveGlacier = GLOBAL.require("glaciers")
+local ImproveMarble = GLOBAL.require("marbles")
 local ImproveCrop = GLOBAL.require("crops")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
@@ -38,6 +39,9 @@ AddPrefabPostInit("rock_moon", utils.Bind(utils.RunFunctionServerOnly, boulders.
 
 --Increase ice from mini glaciers
 AddPrefabPostInit("rock_ice", utils.Bind(utils.RunFunctionServerOnly, ImproveGlacier))
+
+--Increase marble from marble shrubs
+AddPrefabPostInit("marbletree", utils.Bind(utils.RunFunctionServerOnly, ImproveMarble))
 
 --Double crops received from farm
 AddComponentPostInit("crop", utils.Bind(utils.RunFunctionServerOnly, ImproveCrop))
