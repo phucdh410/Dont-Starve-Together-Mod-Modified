@@ -4,13 +4,16 @@ Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3433071145&
 From update version: 24 February 2025
 
 I updated with more options for loot amount (easier). 
-I also add Marble Tree & Marble Bean, Ice Glacier options
+I also add some options:
+- Marble Tree & Marble Bean
+- Ice Glacier
+- Birdcage
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.5"
+version = "1.6"
 
 api_version = 6
 api_version_dst = 10

@@ -9,19 +9,16 @@ local function GetHunger(bird)
   return (bird and bird.components.perishable and bird.components.perishable:GetPercent()) or 1
 end
 
-local function KeepBirdAlive(inst)
-  local bird = GetBird(inst)
-
-  if bird and bird:IsValid() and bird.components.perishable and immortalBird then
-    local hunger = GetHunger(bird)
-    if hunger < 0.5 then
-      bird.components.perishable:SetPercent(1)
-    end
-  end  
-end
-
 local function ImproveBirdcage(inst)
-  inst:DoPeriodicTask(5.0, KeepBirdAlive)
+  if immortalBird then
+    local old_onoccupied = inst.components.occupiable.onoccupied
+    inst.components.occupiable.onoccupied = function(inst, bird)
+      bird.components.health:SetInvincible(true)
+      if old_onoccupied then
+        old_onoccupied(inst, bird)
+      end
+    end
+  end 
 end
 
 return ImproveBirdcage
