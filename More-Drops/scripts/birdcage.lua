@@ -11,6 +11,7 @@ end
 
 local function KeepBirdAlive(inst)
   local bird = GetBird(inst)
+  print("BIRD: ",bird)
   if bird and bird:IsValid() and bird.components.perishable then
     bird.components.perishable:SetPercent(1.0)
     bird.components.health:SetPercent(1.0)
@@ -20,6 +21,9 @@ end
 local function ImproveBirdcage(inst)
   if immortalBird then
     TheWorld:WatchWorldState("cycles", KeepBirdAlive)
+    TheWorld:WatchWorldState("cycles", function()
+      print("CHAY LOG MOI KHI QUA NGAY")
+    end)
   end
 end
 
