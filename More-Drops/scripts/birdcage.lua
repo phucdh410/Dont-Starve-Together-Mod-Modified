@@ -22,9 +22,7 @@ end
 local function ImproveBirdcage(inst)
   print("immortalBird: ", immortalBird)
   if immortalBird then
-    inst:ListenForEvent("daycomplete", function()
-        KeepBirdAlive(inst)
-    end, TheWorld)
+    inst:DoPeriodicTask(5.0, KeepBirdAlive)
   end
 end
 
