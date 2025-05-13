@@ -366,4 +366,24 @@ configuration_options =
     options = amounts,
     default = 1,
   },
+
+  SEPARATOR,
+  
+  {
+    name = "immortalBird",
+    label = "Immortal Imprison Bird",
+    hover = "Bird in birdcage still alive without feeding",
+    options = {
+      { description = "Disable", data = false },
+      { description = "Enable", data = true }
+    },
+    default = true,
+  },
+  {
+    name = "birdcageTradeAmount",
+    label = "Birdcage Trade Amount",
+    hover = "How many extra loot you can get when feeding bird",
+    options = amounts,
+    default = 1,
+  },
 }
