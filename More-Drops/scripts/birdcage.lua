@@ -11,15 +11,18 @@ end
 
 local function KeepBirdAlive(inst)
   local bird = GetBird(inst)
+  print("Bird: ", bird)
   if bird and bird:IsValid() and bird.components.perishable then
-    bird.components.perishable:SetPercent(1)
+    bird.components.perishable:SetPercent(1.0)
     bird.components.health:SetPercent(1.0)
+    print("Bird health and perishable reset to full at end of day! (GUID: " .. bird.GUID .. ")")
   end
 end
 
 local function ImproveBirdcage(inst)
+  print("immortalBird: ", immortalBird)
   if immortalBird then
-    inst:DoPeriodicTask(480.0, KeepBirdAlive) -- A day = 8 real minutes = 480 seconds
+    inst:ListenForEvent("daycomplete", function() KeepBirdAlive(inst) end, GLOBAL.TheWorld)
   end 
 end
 
