@@ -15,7 +15,7 @@ local function KeepBirdAlive(inst)
   if bird and bird:IsValid() and bird.components.perishable then
     bird.components.perishable:SetPercent(1.0)
     bird.components.health:SetPercent(1.0)
-    print("Bird health and perishable reset to full at end of day! (GUID: " .. bird.GUID .. ")")
+    print("Bird health and perishable reset to full at end of day!")
   end
 end
 
