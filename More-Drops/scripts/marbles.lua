@@ -1,9 +1,9 @@
 local utils = require("utils")
 
-local marbleChance = GetModConfigData("marbleChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local marbleAmount = GetModConfigData("marbleAmount", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local marblebeanChance = GetModConfigData("marblebeanChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local marblebeanAmount = GetModConfigData("marblebeanAmount", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local marbleChance = GetModConfigData("marbleChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local marbleAmount = GetModConfigData("marbleAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local marblebeanChance = GetModConfigData("marblebeanChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local marblebeanAmount = GetModConfigData("marblebeanAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 
 local function ImproveMarble(inst)
 	local oldonfinish = inst.components.workable.onfinish

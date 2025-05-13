@@ -1,4 +1,4 @@
-name = "More Drops JEM - DHPModified"
+name = "More Drops - DHPModified"
 description = [[
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3433071145&searchtext=More+Drops+JEM
 From update version: 24 February 2025
@@ -8,9 +8,9 @@ I also add Marble Tree & Marble Bean, Ice Glacier options
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
-author = "Dante12129"
-edited = "Amnesiac"
-version = "1.4"
+author = "PhucDH410"
+edited = "PhucDH410"
+version = "1.5"
 
 api_version = 6
 api_version_dst = 10
@@ -335,6 +335,9 @@ configuration_options =
     options = amounts,
     default = 1,
   },
+
+  SEPARATOR,
+  
   {
     name = "marbleChance",
     label = "Extra Marbles Chance",

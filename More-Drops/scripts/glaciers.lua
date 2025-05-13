@@ -1,7 +1,7 @@
 local utils = require("utils")
 
-local glacierChance = GetModConfigData("glacierChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local glacierAmount = GetModConfigData("glacierAmount", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local glacierChance = GetModConfigData("glacierChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local glacierAmount = GetModConfigData("glacierAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 
 local function ImproveGlacier(inst)
 	local oldonwork = inst.components.workable.onwork

@@ -1,15 +1,15 @@
 local utils = require("utils")
 
 local boulders = {}
-local rockChance = GetModConfigData("rockChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local flintChance = GetModConfigData("flintChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local specialChance = GetModConfigData("specialChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local redChance = GetModConfigData("redChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local blueChance = GetModConfigData("blueChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local purpleChance = GetModConfigData("purpleChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local orangeChance = GetModConfigData("orangeChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local yellowChance = GetModConfigData("yellowChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
-local greenChance = GetModConfigData("greenChance", KnownModIndex:GetModActualName("More Drops JEM - DHPModified"))
+local rockChance = GetModConfigData("rockChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local flintChance = GetModConfigData("flintChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local specialChance = GetModConfigData("specialChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local redChance = GetModConfigData("redChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local blueChance = GetModConfigData("blueChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local purpleChance = GetModConfigData("purpleChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local orangeChance = GetModConfigData("orangeChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local yellowChance = GetModConfigData("yellowChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local greenChance = GetModConfigData("greenChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 
 boulders.ImproveRock = function(inst)
 	--Do these for each swing
