@@ -5,14 +5,12 @@ From update version: 24 February 2025
 
 I updated with more options for loot amount (easier). 
 I also add Marble Tree & Marble Bean, Ice Glacier options
-
-All config for marble just applied to Highest Marble Shrub (Tall), so please wait to it fullgrowth
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "Dante12129"
 edited = "Amnesiac"
-version = "1.3"
+version = "1.4"
 
 api_version = 6
 api_version_dst = 10
@@ -60,16 +58,6 @@ chances =
 mining = 
 {
 	{description = "0%", data = 0.00},
-	{description = "0.01%", data = 0.0001},
-	{description = "0.02%", data = 0.0002},
-	{description = "0.03%", data = 0.0003},
-	{description = "0.04%", data = 0.0004},
-	{description = "0.05%", data = 0.0005},
-	{description = "0.1%", data = 0.001},
-	{description = "0.2%", data = 0.002},
-	{description = "0.3%", data = 0.003},
-	{description = "0.4%", data = 0.004},
-	{description = "0.5%", data = 0.005},
 	{description = "1%", data = 0.01},
 	{description = "5%", data = 0.05},
 	{description = "10%", data = 0.1},
@@ -203,13 +191,7 @@ configuration_options =
     name = "berry_JuicyAmount",
     label = "Extra Juicy Berries",
     hover = "How many extra juicy berries you can get",
-    options = 
-      {
-        {description = "None", data = 0}, 
-        {description = "1", data = 1},
-        {description = "2", data = 2},
-        {description = "3", data = 3}
-      }, 
+    options = amounts,
       default = 3
   },
   {
@@ -299,42 +281,42 @@ configuration_options =
     label = "Extra Red Gems Chance",
     hover = "Chance to get red gems while mining",
     options = mining,
-	default = 0.0002
+	default = 0.01
   },
     {
     name = "blueChance",
     label = "Extra Blue Gems Chance",
     hover = "Chance to get blue gems while mining",
     options = mining,
-	default = 0.0004
+	default = 0.01
   },
     {
     name = "purpleChance",
     label = "Extra Purple Gems Chance",
     hover = "Chance to get purple gems while mining",
     options = mining,
-	default = 0.0001
+	default = 0.01
   },
       {
     name = "orangeChance",
     label = "Extra Orange Gems Chance",
     hover = "Chance to get orange gems while mining",
     options = mining,
-	default = 0.0002
+	default = 0.01
   }, 
     {
     name = "yellowChance",
     label = "Extra Yellow Gems Chance",
     hover = "Chance to get yellow gems while mining",
     options = mining,
-	default = 0.0001
+	default = 0.01
   },
     {
     name = "greenChance",
     label = "Extra Green Gems Chance",
     hover = "Chance to get green gems while mining",
     options = mining,
-	default = 0.0002
+	default = 0.01
   },
   
   SEPARATOR,

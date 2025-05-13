@@ -41,7 +41,7 @@ AddPrefabPostInit("rock_moon", utils.Bind(utils.RunFunctionServerOnly, boulders.
 AddPrefabPostInit("rock_ice", utils.Bind(utils.RunFunctionServerOnly, ImproveGlacier))
 
 --Increase marble from marble shrubs
-AddPrefabPostInit("marbleshrub_tall", utils.Bind(utils.RunFunctionServerOnly, ImproveMarble))
+AddPrefabPostInit("marbleshrub", utils.Bind(utils.RunFunctionServerOnly, ImproveMarble))
 
 --Double crops received from farm
 AddComponentPostInit("crop", utils.Bind(utils.RunFunctionServerOnly, ImproveCrop))
