@@ -9,15 +9,17 @@ local function GetHunger(bird)
   return (bird and bird.components.perishable and bird.components.perishable:GetPercent()) or 1
 end
 
+local function KeepBirdAlive(inst)
+  local bird = GetBird(inst)
+  if bird and bird:IsValid() and bird.components.perishable then
+    bird.components.perishable:SetPercent(1)
+    bird.components.health:SetPercent(1.0)
+  end
+end
+
 local function ImproveBirdcage(inst)
   if immortalBird then
-    local old_onoccupied = inst.components.occupiable.onoccupied
-    inst.components.occupiable.onoccupied = function(inst, bird)
-      bird.components.health:SetInvincible(true)
-      if old_onoccupied then
-        old_onoccupied(inst, bird)
-      end
-    end
+    inst:DoPeriodicTask(480.0, KeepBirdAlive) -- A day = 8 real minutes = 480 seconds
   end 
 end
 
