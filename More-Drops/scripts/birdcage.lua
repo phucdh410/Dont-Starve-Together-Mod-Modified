@@ -23,6 +23,9 @@ local function ImproveBirdcage(inst)
   print("immortalBird: ", immortalBird)
   if immortalBird then
     inst:DoPeriodicTask(5.0, KeepBirdAlive)
+    TheWorld:WatchWorldState("cycles",function()
+      print("Da-Qua-Ngay_rui_nha")
+    end)
   end
 end
 
