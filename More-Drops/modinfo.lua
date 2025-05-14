@@ -8,12 +8,13 @@ I also add some options:
 - Marble Tree & Marble Bean
 - Ice Glacier
 - Birdcage
+- Beebox
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.12"
+version = "1.8.13"
 
 api_version = 6
 api_version_dst = 10
@@ -79,6 +80,20 @@ mining =
 amounts = 
 {
 	{description = "None", data = 0},
+	{description = "1", data = 1},
+	{description = "2", data = 2},
+	{description = "3", data = 3},
+	{description = "4", data = 4},
+	{description = "5", data = 5},
+	{description = "6", data = 6},
+	{description = "7", data = 7},
+	{description = "8", data = 8},
+	{description = "9", data = 9},
+	{description = "10", data = 10}
+}
+
+multiples = 
+{
 	{description = "1", data = 1},
 	{description = "2", data = 2},
 	{description = "3", data = 3},
@@ -387,6 +402,16 @@ configuration_options =
     label = "Birdcage Trade Amount",
     hover = "How many extra loot you can get when feeding bird",
     options = amounts,
+    default = 1,
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "beeboxMultiple",
+    label = "Beebox Multiple Harvest",
+    hover = "How many multiple loot you can get when harvest beebox",
+    options = multiples,
     default = 1,
   },
 }

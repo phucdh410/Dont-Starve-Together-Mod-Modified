@@ -7,6 +7,7 @@ local ImproveGlacier = GLOBAL.require("glaciers")
 local ImproveMarble = GLOBAL.require("marbles")
 local ImproveCrop = GLOBAL.require("crops")
 local ImproveBirdcage = GLOBAL.require("birdcage")
+local ImproveBeebox = GLOBAL.require("beebox")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
 utils.setSeed()
@@ -49,3 +50,7 @@ AddComponentPostInit("crop", utils.Bind(utils.RunFunctionServerOnly, ImproveCrop
 
 --Bonus for birdcage
 AddPrefabPostInit("birdcage", utils.Bind(utils.RunFunctionServerOnly, ImproveBirdcage))
+
+--Bonus for beebox
+AddPrefabPostInit("beebox", utils.Bind(utils.RunFunctionServerOnly, ImproveBeebox))
+AddPrefabPostInit("beebox_hermit", utils.Bind(utils.RunFunctionServerOnly, ImproveBeebox))
