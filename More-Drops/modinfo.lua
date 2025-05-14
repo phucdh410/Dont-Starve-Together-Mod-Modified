@@ -14,7 +14,7 @@ Makes trees, boulders, and other resource sources drop more. Also Adds a configu
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.14"
+version = "1.8.15"
 
 api_version = 6
 api_version_dst = 10
