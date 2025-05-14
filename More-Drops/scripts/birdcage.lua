@@ -23,6 +23,19 @@ local function ImproveBirdcage(inst)
       KeepBirdAlive(inst)
     end)
   end
+
+  if birdcageTradeAmount ~= 1 then
+    if inst.components.lootdropper then
+      -- Save original DigestFood of birdcage
+      local OldDigestFood = inst.components.lootdropper.SpawnLootPrefab
+      inst.components.lootdropper.SpawnLootPrefab = function(prefab, ...)
+        local loot
+        for i = 1, birdcageTradeAmount do
+          loot = OldDigestFood(prefab, ...)
+        end
+        return loot
+      end
+  end
 end
 
 return ImproveBirdcage
