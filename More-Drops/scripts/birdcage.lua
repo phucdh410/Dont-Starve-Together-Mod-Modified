@@ -35,6 +35,7 @@ local function ImproveBirdcage(inst)
         end
         return loot
       end
+    end
   end
 end
 
