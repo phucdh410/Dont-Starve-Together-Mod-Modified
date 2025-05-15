@@ -243,14 +243,14 @@ configuration_options =
   
   {
     name = "mushroomAmount",
-    label = "Extra Bananas",
+    label = "Extra Mushrooms",
     hover = "How many extra mushrooms you can get",
     options = amounts,
     default = 1,
   },
    {
     name = "mushroomChance",
-    label = "Extra Banana Chance",
+    label = "Extra Mushroom Chance",
     hover = "Chance to get extra mushrooms",
     options = chances,
 	  default = .25
