@@ -23,6 +23,9 @@ AddPrefabPostInit("berrybush", utils.Bind(utils.RunFunctionServerOnly, pickables
 AddPrefabPostInit("berrybush2", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveBerries))
 --Increase Juicy Berry Drops
 AddPrefabPostInit("berrybush_juicy", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveJuicy))
+--Increase banana drops
+AddPrefabPostInit("bananabush", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveBanana))
+AddPrefabPostInit("cave_banana_tree", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveBanana))
 
 --Add resources from trees
 local trees = {"evergreen", "evergreen_sparse", "deciduoustree", "twiggytree"}

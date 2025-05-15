@@ -9,6 +9,7 @@ I also add some options:
 - Ice Glacier
 - Birdcage
 - Beebox
+- Bananabush
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
@@ -138,7 +139,7 @@ configuration_options =
   SEPARATOR,
 
   {
-    name = "grassamount",
+    name = "grassAmount",
     label = "Extra Cut Grass",
     hover = "How many extra cut grass you can get",
     options = amounts,
@@ -149,13 +150,13 @@ configuration_options =
     label = "Extra Grass Chance",
     hover = "Chance to get extra cut grass",
     options = chances,
-	default = .25
+	  default = .25
   },
   
   SEPARATOR,
   
 	{
-    name = "twigamount",
+    name = "twigAmount",
     label = "Extra Twigs",
     hover = "How many extra twigs you can get",
     options = amounts,
@@ -172,18 +173,18 @@ configuration_options =
   SEPARATOR,
   
 	{
-    name = "reedamount",
+    name = "reedAmount",
     label = "Extra Reeds",
     hover = "How many extra reeds you can get",
     options = amounts,
-	default = 1
+	  default = 1
   },
   {
     name = "reedChance",
     label = "Extra Reed Chance",
     hover = "Chance to get extra reeds",
     options = chances,
-	default = .25
+	  default = .25
   },
   
   SEPARATOR,
@@ -193,14 +194,14 @@ configuration_options =
     label = "Extra Berries",
     hover = "How many extra berries you can get",
     options = amounts,
-	default = 1
+	  default = 1
   },
     {
     name = "berryChance",
     label = "Extra Berry Chance",
     hover = "Chance to get extra berries",
     options = chances,
-	default = .25
+	  default = .25
   },
   
   SEPARATOR,
@@ -210,14 +211,14 @@ configuration_options =
     label = "Extra Juicy Berries",
     hover = "How many extra juicy berries you can get",
     options = amounts,
-      default = 3
+    default = 3
   },
   {
     name = "berry_JuicyChance",
     label = "Extra Juicy Berry Chance",
     hover = "Chance to get extra juicy berries",
     options = chances,
-	default = .25
+	  default = .25
   },
   
   SEPARATOR,
@@ -244,14 +245,14 @@ configuration_options =
     label = "Extra Tall Logs",
     hover = "How many extra logs you can get when chopping a tall tree",
     options = amounts,
-	default = 2
+	  default = 2
   },
   {
     name = "logChance",
     label = "Extra Logs Chance",
     hover = "Chance to get extra logs after chopping tree",
     options = chances,
-	default = .25
+	  default = .25
   },
   
   SEPARATOR,
@@ -285,56 +286,56 @@ configuration_options =
     label = "Extra Flint Chance",
     hover = "Chance to get extra flint while mining",
     options = mining,
-	default = .15
+	  default = .15
   },
     {
     name = "specialChance",
     label = "Extra Specialty Rocks Chance",
     hover = "Chance to get extra nitre, gold, and moon rocks while mining",
     options = mining,
-	default = .15
+	  default = .15
   },
     {
     name = "redChance",
     label = "Extra Red Gems Chance",
     hover = "Chance to get red gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   },
     {
     name = "blueChance",
     label = "Extra Blue Gems Chance",
     hover = "Chance to get blue gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   },
     {
     name = "purpleChance",
     label = "Extra Purple Gems Chance",
     hover = "Chance to get purple gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   },
       {
     name = "orangeChance",
     label = "Extra Orange Gems Chance",
     hover = "Chance to get orange gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   }, 
     {
     name = "yellowChance",
     label = "Extra Yellow Gems Chance",
     hover = "Chance to get yellow gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   },
     {
     name = "greenChance",
     label = "Extra Green Gems Chance",
     hover = "Chance to get green gems while mining",
     options = mining,
-	default = 0.01
+	  default = 0.01
   },
   
   SEPARATOR,
@@ -414,4 +415,22 @@ configuration_options =
     options = multiples,
     default = 1,
   },
+  
+  SEPARATOR,
+  
+  {
+    name = "bananaAmount",
+    label = "Extra Bananas",
+    hover = "How many extra bananas you can get",
+    options = amounts,
+    default = 1,
+  },
+   {
+    name = "bananaChance",
+    label = "Extra Banana Chance",
+    hover = "Chance to get extra bananas",
+    options = chances,
+	  default = .25
+  },
+  
 }
