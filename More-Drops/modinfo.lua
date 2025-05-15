@@ -94,20 +94,6 @@ amounts =
 	{description = "10", data = 10}
 }
 
-multiples = 
-{
-	{description = "1", data = 1},
-	{description = "2", data = 2},
-	{description = "3", data = 3},
-	{description = "4", data = 4},
-	{description = "5", data = 5},
-	{description = "6", data = 6},
-	{description = "7", data = 7},
-	{description = "8", data = 8},
-	{description = "9", data = 9},
-	{description = "10", data = 10}
-}
-
 local empty_options = {{description = "", data = 0 }}
 
 local function Title(title,hover)
@@ -444,10 +430,10 @@ configuration_options =
   SEPARATOR,
   
   {
-    name = "beeboxMultiple",
-    label = "Beebox Multiple Harvest",
-    hover = "How many multiple loot you can get when harvest beebox",
-    options = multiples,
+    name = "honeyAmount",
+    label = "Extra Honey Amount",
+    hover = "How many extra honey you can get when harvest beebox",
+    options = amounts,
     default = 1,
   },
 }
