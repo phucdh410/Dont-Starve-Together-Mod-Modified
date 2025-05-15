@@ -9,7 +9,7 @@ I also add some options:
 - Ice Glacier
 - Birdcage
 - Beebox
-- Bananabush
+- Bananabush & Cave Banana Tree
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]

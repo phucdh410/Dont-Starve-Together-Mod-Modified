@@ -80,8 +80,7 @@ pickables.ImproveJuicy = function(inst)
 	end
 end
 
-
--- Banana
+-- Banana *** NEW FEATURE, TEST IS NECESSARY
 pickables.ImproveBanana = function(inst)
 	local bananaChance = GetModConfigData("bananaChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 	local bananaAmount = GetModConfigData("bananaAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
