@@ -10,6 +10,7 @@ I also add some options:
 - Birdcage
 - Beebox
 - Bananabush & Cave Banana Tree
+- Mushrooms
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
@@ -224,6 +225,40 @@ configuration_options =
   SEPARATOR,
   
   {
+    name = "bananaAmount",
+    label = "Extra Bananas",
+    hover = "How many extra bananas you can get",
+    options = amounts,
+    default = 1,
+  },
+   {
+    name = "bananaChance",
+    label = "Extra Banana Chance",
+    hover = "Chance to get extra bananas",
+    options = chances,
+	  default = .25
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "mushroomAmount",
+    label = "Extra Bananas",
+    hover = "How many extra mushrooms you can get",
+    options = amounts,
+    default = 1,
+  },
+   {
+    name = "mushroomChance",
+    label = "Extra Banana Chance",
+    hover = "Chance to get extra mushrooms",
+    options = chances,
+	  default = .25
+  },
+  
+  SEPARATOR,
+
+  {
     name = "treeseedchance",
     label = "Tree Seed Chance",
     hover = "Chance for trees to drop an additional seed",
@@ -415,22 +450,4 @@ configuration_options =
     options = multiples,
     default = 1,
   },
-  
-  SEPARATOR,
-  
-  {
-    name = "bananaAmount",
-    label = "Extra Bananas",
-    hover = "How many extra bananas you can get",
-    options = amounts,
-    default = 1,
-  },
-   {
-    name = "bananaChance",
-    label = "Extra Banana Chance",
-    hover = "Chance to get extra bananas",
-    options = chances,
-	  default = .25
-  },
-  
 }

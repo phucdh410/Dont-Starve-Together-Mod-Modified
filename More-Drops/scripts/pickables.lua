@@ -4,6 +4,13 @@ local infinitefertilize = GetModConfigData("infinitefertilize", KnownModIndex:Ge
 
 local pickables = {}
 
+local function FertilizedInfinite(inst)
+	if infinitefertilize == true then
+    inst.components.pickable.max_cycles = 9999999999
+    inst.components.pickable.cycles_left = 9999999999
+  end
+end
+
 --Grass
 pickables.ImproveGrass = function(inst)
 	local grassChance = GetModConfigData("grassChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
@@ -13,10 +20,7 @@ pickables.ImproveGrass = function(inst)
 	else
 		inst.components.pickable.numtoharvest = 1
 	end
-  if infinitefertilize == true then
-    inst.components.pickable.max_cycles = 9999999999
-    inst.components.pickable.cycles_left = 9999999999
-  end
+  FertilizedInfinite(inst)
 end
 
 --Sapling
@@ -28,10 +32,7 @@ pickables.ImproveSapling = function(inst)
 	else	
 		inst.components.pickable.numtoharvest = 1
 	end
-  if infinitefertilize == true then
-    inst.components.pickable.max_cycles = 9999999999
-    inst.components.pickable.cycles_left = 9999999999
-  end
+  FertilizedInfinite(inst)
 end
 
 --Reeds
@@ -43,10 +44,7 @@ pickables.ImproveReeds = function(inst)
 	else
 		inst.components.pickable.numtoharvest = 1
 	end
-	if infinitefertilize == true then
-		inst.components.pickable.max_cycles = 9999999999
-		inst.components.pickable.cycles_left = 9999999999
-	end
+	FertilizedInfinite(inst)
 end
 
 -- Berry Bushes
@@ -58,10 +56,7 @@ pickables.ImproveBerries = function(inst)
 	else 
 		inst.components.pickable.numtoharvest = 1
 	end
-	if infinitefertilize == true then
-		inst.components.pickable.max_cycles = 9999999999
-		inst.components.pickable.cycles_left = 9999999999
-	end
+	FertilizedInfinite(inst)
 end
 
 -- Juicy Berry Bushes
@@ -73,11 +68,7 @@ pickables.ImproveJuicy = function(inst)
 	else
 		inst.components.pickable.numtoharvest = 3
 	end
-
-	if infinitefertilize == true then
-		inst.components.pickable.max_cycles = 9999999999
-		inst.components.pickable.cycles_left = 9999999999
-	end
+	FertilizedInfinite(inst)
 end
 
 -- Banana *** NEW FEATURE, TEST IS NECESSARY
@@ -89,12 +80,19 @@ pickables.ImproveBanana = function(inst)
 	else
 		inst.components.pickable.numtoharvest = 1
 	end
-	-- Because banana tree maybe not exist 2 these attributes
-	if infinitefertilize == true and inst.components.pickable.max_cycles and inst.components.pickable.cycles_left then
-		inst.components.pickable.max_cycles = 9999999999
-		inst.components.pickable.cycles_left = 9999999999
-	end
+	FertilizedInfinite(inst)
 end
 
+-- Mushroom *** NEW FEATURE, TEST IS NECESSARY
+pickables.ImproveMushroom = function(inst)
+	local mushroomChance = GetModConfigData("mushroomChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+	local mushroomAmount = GetModConfigData("mushroomAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+	if utils.LootRandom(mushroomChance) then
+		inst.components.pickable.numtoharvest = mushroomAmount + 1
+	else
+		inst.components.pickable.numtoharvest = 1
+	end
+	FertilizedInfinite(inst)
+end
 
 return pickables
