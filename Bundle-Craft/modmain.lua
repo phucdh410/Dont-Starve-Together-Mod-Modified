@@ -5,7 +5,7 @@ AddRecipe2("bundle_cutstones",
   {Ingredient("rocks", 150)},
     TECH.SCIENCE_ONE,
   {
-    atlas = "minimap/cutstone.xml",
+    atlas = "images/inventoryimages/cutstone.xml",
     image = "cutstone.tex",
     product = "cutstone",
     numtogive = 50 
