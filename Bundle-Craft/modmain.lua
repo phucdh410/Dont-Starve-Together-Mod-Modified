@@ -1,6 +1,14 @@
-local RECIPETABS = GLOBAL.RECIPETABS
+local require = GLOBAL.require
 local STRINGS = GLOBAL.STRINGS
+local RECIPETABS = GLOBAL.RECIPETABS
+local Recipe = GLOBAL.Recipe
+local Ingredient = GLOBAL.Ingredient
 local TECH = GLOBAL.TECH
+
+Assets = {
+  Asset("ATLAS", "images/inventoryimages/bundle_cutstones.xml"),
+  Asset("IMAGE", "images/inventoryimages/bundle_cutstones.tex"),
+}
 
 AddRecipe2("bundle_cutstones",
   {Ingredient("rocks", 150)},
