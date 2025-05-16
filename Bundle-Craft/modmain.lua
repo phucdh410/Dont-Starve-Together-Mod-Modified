@@ -1,12 +1,11 @@
+local RECIPETABS = GLOBAL.RECIPETABS
 local STRINGS = GLOBAL.STRINGS
 local TECH = GLOBAL.TECH
 
 AddRecipe2("bundle_cutstones",
   {Ingredient("rocks", 150)},
-    TECH.SCIENCE_ONE,
+  TECH.SCIENCE_ONE,
   {
-    atlas = "images/inventoryimages/cutstone.xml",
-    image = "cutstone.tex",
     product = "cutstone",
     numtogive = 50 
   },
