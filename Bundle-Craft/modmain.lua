@@ -1,6 +1,9 @@
 local STRINGS = GLOBAL.STRINGS
 local TECH = GLOBAL.TECH
 
+Asset("IMAGE", "images/inventoryimages/bundle_cutstones.tex"),
+Asset("ATLAS", "images/inventoryimages/bundle_cutstones.xml"),
+
 AddRecipe2("bundle_cutstones",
   {Ingredient("rocks", 150)},
     TECH.SCIENCE_ONE,

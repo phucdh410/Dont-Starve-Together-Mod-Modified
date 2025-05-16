@@ -1,7 +1,7 @@
 name = "Bundle Craft - DHPModified"
 description = "Add recipes to craft pack materials"
 author = "PhucDH410"
-version = "1.0.10"
+version = "1.0.11"
 
 forumthread = ""
 
