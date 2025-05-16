@@ -7,7 +7,9 @@ AddRecipe2("bundle_cutstones",
   TECH.SCIENCE_ONE,
   {
     product = "cutstone",
-    numtogive = 50 
+    numtogive = 50,
+    atlas = "images/inventoryimages/bundle_cutstones.xml", -- Path to your custom atlas
+    image = "bundle_cutstones.tex"
   },
   { "REFINE" }
 )
