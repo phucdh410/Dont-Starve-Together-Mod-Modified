@@ -1,4 +1,5 @@
 local STRINGS = GLOBAL.STRINGS
+local TECH = GLOBAL.TECH
 
 AddRecipe2("bundle_cutstones",
   {Ingredient("rocks", 150)},
