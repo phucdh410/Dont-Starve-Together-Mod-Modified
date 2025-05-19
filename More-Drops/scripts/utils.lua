@@ -85,25 +85,25 @@ end
 
 utils.Jackpot = function(inst, worker, amount, prefabsList)
 	for _,prefab in ipairs(prefabsList) do
-		-- //TODO
+		-- Give loot to inventory
 		-- local loot = SpawnPrefab(prefab)
 		-- if loot and worker then
 		-- 	for i = 1, amount do
 		-- 		worker.components.inventory:GiveItem(loot)
 		-- 	end
 		-- end
-		if loot and inst then
+		-- Spawn loot on ground
+		if inst.components then
 			for i = 1, amount do
 				inst.components.lootdropper:SpawnLootPrefab(prefab)
 			end
 		end
 	end
 
-	-- //TODO
-	-- Sound still not working
 	if worker and worker:HasTag("player") then
-		worker.components.talker:Say("🌟⭐Jackpot!⭐🌟")
-
+		worker.components.talker:Say("󰀏 Jackpot! 󰀏")
+		-- //TODO
+		-- Sound still not working
 		if worker.SoundEmitter then
 			print("PLAYER HAS SOUND")
 			worker.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
