@@ -40,7 +40,7 @@ boulders.ImproveRock = function(inst)
 	local chancesList = {rockChance, flintChance, specialChance, specialChance, specialChance, redChance, blueChance, purpleChance, orangeChance, yellowChance, greenChance, thuleciteChance}
 	inst.components.workable:SetOnFinishCallback(function(inst, worker)
 		if math.random() <= jackpotChance then
-			utils.Jackpot(worker, jackpotAmount, prefabsList)
+			utils.Jackpot(inst, worker, jackpotAmount, prefabsList)
 		else
 			utils.GiveLootRandomPick(worker, prefabsList, chancesList)
     end

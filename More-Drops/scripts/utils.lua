@@ -83,21 +83,28 @@ utils.setSeed = function()
 	math.random(os.time())
 end
 
-utils.Jackpot = function(worker, amount, prefabsList)
+utils.Jackpot = function(inst, worker, amount, prefabsList)
 	for _,prefab in ipairs(prefabsList) do
-		for i = 1, amount do
-			local loot = SpawnPrefab(prefab)
-			if loot and worker then
-				worker.components.inventory:GiveItem(loot)
+		-- local loot = SpawnPrefab(prefab)
+		-- if loot and worker then
+		-- 	for i = 1, amount do
+		-- 		worker.components.inventory:GiveItem(loot)
+		-- 	end
+		-- end
+		if loot and inst then
+			for i = 1, amount do
+				inst.components.lootdropper:SpawnLootPrefab(prefab)
 			end
 		end
 	end
 
+	-- Sound still not working
 	if worker and worker:HasTag("player") then
 		worker.components.talker:Say("Jackpot!")
 
 		if worker.SoundEmitter then
-			worker.SoundEmitter:PlaySound("dontstarve/HUD/research_unlocked")
+			print("PLAYER HAS SOUND")
+			worker.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
 		end
 	end
 end

@@ -12,12 +12,13 @@ I also add some options:
 - Bananabush & Cave Banana Tree
 - Mushrooms
 - Thulecite Fragment
+I added Jackpot with big rewards when break mining rock. 
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.18"
+version = "1.8.19"
 
 api_version = 6
 api_version_dst = 10
