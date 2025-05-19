@@ -85,6 +85,7 @@ end
 
 utils.Jackpot = function(inst, worker, amount, prefabsList)
 	for _,prefab in ipairs(prefabsList) do
+		-- //TODO
 		-- local loot = SpawnPrefab(prefab)
 		-- if loot and worker then
 		-- 	for i = 1, amount do
@@ -98,9 +99,10 @@ utils.Jackpot = function(inst, worker, amount, prefabsList)
 		end
 	end
 
+	-- //TODO
 	-- Sound still not working
 	if worker and worker:HasTag("player") then
-		worker.components.talker:Say("Jackpot!")
+		worker.components.talker:Say("🌟⭐Jackpot!⭐🌟")
 
 		if worker.SoundEmitter then
 			print("PLAYER HAS SOUND")

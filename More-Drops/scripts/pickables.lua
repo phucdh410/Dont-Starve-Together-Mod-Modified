@@ -70,7 +70,7 @@ pickables.ImproveJuicy = function(inst)
 	end
 	FertilizedInfinite(inst)
 end
-
+-- //TODO
 -- Banana *** NEW FEATURE, TEST IS NECESSARY
 pickables.ImproveBanana = function(inst)
 	local bananaChance = GetModConfigData("bananaChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
@@ -82,7 +82,7 @@ pickables.ImproveBanana = function(inst)
 	end
 	FertilizedInfinite(inst)
 end
-
+-- //TODO
 -- Mushroom *** NEW FEATURE, TEST IS NECESSARY
 pickables.ImproveMushroom = function(inst)
 	local mushroomChance = GetModConfigData("mushroomChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))

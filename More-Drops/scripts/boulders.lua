@@ -32,30 +32,40 @@ local function MiningFunction(inst, specialPrefab)
 	end
 end
 
+local function HandleFullMine(inst)
+	local prefabsList = {"rocks", "flint", "nitre", "goldnugget", "moonrocknugget", "redgem", "bluegem", "purplegem", "orangegem", "yellowgem", "greengem", "thulecite_pieces"}
+	local chancesList = {rockChance, flintChance, specialChance, specialChance, specialChance, redChance, blueChance, purpleChance, orangeChance, yellowChance, greenChance, thuleciteChance}
+	if inst and inst.components and inst.components.workable then
+		inst.components.workable:SetOnFinishCallback(function(inst, worker)
+			if math.random() <= jackpotChance then
+				utils.Jackpot(inst, worker, jackpotAmount, prefabsList)
+			else
+				utils.GiveLootRandomPick(worker, prefabsList, chancesList)
+			end
+			print("Done mining.")
+		end)
+	end
+end
+
 boulders.ImproveRock = function(inst)
 	--Do these for each swing
 	MiningFunction(inst, "nitre")
 	--Do these for each full mine
-	local prefabsList = {"rocks", "flint", "nitre", "goldnugget", "moonrocknugget", "redgem", "bluegem", "purplegem", "orangegem", "yellowgem", "greengem", "thulecite_pieces"}
-	local chancesList = {rockChance, flintChance, specialChance, specialChance, specialChance, redChance, blueChance, purpleChance, orangeChance, yellowChance, greenChance, thuleciteChance}
-	inst.components.workable:SetOnFinishCallback(function(inst, worker)
-		if math.random() <= jackpotChance then
-			utils.Jackpot(inst, worker, jackpotAmount, prefabsList)
-		else
-			utils.GiveLootRandomPick(worker, prefabsList, chancesList)
-    end
-		print("Done mining.")
-	end)
+	HandleFullMine(inst)
 end
 
 boulders.ImproveGold = function(inst)
 	--Do these for each swing
 	MiningFunction(inst, "goldnugget")
+	--Do these for each full mine
+	HandleFullMine(inst)
 end
 
 boulders.ImproveMoon = function(inst)
 	--Do these for each swing
 	MiningFunction(inst, "moonrocknugget")
+	--Do these for each full mine
+	HandleFullMine(inst)
 end
 
 return boulders
