@@ -83,4 +83,23 @@ utils.setSeed = function()
 	math.random(os.time())
 end
 
+utils.Jackpot = function(worker, amount, prefabsList)
+	for _,prefab in ipairs(prefabsList) do
+		for i = 1, amount do
+			local loot = SpawnPrefab(prefab)
+			if loot and worker then
+				worker.components.inventory:GiveItem(loot)
+			end
+		end
+	end
+
+	if worker and worker:HasTag("player") then
+		worker.components.talker:Say("Jackpot!")
+
+		if worker.SoundEmitter then
+			worker.SoundEmitter:PlaySound("dontstarve/HUD/research_unlocked")
+		end
+	end
+end
+
 return utils

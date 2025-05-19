@@ -11,12 +11,13 @@ I also add some options:
 - Beebox
 - Bananabush & Cave Banana Tree
 - Mushrooms
+- Thulecite Fragment
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also Adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.17"
+version = "1.8.18"
 
 api_version = 6
 api_version_dst = 10
@@ -132,7 +133,7 @@ configuration_options =
     options = amounts,
     default = 1,
   },
-   {
+  {
     name = "grassChance",
     label = "Extra Grass Chance",
     hover = "Chance to get extra cut grass",
@@ -183,7 +184,7 @@ configuration_options =
     options = amounts,
 	  default = 1
   },
-    {
+  {
     name = "berryChance",
     label = "Extra Berry Chance",
     hover = "Chance to get extra berries",
@@ -217,7 +218,7 @@ configuration_options =
     options = amounts,
     default = 1,
   },
-   {
+  {
     name = "bananaChance",
     label = "Extra Banana Chance",
     hover = "Chance to get extra bananas",
@@ -234,7 +235,7 @@ configuration_options =
     options = amounts,
     default = 1,
   },
-   {
+  {
     name = "mushroomChance",
     label = "Extra Mushroom Chance",
     hover = "Chance to get extra mushrooms",
@@ -309,54 +310,75 @@ configuration_options =
     options = mining,
 	  default = .15
   },
-    {
+  {
     name = "specialChance",
     label = "Extra Specialty Rocks Chance",
     hover = "Chance to get extra nitre, gold, and moon rocks while mining",
     options = mining,
 	  default = .15
   },
-    {
+  {
     name = "redChance",
     label = "Extra Red Gems Chance",
     hover = "Chance to get red gems while mining",
     options = mining,
 	  default = 0.01
   },
-    {
+  {
     name = "blueChance",
     label = "Extra Blue Gems Chance",
     hover = "Chance to get blue gems while mining",
     options = mining,
 	  default = 0.01
   },
-    {
+  {
     name = "purpleChance",
     label = "Extra Purple Gems Chance",
     hover = "Chance to get purple gems while mining",
     options = mining,
 	  default = 0.01
   },
-      {
+  {
     name = "orangeChance",
     label = "Extra Orange Gems Chance",
     hover = "Chance to get orange gems while mining",
     options = mining,
 	  default = 0.01
   }, 
-    {
+  {
     name = "yellowChance",
     label = "Extra Yellow Gems Chance",
     hover = "Chance to get yellow gems while mining",
     options = mining,
 	  default = 0.01
   },
-    {
+  {
     name = "greenChance",
     label = "Extra Green Gems Chance",
     hover = "Chance to get green gems while mining",
     options = mining,
 	  default = 0.01
+  },
+  {
+    name = "thuleciteChance",
+    label = "Extra Thulecite Fragments Chance",
+    hover = "Chance to get thulecite fragments while mining",
+    options = mining,
+	  default = 0
+  },
+  {
+    name = "jackpotChance",
+    label = "Mining Jackpot Chance",
+    hover = "Chance to get super loot when break rock",
+    options = mining,
+	  default = 0
+  },
+  {
+    name = "jackpotAmount",
+    label = "Amount Jackpot",
+    hover = "Amount loot you can get from jackpot",
+    options = amounts,
+	  default = 0
   },
   
   SEPARATOR,
