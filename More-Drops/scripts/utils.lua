@@ -104,10 +104,7 @@ utils.Jackpot = function(inst, worker, amount, prefabsList)
 		worker.components.talker:Say("󰀏 Jackpot! 󰀏")
 		-- //TODO
 		-- Sound still not working
-		if worker.SoundEmitter then
-			print("PLAYER HAS SOUND")
-			worker.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
-		end
+			TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/research_available")
 	end
 end
 
