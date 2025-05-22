@@ -29,6 +29,16 @@ pickables.ImproveSapling = function(inst)
 	local twigAmount = GetModConfigData("twigAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 	if utils.LootRandom(twigChance) then
 		inst.components.pickable.numtoharvest = twigAmount + 1
+		-- Extra dug loot
+		-- local old_onfinish = inst.components.workable.onfinish
+		-- inst.components.workable:SetOnFinishCallback(function(inst, worker)
+		-- 	if old_onfinish then
+		-- 		old_onfinish(inst, worker)
+		-- 	end
+		-- 	for i = 1, twigAmount do
+		-- 		inst.components.lootdropper:SpawnLootPrefab("dug_sapling")
+		-- 	end
+		-- end)
 	else	
 		inst.components.pickable.numtoharvest = 1
 	end
