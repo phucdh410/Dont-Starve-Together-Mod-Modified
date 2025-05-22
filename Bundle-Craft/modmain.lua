@@ -9,11 +9,9 @@ Assets = {
   Asset("ATLAS", "images/inventoryimages/bundle_cutstones.xml"),
   Asset("IMAGE", "images/inventoryimages/bundle_cutstones.tex"),
   
-  -- Have not yet image - please fill
   Asset("ATLAS", "images/inventoryimages/bundle_boards.xml"),
   Asset("IMAGE", "images/inventoryimages/bundle_boards.tex"),
   
-  -- Have not yet image - please fill
   Asset("ATLAS", "images/inventoryimages/bundle_ropes.xml"),
   Asset("IMAGE", "images/inventoryimages/bundle_ropes.tex"),
 }
