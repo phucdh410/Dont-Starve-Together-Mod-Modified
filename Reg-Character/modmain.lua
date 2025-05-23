@@ -1,4 +1,4 @@
-local regExhaust = GetModConfigData("regExhaust", KnownModIndex:GetModActualName("Reg - DHPModified"))
+local regExhaust = GetModConfigData("regExhaust")
 
 PrefabFiles = {"reger", "regercloak", "regerhat", "abyssweapon", "regerweapon", "reger_projectile"}
 Assets = {Asset("ANIM", "anim/xz_exp.zip"), Asset("ATLAS", "images/status_bgs.xml")}

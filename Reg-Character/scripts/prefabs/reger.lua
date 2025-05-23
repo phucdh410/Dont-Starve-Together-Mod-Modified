@@ -89,6 +89,37 @@ local function onlightingstrike(inst)
         end
     end
 end
+
+local boss_tags = { "epic" }
+
+local function IsBoss(inst)
+    for _, tag in ipairs(boss_tags) do
+        if inst:HasTag(tag) then
+            return true
+        end
+    end
+    return false
+end
+
+local function OnKillOther(inst, data)
+    if data and data.victim then
+        local victim = data.victim
+        if victim:HasTag("smallepic") then
+            if inst.components.exp then
+                inst.components.exp:DoDelta(5)
+            end
+        elseif victim:HasTag("epic") then
+            if inst.components.exp then
+                inst.components.exp:DoDelta(10)
+            end
+        elseif victim.components and victim.components.combat then
+            if inst.components.exp then
+                inst.components.exp:DoDelta(1)
+            end
+        end
+    end
+end
+
 local common_postinit = function(inst)
     inst.MiniMapEntity:SetIcon("reger.tex")
     inst:AddTag("reger")
@@ -108,6 +139,7 @@ local master_postinit = function(inst)
     inst.regerweapon = SpawnPrefab("regerweapon")
     inst.regerweapon.entity:SetParent(inst.entity)
     inst.OnLoad = onload
+    inst:ListenForEvent("killed", OnKillOther)
 end
 STRINGS.CHARACTER_TITLES.reger = "Reg"
 STRINGS.CHARACTER_NAMES.reger = "Reg"

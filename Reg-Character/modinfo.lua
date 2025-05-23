@@ -8,7 +8,7 @@ A robot with a human-like appearance that Riko found in the abyss, but had lost 
 I tried to make this character work individually without co-op characters.
 ]]
 author = "PhucDH410"
-version = "1.0"
+version = "1.1"
 api_version = 6
 api_version_dst = 10
 dst_compatible = true

@@ -169,7 +169,7 @@ configuration_options = {
         name = "set11",
         label = "Whether to display wearing equipment (armor/helmet)",
         options = {{description = "Yes", data = true}, {description = "No", data = false}},
-default = true
+        default = true
     },
     {
         name = "set12",
