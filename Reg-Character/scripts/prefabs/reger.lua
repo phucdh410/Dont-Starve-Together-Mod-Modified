@@ -90,33 +90,28 @@ local function onlightingstrike(inst)
     end
 end
 
-local boss_tags = { "epic" }
-
-local function IsBoss(inst)
-    for _, tag in ipairs(boss_tags) do
-        if inst:HasTag(tag) then
-            return true
-        end
-    end
-    return false
-end
-
 local function OnKillOther(inst, data)
+    print("========> Function OnKillOther called")
+    print("========> datavictim", data and data.victim)
+    print("========> inst.components.exp", inst.components.exp)
     if data and data.victim then
         local victim = data.victim
+        print("========> Victim prefab:", victim.prefab)
+        print("========> Victim tags:", victim.tags and table.concat(victim.tags, ", ") or "nil")
+        print("========> Current exp:", inst.components.exp.currenttimepoint)
         if victim:HasTag("smallepic") then
-            if inst.components.exp then
-                inst.components.exp:DoDelta(5)
-            end
+            print("========> Killed smallepic, +5 exp")
+            inst.components.exp:DoDelta(5)
         elseif victim:HasTag("epic") then
-            if inst.components.exp then
-                inst.components.exp:DoDelta(10)
-            end
+            print("========> Killed epic, +10 exp")
+            inst.components.exp:DoDelta(10)
         elseif victim.components and victim.components.combat then
-            if inst.components.exp then
-                inst.components.exp:DoDelta(1)
-            end
+            print("========> Killed combat mob, +1 exp")
+            inst.components.exp:DoDelta(1)
+        else
+            print("========> Not a valid exp target")
         end
+        print("========> New exp:", inst.components.exp.currenttimepoint)
     end
 end
 
