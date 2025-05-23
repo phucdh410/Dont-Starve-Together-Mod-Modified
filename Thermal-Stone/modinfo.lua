@@ -1,6 +1,6 @@
-name = "Imperishable Thermal Stone"
+name = "Super Thermal Stone"
 description = "Prevents durability loss in thermal stones like it was originally in Don't Starve."
-author = "Morback"
+author = "PhucDH410"
 version = "1.0"
 forumthread = ""
 

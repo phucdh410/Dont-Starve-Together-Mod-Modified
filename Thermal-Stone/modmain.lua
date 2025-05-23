@@ -1,8 +1,21 @@
--- #############################################################################
--- Removes Thermal Stone durability
--- #############################################################################
+local Ingredient = GLOBAL.Ingredient
+local TECH = GLOBAL.TECH
 
--- These represent the boundaries between the ranges (relative to ambient, so ambient is always "0")
+
+AddRecipe2("superhot_thermal_stone",
+    { Ingredient("heatrock", 1), Ingredient("redgem", 1), Ingredient("charcoal", 5) },
+    TECH.SCIENCE_TWO,
+    { nounlock = true, builder_tag = nil },
+    { "TOOLS" }
+)
+
+AddRecipe2("supercold_thermal_stone",
+    { Ingredient("heatrock", 1), Ingredient("bluegem", 1), Ingredient("ice", 5) },
+    TECH.SCIENCE_TWO,
+    { product = "heatrock" },
+    { "TOOLS" }
+)
+
 relative_temperature_thresholds = { -30, -10, 10, 30 }
 
 function GetRangeForTemperature(temp, ambient)
@@ -42,15 +55,41 @@ function AdjustLighting(inst, range, ambient)
     end
 end
 
+local function AddSuperTag(inst, tag)
+    if inst and inst.components.inventoryitem then
+        inst:AddTag(tag)
+    end
+end
+
 AddPrefabPostInit("heatrock", function (inst)
     if not GLOBAL.TheWorld.ismastersim then
         return
     end
 
+    inst:ListenForEvent("onbuilt", function(inst, data)
+        if data and data.recipe == "superhot_thermal_stone" then
+            AddSuperTag(inst, "superhot")
+        elseif data and data.recipe == "supercold_thermal_stone" then
+            AddSuperTag(inst, "supercold")
+        end
+    end)
+
     -- Removes the old temperaturedelta EventListener function
     inst.event_listeners["temperaturedelta"] = {}
     -- Alter the TemperatureChange(inst, data) function
     inst:ListenForEvent("temperaturedelta", function (inst, data)
+        if inst:HasTag("superhot") then
+            if inst.components.temperature:GetCurrent() ~= 60 then
+                inst.components.temperature:SetTemperature(60)
+            end
+            return -- stop further processing
+        elseif inst:HasTag("supercold") then
+            if inst.components.temperature:GetCurrent() ~= -30 then
+                inst.components.temperature:SetTemperature(-30)
+            end
+            return -- stop further processing
+        end
+       
         local ambient_temp = GLOBAL.TheWorld.state.temperature
         local cur_temp = inst.components.temperature:GetCurrent()
         local range = GetRangeForTemperature(cur_temp, ambient_temp)
