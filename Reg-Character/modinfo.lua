@@ -20,3 +20,16 @@ icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 forumthread = ""
 server_filter_tags = {"character", "art"}
+
+configuration_options = {
+  {
+      name = "regExhaust",
+      label = "Exhaustion",
+      hover = "Reg is tired when using the hat.",
+      options = {
+          {description = "Enabled", data = true, hover = "Reg gets exhausted when using the hat."},
+          {description = "Disabled", data = false, hover = "Reg does not get exhausted when using the hat."},
+      },
+      default = true,
+  },
+}

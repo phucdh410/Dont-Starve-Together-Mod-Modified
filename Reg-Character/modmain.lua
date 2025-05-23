@@ -1,8 +1,10 @@
+local regExhaust = GetModConfigData("regExhaust", KnownModIndex:GetModActualName("Reg - DHPModified"))
+
 PrefabFiles = {"reger", "regercloak", "regerhat", "abyssweapon", "regerweapon", "reger_projectile"}
 Assets = {Asset("ANIM", "anim/xz_exp.zip"), Asset("ATLAS", "images/status_bgs.xml")}
-TUNING.REGBOMB_HEALTH = 40
-TUNING.REGBOMB_HUNGER = 40
-TUNING.REGBOMB_SANITY = 40
+TUNING.REGBOMB_HEALTH = 15
+TUNING.REGBOMB_HUNGER = 20
+TUNING.REGBOMB_SANITY = 15
 TUNING.REGBOMB_DAMAGE = 800
 TUNING.REGBOMB_CONSUME = 1
 TUNING.REGERMAXTIME = 5
@@ -139,7 +141,9 @@ local state_regbomb =
                             v:ShakeCamera(GLOBAL.CAMERASHAKE.FULL, .7, .02, intensity / 2)
                         end
                     end
-                    inst:PushEvent("yawn", {grogginess = 4, knockoutduration = 10})
+                    if regExhaust then
+                        inst:PushEvent("yawn", {grogginess = 4, knockoutduration = 10})
+                    end
                 end
             end
         )
