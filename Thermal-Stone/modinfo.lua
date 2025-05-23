@@ -1,7 +1,7 @@
 name = "Super Thermal Stone"
 description = "Prevents durability loss in thermal stones like it was originally in Don't Starve."
 author = "PhucDH410"
-version = "1.0"
+version = "1.1"
 forumthread = ""
 
 -- This lets other players know if your mod is out of date, update it to match the current version in the game

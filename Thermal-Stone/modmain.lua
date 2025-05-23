@@ -5,7 +5,7 @@ local TECH = GLOBAL.TECH
 AddRecipe2("superhot_thermal_stone",
     { Ingredient("heatrock", 1), Ingredient("redgem", 1), Ingredient("charcoal", 5) },
     TECH.SCIENCE_TWO,
-    { nounlock = true, builder_tag = nil },
+    { product = "heatrock" },
     { "TOOLS" }
 )
 
