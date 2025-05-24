@@ -18,7 +18,7 @@ EXP food:
 - Talleggs: 10,
 ]]
 author = "PhucDH410"
-version = "1.3"
+version = "1.4"
 api_version = 6
 api_version_dst = 10
 dst_compatible = true

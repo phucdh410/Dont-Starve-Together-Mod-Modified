@@ -64,7 +64,7 @@ local food_exp_map = {
     -- Medium
     turkeydinner = 5,
     lobsterdinner = 5,
-    surfnturf = 5
+    surfnturf = 5,
     -- High
     mandrakesoup = 10,
     bonestew = 10,
