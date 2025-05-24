@@ -57,12 +57,25 @@ local function onload(inst, data)
         inst.components.exp:ApplyUpgrades()
     end
 end
--- //TODO: We will try to do other method to get exp
--- local function oneat(inst, food)
---     if food:HasTag("rikofood") then
---         inst.components.exp:DoDelta(1)
---     end
--- end
+local food_exp_map = {
+    -- Low
+    meatballs = 1,
+    perogies = 1,
+    -- Medium
+    turkeydinner = 5,
+    lobsterdinner = 5,
+    surfnturf = 5
+    -- High
+    mandrakesoup = 10,
+    bonestew = 10,
+    talleggs = 10,
+}
+local function oneat(inst, food)
+    local exp = food_exp_map[food.prefab]
+    if exp and inst.components.exp then
+        inst.components.exp:DoDelta(exp)
+    end
+end
 local function onupdate(inst)
     inst.components.health:SetMaxHealth(150 + inst.components.exp.levelpoint * 50)
     inst.components.hunger:SetMax(100 + inst.components.exp.levelpoint * 25)
@@ -90,31 +103,6 @@ local function onlightingstrike(inst)
     end
 end
 
-local function OnKillOther(inst, data)
-    print("========> Function OnKillOther called")
-    print("========> datavictim", data and data.victim)
-    print("========> inst.components.exp", inst.components.exp)
-    if data and data.victim then
-        local victim = data.victim
-        print("========> Victim prefab:", victim.prefab)
-        print("========> Victim tags:", victim.tags and table.concat(victim.tags, ", ") or "nil")
-        print("========> Current exp:", inst.components.exp.currenttimepoint)
-        if victim:HasTag("smallepic") then
-            print("========> Killed smallepic, +5 exp")
-            inst.components.exp:DoDelta(5)
-        elseif victim:HasTag("epic") then
-            print("========> Killed epic, +10 exp")
-            inst.components.exp:DoDelta(10)
-        elseif victim.components and victim.components.combat then
-            print("========> Killed combat mob, +1 exp")
-            inst.components.exp:DoDelta(1)
-        else
-            print("========> Not a valid exp target")
-        end
-        print("========> New exp:", inst.components.exp.currenttimepoint)
-    end
-end
-
 local common_postinit = function(inst)
     inst.MiniMapEntity:SetIcon("reger.tex")
     inst:AddTag("reger")
@@ -127,14 +115,13 @@ local master_postinit = function(inst)
     inst.components.combat.damagemultiplier = 1
     inst.components.health:SetAbsorptionAmount(0.4)
     inst.components.health.fire_damage_scale = 0
-    -- inst.components.eater:SetOnEatFn(oneat)
+    inst.components.eater:SetOnEatFn(oneat)
     inst.components.playerlightningtarget:SetHitChance(1)
     inst.components.playerlightningtarget:SetOnStrikeFn(onlightingstrike)
     inst.components.hunger.hungerrate = 1.7 * TUNING.WILSON_HUNGER_RATE
     inst.regerweapon = SpawnPrefab("regerweapon")
     inst.regerweapon.entity:SetParent(inst.entity)
     inst.OnLoad = onload
-    inst:ListenForEvent("killed", OnKillOther)
 end
 STRINGS.CHARACTER_TITLES.reger = "Reg"
 STRINGS.CHARACTER_NAMES.reger = "Reg"

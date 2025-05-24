@@ -2,9 +2,8 @@ local regExhaust = GetModConfigData("regExhaust")
 
 PrefabFiles = {"reger", "regercloak", "regerhat", "abyssweapon", "regerweapon", "reger_projectile"}
 Assets = {Asset("ANIM", "anim/xz_exp.zip"), Asset("ATLAS", "images/status_bgs.xml")}
-TUNING.REGBOMB_HEALTH = 15
-TUNING.REGBOMB_HUNGER = 20
-TUNING.REGBOMB_SANITY = 15
+TUNING.REGBOMB_HUNGER = 15
+TUNING.REGBOMB_SANITY = 10
 TUNING.REGBOMB_DAMAGE = 800
 TUNING.REGBOMB_CONSUME = 1
 TUNING.REGERMAXTIME = 5
@@ -72,7 +71,6 @@ REGBOMB.fn = function(act)
             headitem = act.doer.replica.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HEAD)
         end
         act.doer.target = act.target
-        act.doer.components.health:DoDelta(-TUNING.REGBOMB_HEALTH)
         act.doer.components.hunger:DoDelta(-TUNING.REGBOMB_HUNGER)
         act.doer.components.sanity:DoDelta(-TUNING.REGBOMB_SANITY)
         headitem.components.fueled:DoDelta(-TUNING.REGBOMB_CONSUME)

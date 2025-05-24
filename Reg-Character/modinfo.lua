@@ -6,9 +6,19 @@ From update version: 1 Dec 2017
 A robot with a human-like appearance that Riko found in the abyss, but had lost its memory.
 
 I tried to make this character work individually without co-op characters.
+
+EXP food:
+- Meatball: 1
+- Perogies: 1
+- Turkeydinner: 5,
+- Lobsterdinner: 5,
+- Surfnturf: 5
+- Mandrakesoup: 10,
+- Bonestew: 10,
+- Talleggs: 10,
 ]]
 author = "PhucDH410"
-version = "1.2"
+version = "1.3"
 api_version = 6
 api_version_dst = 10
 dst_compatible = true
