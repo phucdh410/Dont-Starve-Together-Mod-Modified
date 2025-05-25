@@ -12,13 +12,15 @@ I also add some options:
 - Bananabush & Cave Banana Tree
 - Mushrooms
 - Thulecite Fragment
+- Nightmare Fuel (Crawlinghorror, Terrorbeak)
+- Mandrake (You are cheater)
 I added Jackpot with big rewards when mining rock. 
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.27"
+version = "1.8.31"
 
 api_version = 6
 api_version_dst = 10
@@ -458,5 +460,22 @@ configuration_options =
     hover = "How many extra honey you can get when harvest beebox",
     options = amounts,
     default = 1,
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "nightmareFuelAmount",
+    label = "Extra Nightmare Fuels",
+    hover = "How many extra nightmare fuels you can get when killing shadow creatures",
+    options = amounts,
+	  default = 1
+  },
+  {
+    name = "nightmareFuelChance",
+    label = "Extra Nightmare Fuels Chance",
+    hover = "Chance to get extra nightmare fuels",
+    options = chances,
+	  default = .25
   },
 }
