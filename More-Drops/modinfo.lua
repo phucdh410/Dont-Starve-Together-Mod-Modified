@@ -13,14 +13,14 @@ I also add some options:
 - Mushrooms
 - Thulecite Fragment
 - Nightmare Fuel (Crawlinghorror, Terrorbeak)
-- Mandrake (You are cheater)
+- Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
 I added Jackpot with big rewards when mining rock. 
 -----------------------------------------------
 Makes trees, boulders, and other resource sources drop more. Also adds a configurable chance to drop gems.
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.31"
+version = "1.8.32"
 
 api_version = 6
 api_version_dst = 10
@@ -254,6 +254,13 @@ configuration_options =
     hover = "Chance for trees to drop an additional seed",
     options = chances,
     default = .25
+  },
+  {
+    name = "mandrakeChance",
+    label = "Mandrake Chance",
+    hover = "Chance for mandrake found from picking something",
+    options = chances,
+    default = 0
   },
   
   SEPARATOR,

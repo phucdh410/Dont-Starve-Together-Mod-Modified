@@ -1,6 +1,7 @@
 local utils = require("utils")
 
 local infinitefertilize = GetModConfigData("infinitefertilize", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+local mandrakeChance = GetModConfigData("mandrakeChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
 
 local pickables = {}
 
@@ -9,6 +10,20 @@ local function FertilizedInfinite(inst)
     inst.components.pickable.max_cycles = 9999999999
     inst.components.pickable.cycles_left = 9999999999
   end
+end
+
+local function SpawnMandrake(inst)
+	if utils.LootRandom(mandrakeChance) then
+		local old_onpickedfn = inst.components.pickable.onpickedfn
+		inst.components.pickable.onpickedfn = function(inst, picker)
+			if old_onpickedfn then
+				old_onpickedfn(inst, picker)
+			end
+			if inst and inst.components.lootdropper then
+				inst.components.lootdropper:SpawnLootPrefab("mandrake")
+			end
+		end
+	end
 end
 
 --Grass
@@ -21,6 +36,8 @@ pickables.ImproveGrass = function(inst)
 		inst.components.pickable.numtoharvest = 1
 	end
   FertilizedInfinite(inst)
+
+	SpawnMandrake(inst)
 end
 
 --Sapling
@@ -67,6 +84,7 @@ pickables.ImproveBerries = function(inst)
 		inst.components.pickable.numtoharvest = 1
 	end
 	FertilizedInfinite(inst)
+	SpawnMandrake(inst)
 end
 
 -- Juicy Berry Bushes
@@ -79,6 +97,7 @@ pickables.ImproveJuicy = function(inst)
 		inst.components.pickable.numtoharvest = 3
 	end
 	FertilizedInfinite(inst)
+	SpawnMandrake(inst)
 end
 
 -- Banana
