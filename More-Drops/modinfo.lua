@@ -19,7 +19,7 @@ Loot options:
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.33"
+version = "1.8.34"
 
 api_version = 6
 api_version_dst = 10

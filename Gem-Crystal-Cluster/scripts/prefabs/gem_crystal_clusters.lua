@@ -125,7 +125,7 @@ local lightcolour = {
     opalprecious = {255/255,255/255,255/255,1},
 }
 
-local gemloot = GetModConfigData("gemloot") or 1
+local gemloot = GetModConfigData("gemloot", KnownModIndex:GetModActualName("Gem Crystal Cluster - DHPModified")) or 1
 
 local function makebush(colour)
     local function fn()
