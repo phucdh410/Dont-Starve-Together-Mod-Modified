@@ -1,7 +1,7 @@
 name = "Gem Crystal Cluster - DHPModified"
 description = ""
 author = "PhucDH410"
-version = "1.4"
+version = "1.5"
 
 forumthread = ""
 
