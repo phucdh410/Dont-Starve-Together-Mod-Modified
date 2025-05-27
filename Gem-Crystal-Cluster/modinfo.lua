@@ -1,7 +1,7 @@
-name = "Gem Crystal Cluster"
+name = "Gem Crystal Cluster - DHPModified"
 description = ""
-author = ""
-version = "1.2"
+author = "PhucDH410"
+version = "1.3"
 
 forumthread = ""
 
