@@ -24,14 +24,14 @@ end
 
 utils.DropLootRandom = function(inst, prefab, chance)
 	local rand = math.random() - chance
-	if rand <= 0 then
+	if rand <= 0 and inst.components.lootdropper then
 		inst.components.lootdropper:SpawnLootPrefab(prefab)
     return true
 	end
 end
 utils.DropLootRandomWithAmount = function(inst, prefab, chance, amount)
 	local rand = math.random() - chance
-	if rand <= 0 then
+	if rand <= 0 and inst.components.lootdropper then
 		for i = 1, amount do
 			inst.components.lootdropper:SpawnLootPrefab(prefab)
 		end
@@ -46,8 +46,8 @@ end
 
 utils.GiveLootRandom = function(owner, prefab, chance)
 	local rand = math.random() - chance
-	if rand <= 0 then
-			owner.components.inventory:GiveItem(SpawnPrefab(prefab), nil)
+	if rand <= 0 and owner.components.inventory then
+		owner.components.inventory:GiveItem(SpawnPrefab(prefab), nil)
     return true
 	end
 end
@@ -93,7 +93,7 @@ utils.Jackpot = function(inst, worker, amount, prefabsList)
 		-- 	end
 		-- end
 		-- Spawn loot on ground
-		if inst.components then
+		if inst.components and inst.components.lootdropper then
 			for i = 1, amount do
 				inst.components.lootdropper:SpawnLootPrefab(prefab)
 			end
