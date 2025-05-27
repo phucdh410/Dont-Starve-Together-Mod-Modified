@@ -2,25 +2,24 @@ name = "More Drops - DHPModified"
 description = [[
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3433071145&searchtext=More+Drops+JEM
 From update version: 24 February 2025
-
+-------------------------------------------------------
 I updated with more options for loot amount (easier). 
-I also add some options:
-- Marble Tree & Marble Bean
-- Ice Glacier
-- Birdcage
+Loot options:
+- Pickable plants (grass, twigs, reeds, berries, juicy berries, bananas, mushrooms)
+- Trees
+- Crops farm
+- Mining entities (rocks, flint, gems, ice, thulecite fragments)
+- Birdcage (invicible; more seeds & eggs)
 - Beebox
-- Bananabush & Cave Banana Tree
-- Mushrooms
-- Thulecite Fragment
-- Nightmare Fuel (Crawlinghorror, Terrorbeak)
-- Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
-I added Jackpot with big rewards when mining rock. 
------------------------------------------------
-Makes trees, boulders, and other resource sources drop more. Also adds a configurable chance to drop gems.
+- Nightmare fuel (Crawlinghorror, Terrorbeak)
+- Living log (Treeguard)
+*** Infinite fertilized (replanted plants only need to be fertilized once)
+*** Jackpot reward when break rocks/boulders. 
+*** Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.32"
+version = "1.8.33"
 
 api_version = 6
 api_version_dst = 10
@@ -249,13 +248,6 @@ configuration_options =
   SEPARATOR,
 
   {
-    name = "treeseedchance",
-    label = "Tree Seed Chance",
-    hover = "Chance for trees to drop an additional seed",
-    options = chances,
-    default = .25
-  },
-  {
     name = "mandrakeChance",
     label = "Mandrake Chance",
     hover = "Chance for mandrake found from picking something",
@@ -285,6 +277,13 @@ configuration_options =
     hover = "Chance to get extra logs after chopping tree",
     options = chances,
 	  default = .25
+  },
+  {
+    name = "treeseedchance",
+    label = "Tree Seed Chance",
+    hover = "Chance for trees to drop an additional seed",
+    options = chances,
+    default = .25
   },
   
   SEPARATOR,
@@ -484,5 +483,20 @@ configuration_options =
     hover = "Chance to get extra nightmare fuels",
     options = chances,
 	  default = .25
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "treeguardLoot",
+    label = "Treeguard Loot",
+    hover = "Select the range of loot you can get from killing treeguard",
+    options = {
+      { description = "Default", data = 1, hover = "6 Living logs, 1 Monster meat" },
+      { description = "More", data = 2, hover = "10 Living logs, 3 Monster meat" },
+      { description = "Rich", data = 3, hover = "15 Living logs, 5 Monster meat" },
+      { description = "Max", data = 4, hover = "20 Living logs, 10 Monster meat" },
+    },
+	  default = 1
   },
 }

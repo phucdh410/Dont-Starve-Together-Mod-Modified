@@ -66,3 +66,7 @@ AddPrefabPostInit("beebox_hermit", utils.Bind(utils.RunFunctionServerOnly, Impro
 --Bonus for nightmare fuel
 AddPrefabPostInit("crawlinghorror", utils.Bind(utils.RunFunctionServerOnly, ImproveNightmareFuel))
 AddPrefabPostInit("terrorbeak", utils.Bind(utils.RunFunctionServerOnly, ImproveNightmareFuel))
+
+--Bonus for treeguard
+AddPrefabPostInit("lief", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
+AddPrefabPostInit("leif_sparse", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
