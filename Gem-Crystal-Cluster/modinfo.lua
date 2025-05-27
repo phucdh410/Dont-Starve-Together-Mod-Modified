@@ -43,4 +43,19 @@ configuration_options =
         },
         default = 5,
     },
+    {
+        name = "gemloot",
+        label = "Gem Loot",
+        hover = "Gem Loot",
+        options =
+        {
+            {description = "1", data = 1},
+            {description = "2", data = 2},
+            {description = "3", data = 3},
+            {description = "5", data = 5},
+            {description = "8", data = 8},
+            {description = "10", data = 10},
+        },
+        default = 1,
+    },
 }

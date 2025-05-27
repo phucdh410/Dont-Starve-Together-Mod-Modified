@@ -41,7 +41,7 @@ local growth_stages = {
     {
         name = STAGE1,
         time = function(inst)
-            return TUNING.GEMCRYSTAL_time
+            return TUNING.GEMCRYSTAL_TIME
         end,
         fn = set_stage1,
         growfn = grow_to_stage1
@@ -49,7 +49,7 @@ local growth_stages = {
     {
         name = STAGE2,
         time = function(inst)
-            return TUNING.GEMCRYSTAL_time
+            return TUNING.GEMCRYSTAL_TIME
         end,
         fn = set_stage2,
         growfn = grow_to_stage2
@@ -57,7 +57,7 @@ local growth_stages = {
     {
         name = STAGE3,
         time = function(inst)
-            return TUNING.GEMCRYSTAL_time
+            return TUNING.GEMCRYSTAL_TIME
         end,
         fn = set_stage3,
         growfn = grow_to_stage3
@@ -124,6 +124,9 @@ local lightcolour = {
     yellow = {255/255,255/255,1/255,1},
     opalprecious = {255/255,255/255,255/255,1},
 }
+
+local gemloot = GetModConfigData("gemloot") or 1
+
 local function makebush(colour)
     local function fn()
         local inst = CreateEntity()
@@ -164,7 +167,7 @@ local function makebush(colour)
 
         inst:AddComponent("pickable")
         inst.components.pickable.picksound = "dontstarve/wilson/harvest_berries"
-        inst.components.pickable.numtoharvest = 1
+        inst.components.pickable.numtoharvest = gemloot
         inst.components.pickable.product = colour.."gem"
         inst.components.pickable.onpickedfn = onpickedfn
         inst.components.pickable.canbepicked = false
