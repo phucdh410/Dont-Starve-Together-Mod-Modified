@@ -13,13 +13,14 @@ Loot options:
 - Beebox
 - Nightmare fuel (Crawlinghorror, Terrorbeak)
 - Living log (Treeguard)
+- Lobster when reeling in
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.35"
+version = "1.8.37"
 
 api_version = 6
 api_version_dst = 10
@@ -499,4 +500,24 @@ configuration_options =
     },
 	  default = 1
   },
+
+  SEPARATOR,
+  
+  {
+    name = "lobsterAmount",
+    label = "Lobster Landed",
+    hover = "How many lobsters you can get when reeling in",
+    options = amounts,
+	  default = 1
+  },
+  {
+    name = "lobsterType",
+    label = "Extra Lobster Type",
+    hover = "Select reeling lobster type",
+    options = {
+      { description = "Random", data = false, hover = "You got random amount lobster in above range" },
+      { description = "Exactly", data = true, hover = "You got exactly amount lobster" },
+    },
+    default = false
+  }
 }

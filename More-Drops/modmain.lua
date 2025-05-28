@@ -10,6 +10,7 @@ local ImproveBirdcage = GLOBAL.require("birdcage")
 local ImproveBeebox = GLOBAL.require("beebox")
 local ImproveNightmareFuel = GLOBAL.require("nightmare-fuel")
 local ImproveTreeguard = GLOBAL.require("treeguard")
+local ImproveLobster = GLOBAL.require("lobster")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
 utils.setSeed()
@@ -71,3 +72,5 @@ AddPrefabPostInit("terrorbeak", utils.Bind(utils.RunFunctionServerOnly, ImproveN
 --Bonus for treeguard
 AddPrefabPostInit("leif", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
 AddPrefabPostInit("leif_sparse", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
+
+AddPrefabPostInit("wobster_sheller", utils.Bind(utils.RunFunctionServerOnly, ImproveLobster))
