@@ -1,7 +1,7 @@
 name = "Strange Thermal Stone - DHPModified"
 description = "Prevents durability loss in thermal stones like it was originally in Don't Starve.\nOnce it reaches the lowest or highest temperature, it will remain in that state permanently."
 author = "PhucDH410"
-version = "1.1"
+version = "1.6"
 forumthread = ""
 
 -- This lets other players know if your mod is out of date, update it to match the current version in the game

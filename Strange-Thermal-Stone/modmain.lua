@@ -37,11 +37,11 @@ function AdjustLighting(inst, range, ambient)
     end
 end
 
-local max_threshold = 35
-local min_threshold = -20
+local max_threshold = 40
+local min_threshold = -1
 
 local max_temperature = 80
-local min_temperature = -40
+local min_temperature = -30
 
 AddPrefabPostInit("heatrock", function (inst)
     if not GLOBAL.TheWorld.ismastersim then
@@ -52,18 +52,21 @@ AddPrefabPostInit("heatrock", function (inst)
     inst.event_listeners["temperaturedelta"] = {}
     -- Alter the TemperatureChange(inst, data) function
     inst:ListenForEvent("temperaturedelta", function (inst, data)
-        -- //TODO: add tag and change examine description
-        -- if inst:HasTag("superhot") or inst:HasTag("supercold") then
-        --     return
-        -- end
+        if inst:HasTag("superhot") then
+            inst.components.temperature.current = max_temperature
+            inst.components.inspectable:SetDescription("It is a Superhot stone now")
+        elseif inst:HasTag("supercold") then
+            inst.components.temperature.current = min_temperature
+            inst.components.inspectable:SetDescription("It is a Supercold stone now")
+        end
+
         local ambient_temp = GLOBAL.TheWorld.state.temperature
         local cur_temp = inst.components.temperature:GetCurrent()
+
         if cur_temp >= max_threshold then
-            inst.components.temperature.current = max_temperature
-            -- inst.AddTag("superhot")
+            inst:AddTag("superhot")
         elseif cur_temp <= min_threshold then
-            inst.components.temperature.current = min_temperature
-            -- inst.AddTag("supercold")
+            inst:AddTag("supercold")
         end
 
         local range = GetRangeForTemperature(cur_temp, ambient_temp)
