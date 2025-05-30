@@ -14,13 +14,14 @@ Loot options:
 - Nightmare fuel (Crawlinghorror, Terrorbeak)
 - Living log (Treeguard)
 - Lobster when reeling in
+- Voltgoat
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.42"
+version = "1.8.44"
 
 api_version = 6
 api_version_dst = 10
@@ -517,6 +518,19 @@ configuration_options =
     options = {
       { description = "Random", data = false, hover = "You got random amount lobster in above range" },
       { description = "Exactly", data = true, hover = "You got exactly amount lobster" },
+    },
+    default = false
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "voltgoatBuff",
+    label = "Extra Voltgoat Loot",
+    hover = "Want get more loot from voltgoat?",
+    options = {
+      { description = "Disable", data = false, hover = "You got base loot" },
+      { description = "Enable", data = true, hover = "You got more random loot" },
     },
     default = false
   }
