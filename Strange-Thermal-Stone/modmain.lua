@@ -1,8 +1,3 @@
--- #############################################################################
--- Removes Thermal Stone durability
--- #############################################################################
-
--- These represent the boundaries between the ranges (relative to ambient, so ambient is always "0")
 relative_temperature_thresholds = { -30, -10, 10, 30 }
 
 function GetRangeForTemperature(temp, ambient)
@@ -42,6 +37,12 @@ function AdjustLighting(inst, range, ambient)
     end
 end
 
+local max_threshold = 35
+local min_threshold = -20
+
+local max_temperature = 80
+local min_temperature = -40
+
 AddPrefabPostInit("heatrock", function (inst)
     if not GLOBAL.TheWorld.ismastersim then
         return
@@ -51,8 +52,20 @@ AddPrefabPostInit("heatrock", function (inst)
     inst.event_listeners["temperaturedelta"] = {}
     -- Alter the TemperatureChange(inst, data) function
     inst:ListenForEvent("temperaturedelta", function (inst, data)
+        -- //TODO: add tag and change examine description
+        -- if inst:HasTag("superhot") or inst:HasTag("supercold") then
+        --     return
+        -- end
         local ambient_temp = GLOBAL.TheWorld.state.temperature
         local cur_temp = inst.components.temperature:GetCurrent()
+        if cur_temp >= max_threshold then
+            inst.components.temperature.current = max_temperature
+            -- inst.AddTag("superhot")
+        elseif cur_temp <= min_threshold then
+            inst.components.temperature.current = min_temperature
+            -- inst.AddTag("supercold")
+        end
+
         local range = GetRangeForTemperature(cur_temp, ambient_temp)
 
         AdjustLighting(inst, range, ambient_temp)
