@@ -73,4 +73,5 @@ AddPrefabPostInit("terrorbeak", utils.Bind(utils.RunFunctionServerOnly, ImproveN
 AddPrefabPostInit("leif", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
 AddPrefabPostInit("leif_sparse", utils.Bind(utils.RunFunctionServerOnly, ImproveTreeguard))
 
+--Bonus for wobster
 AddPrefabPostInit("wobster_sheller", utils.Bind(utils.RunFunctionServerOnly, ImproveLobster))
