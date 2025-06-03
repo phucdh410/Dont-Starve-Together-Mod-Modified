@@ -15,15 +15,15 @@ Loot options:
 - Living log (Treeguard)
 - Lobster when reeling in
 - Voltgoat
-- Royal jelly (from Beequeen)
 - Glommer poop
+- Meat (Tallbird)
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake. When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.46"
+version = "1.8.52"
 
 api_version = 6
 api_version_dst = 10
@@ -540,15 +540,15 @@ configuration_options =
   SEPARATOR,
   
   {
-    name = "royalJellyExtra",
-    label = "Extra Royal Jelly",
-    hover = "Get more royal jelly from killing beequeen",
+    name = "glommerfuelExtra",
+    label = "Extra Glommer Poop",
+    hover = "Glommer produces more glommerfuel",
     options = {
-      { description = "Default", data = 0, hover = "You receive base amount 6-7 jelly" },
-      { description = "5", data = 5, hover = "You receive extra 5" },
-      { description = "10", data = 10, hover = "You receive extra 10" },
-      { description = "15", data = 15, hover = "You receive extra 15" },
-      { description = "20", data = 20, hover = "You receive extra 20" },
+      { description = "Disable", data = 0, hover = "No extra" },
+      { description = "1", data = 1, hover = "2 glommer poop each spawn" },
+      { description = "2", data = 2, hover = "3 glommer poop each spawn" },
+      { description = "3", data = 3, hover = "4 glommer poop each spawn" },
+      { description = "4", data = 4, hover = "5 glommer poop each spawn" },
     },
     default = 0
   },
@@ -556,14 +556,16 @@ configuration_options =
   SEPARATOR,
   
   {
-    name = "glommerfuelExtra",
-    label = "Extra Glommer Poop",
-    hover = "Glommer produces more glommerfuel",
+    name = "tallbirdExtra",
+    label = "Extra Tallbird's Meat",
+    hover = "Get more meat from killing tallbird",
     options = {
-      { description = "Disable", data = 0, hover = "A normal glommer" },
-      { description = "2", data = 2, hover = "3 glommer poop each spawn" },
-      { description = "3", data = 3, hover = "4 glommer poop each spawn" },
-      { description = "4", data = 4, hover = "5 glommer poop each spawn" },
+      { description = "Disable", data = 0, hover = "No extra" },
+      { description = "1", data = 1, hover = "1 Extra" },
+      { description = "2", data = 2, hover = "2 Extra" },
+      { description = "3", data = 3, hover = "3 Extra" },
+      { description = "4", data = 4, hover = "4 Extra" },
+      { description = "5", data = 5, hover = "5 Extra" },
     },
     default = 0
   }
