@@ -16,6 +16,7 @@ Loot options:
 - Lobster when reeling in
 - Voltgoat
 - Royal jelly (from Beequeen)
+- Glommer poop
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake. When you pick grass or berries, maybe a mandrake hides in it
@@ -548,6 +549,21 @@ configuration_options =
       { description = "10", data = 10, hover = "You receive extra 10" },
       { description = "15", data = 15, hover = "You receive extra 15" },
       { description = "20", data = 20, hover = "You receive extra 20" },
+    },
+    default = 0
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "glommerfuelExtra",
+    label = "Extra Glommer Poop",
+    hover = "Glommer produces more glommerfuel",
+    options = {
+      { description = "Disable", data = 0, hover = "A normal glommer" },
+      { description = "2", data = 2, hover = "3 glommer poop each spawn" },
+      { description = "3", data = 3, hover = "4 glommer poop each spawn" },
+      { description = "4", data = 4, hover = "5 glommer poop each spawn" },
     },
     default = 0
   }
