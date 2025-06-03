@@ -15,13 +15,14 @@ Loot options:
 - Living log (Treeguard)
 - Lobster when reeling in
 - Voltgoat
+- Royal jelly (from Beequeen)
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
-*** Mandrake (You are cheater). When you pick grass or berries, maybe a mandrake hides in it
+*** Mandrake. When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.44"
+version = "1.8.46"
 
 api_version = 6
 api_version_dst = 10
@@ -507,7 +508,7 @@ configuration_options =
   {
     name = "lobsterAmount",
     label = "Lobster Landed",
-    hover = "How many lobsters you can get when reeling in",
+    hover = "How many lobsters you can reel in",
     options = amounts,
 	  default = 1
   },
@@ -516,8 +517,8 @@ configuration_options =
     label = "Extra Lobster Type",
     hover = "Select reeling lobster type",
     options = {
-      { description = "Random", data = false, hover = "You got random amount lobster in above range" },
-      { description = "Exactly", data = true, hover = "You got exactly amount lobster" },
+      { description = "Random", data = false, hover = "You reel in random lobsters amount with above range" },
+      { description = "Exactly", data = true, hover = "You reel in exactly lobsters amount" },
     },
     default = false
   },
@@ -529,9 +530,25 @@ configuration_options =
     label = "Extra Voltgoat Loot",
     hover = "Want get more loot from voltgoat?",
     options = {
-      { description = "Disable", data = false, hover = "You got base loot" },
-      { description = "Enable", data = true, hover = "You got more random loot" },
+      { description = "Disable", data = false, hover = "You receive base amount" },
+      { description = "Enable", data = true, hover = "You receive more random loot" },
     },
     default = false
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "royalJellyExtra",
+    label = "Extra Royal Jelly",
+    hover = "Get more royal jelly from killing beequeen",
+    options = {
+      { description = "Default", data = 0, hover = "You receive base amount 6-7 jelly" },
+      { description = "5", data = 5, hover = "You receive extra 5" },
+      { description = "10", data = 10, hover = "You receive extra 10" },
+      { description = "15", data = 15, hover = "You receive extra 15" },
+      { description = "20", data = 20, hover = "You receive extra 20" },
+    },
+    default = 0
   }
 }

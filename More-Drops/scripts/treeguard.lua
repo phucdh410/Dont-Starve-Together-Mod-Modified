@@ -3,20 +3,17 @@ local function ImproveTreeguard(inst)
     return
   end
   local treeguardLoot = GetModConfigData("treeguardLoot", KnownModIndex:GetModActualName("More Drops - DHPModified"))
-  local lootTable = {
-    [1] = { livinglog = 6, monstermeat = 1 },
-    [2] = { livinglog = 10, monstermeat = 3 },
-    [3] = { livinglog = 15, monstermeat = 5 },
-    [4] = { livinglog = 20, monstermeat = 10 },
-  }
-  local lootAmounts = lootTable[treeguardLoot] or lootTable[1]
-  local loot = {}
-  for item, amount in pairs(lootAmounts) do
-    for i = 1, amount do
-      table.insert(loot, item)
-    end
+  if treeguardLoot == 1 then
+    return
   end
-  inst.components.lootdropper:SetLoot(loot)
+  local extraLivinglog = 5 * treeguardLoot
+  local extraMonstermeat = 1.5 * treeguardLoot * treeguardLoot - 5.5 * treeguardLoot + 8
+  for i = 1, extraLivinglog do
+    inst.components.lootdropper:AddChanceLoot("livinglog", 1.00)
+  end
+  for i = 1, extraMonstermeat do
+    inst.components.lootdropper:AddChanceLoot("monstermeat", 1.00)
+  end
 end
 
 return ImproveTreeguard
