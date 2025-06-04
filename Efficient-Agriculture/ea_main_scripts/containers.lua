@@ -87,15 +87,17 @@ params.ea_fertilizer_machine = {
 params.ea_harvest_machine = {
     widget = {
         slotpos = {
-            Vector3(-72, 72, 0), Vector3(0, 72, 0), Vector3(72, 72, 0),
-            Vector3(-72, 0, 0), Vector3(0, 0, 0), Vector3(72, 0, 0),
-            Vector3(-72, -72, 0), Vector3(0, -72, 0), Vector3(72, -72, 0)
+            Vector3(-144, 144, 0), Vector3(-72, 144, 0), Vector3(0, 144, 0), Vector3(72, 144, 0), Vector3(144, 144, 0),
+            Vector3(-144, 72, 0),  Vector3(-72, 72, 0),  Vector3(0, 72, 0),  Vector3(72, 72, 0),  Vector3(144, 72, 0),
+            Vector3(-144, 0, 0),   Vector3(-72, 0, 0),   Vector3(0, 0, 0),   Vector3(72, 0, 0),   Vector3(144, 0, 0),
+            Vector3(-144, -72, 0), Vector3(-72, -72, 0), Vector3(0, -72, 0), Vector3(72, -72, 0), Vector3(144, -72, 0),
+            Vector3(-144, -144, 0),Vector3(-72, -144, 0),Vector3(0, -144, 0),Vector3(72, -144, 0),Vector3(144, -144, 0)
         },
-        animbank = "ui_chest_3x3",
-        animbuild = "ui_chest_3x3",
+        animbank = "ea_harvest_chest_5x5",
+        animbuild = "ea_harvest_chest_5x5",
         pos = Vector3(0, -200, 0),
     },
-    numslots = 9,
+    numslots = 25,
     acceptsstacks = true,
     usespecificslotsforitems = false,
     issidewidget = false,

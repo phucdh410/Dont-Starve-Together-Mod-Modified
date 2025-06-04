@@ -13,7 +13,7 @@ local function OnItemLose(inst, data)
 	if not inst.components.ea_harvest_machine then
 		return
 	end
-	inst.components.ea_harvest_machine.cant_hold_items = {}	--在失去物品时，清除数据
+	inst.components.ea_harvest_machine.cant_hold_items = {}
 end
 
 local HarvestMachine = Class(function (self, inst)
