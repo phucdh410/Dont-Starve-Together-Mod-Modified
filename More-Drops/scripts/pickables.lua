@@ -121,6 +121,15 @@ pickables.ImproveMushroom = function(inst)
 	else
 		inst.components.pickable.numtoharvest = 1
 	end
+	local old_onfinish = inst.components.workable.onfinish
+		inst.components.workable:SetOnFinishCallback(function(inst, worker)
+			for i = 1, mushroomAmount do
+				inst.components.lootdropper:SpawnLootPrefab(inst.prefab)
+			end
+			if old_onfinish then
+				old_onfinish(inst, worker)
+			end
+		end)
 	FertilizedInfinite(inst)
 end
 
