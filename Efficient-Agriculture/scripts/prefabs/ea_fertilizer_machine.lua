@@ -8,7 +8,6 @@ local prefabs = {
     "ea_jinkela_ash",
 }
 
-
 local function OnBurnt(inst)
     DefaultBurntStructureFn(inst)
 end
@@ -93,7 +92,6 @@ local function OnFertilizerNumChanged(inst, data)
     end
 end
 
-
 local function fn()
     local inst = CreateEntity()
 
@@ -151,7 +149,6 @@ local function fn()
 
     return inst
 end
-
 
 return Prefab("ea_fertilizer_machine", fn, assets, prefabs),
     MakePlacer("ea_fertilizer_machine_placer", "ea_fertilizer_machine", "ea_fertilizer_machine", "idle")

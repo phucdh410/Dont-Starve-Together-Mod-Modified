@@ -3,7 +3,6 @@ local assets =
     Asset("ANIM", "anim/ea_fx_harvest.zip"),
 }
 
-
 local function fn()
     local inst = CreateEntity()
 
@@ -11,7 +10,6 @@ local function fn()
     inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
-    -- inst.Transform:SetEightFaced()
 
     MakeInventoryPhysics(inst)
 

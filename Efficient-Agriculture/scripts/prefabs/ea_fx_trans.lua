@@ -2,7 +2,6 @@ local assets = {
     Asset("ANIM", "anim/ea_fx_trans.zip"),
 }
 
-
 local function fn()
     local inst = CreateEntity()
 

@@ -89,7 +89,7 @@ local function MakeHarvestMachine(name, assets, prefabs, build, bank, length, wi
         inst.AnimState:SetBuild(build)
         inst.AnimState:PlayAnimation("idle", true)
 
-        inst:AddTag("fridge")   --冰箱保鲜功能
+        inst:AddTag("fridge")
         inst:AddTag("structure")
         inst:AddTag("NOBLOCK")
 
@@ -141,7 +141,6 @@ local function MakeHarvestMachine(name, assets, prefabs, build, bank, length, wi
     end
 
     local function placer_post_fn(inst)
-        --生成区域范围预览
         inst:AddComponent("ea_rectangle_replica")
         inst.components.ea_rectangle_replica:SetSize(length, width)
         inst.components.ea_rectangle_replica:SetOffset(offset)
@@ -172,10 +171,6 @@ local function MakeHarvestMachine(name, assets, prefabs, build, bank, length, wi
     MakePlacer(name.."_placer", bank, build, "idle", nil, nil, nil, nil, nil, "eight", placer_post_fn)
 end
 
-
--- 需要在ea_main_scripts/containers.lua里注册容器
--- 需要在ea_main_scripts/recipes.lua里注册配方
--- 需要在scripts/localization里添加多语言文本
 local machines = {
     ea_harvest_machine = {
         assets = {
@@ -189,7 +184,7 @@ local machines = {
         },
         bank = "ea_harvest_machine",
         build = "ea_harvest_machine",
-        length = EA_CONSTANTS.HARVEST_MACHINE_CHECK_LENGTH + 1, --放弃使用offset来偏移区域，因为会在收获时出现物品离得太近检查不到的问题
+        length = EA_CONSTANTS.HARVEST_MACHINE_CHECK_LENGTH + 1,
         width = EA_CONSTANTS.HARVEST_MACHINE_CHECK_WIDTH,
         offset = 0.5 + EA_CONSTANTS.HARVEST_MACHINE_CHECK_LENGTH * 0.5,
         placer_rotate = true,
@@ -213,7 +208,6 @@ local machines = {
         on_harvest = OnHarvest2
     },
 }
-
 
 local prefs = {}
 for machine, data in pairs(machines) do

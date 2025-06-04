@@ -6,7 +6,6 @@ local function OnHammered(inst, worker)
     inst:Remove()
 end
 
-
 local function fn()
     local inst = CreateEntity()
 
@@ -40,6 +39,5 @@ local function fn()
 
     return inst
 end
-
 
 return Prefab("ea_fx_shoplight", fn, assets)

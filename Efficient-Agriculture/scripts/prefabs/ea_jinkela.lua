@@ -4,7 +4,6 @@ local assets = {
     Asset("ATLAS", "images/inventoryimages/ea_jinkela.xml"),
 }
 
-
 local function GetFertilizerKey(inst)
     return inst.prefab
 end
@@ -21,10 +20,10 @@ local function OnApplied(inst, final_use, doer, target)
         tilecenter = Vector3(TheWorld.Map:GetTileCenterPoint(TheWorld.Map:GetTileCoordsAtPoint(doer.Transform:GetWorldPosition())))
     end
 
-    for k, ent in ipairs(TheSim:FindEntities(tilecenter.x, 0, tilecenter.z, 3)) do  --一格范围内(2 * 根号2)
+    for k, ent in ipairs(TheSim:FindEntities(tilecenter.x, 0, tilecenter.z, 3)) do
         local x, y, z = ent.Transform:GetWorldPosition()
         if x <= tilecenter.x+2 and x >= tilecenter.x-2 and z <= tilecenter.z+2 and z >= tilecenter.z-2 then
-            if ent.components.perennialcrop then    --兼容棱镜多年生作物
+            if ent.components.perennialcrop then
                 local next_stage = ent.components.perennialcrop.stage + 1
                 if ent.components.perennialcrop.stages[next_stage] then
                     ent.components.perennialcrop:DoGrowth()
@@ -38,7 +37,6 @@ local function OnApplied(inst, final_use, doer, target)
         end
     end
 end
-
 
 local function fn()
     local inst = CreateEntity()
@@ -57,9 +55,8 @@ local function fn()
     MakeInventoryFloatable(inst)
     MakeDeployableFertilizerPristine(inst)
 
-    --heal_fertilize (from fertilizer component) added to pristine state for optimization
     inst:AddTag("heal_fertilize")
-    inst:AddTag("slowfertilize") -- for player self fertilize healing action
+    inst:AddTag("slowfertilize") 
 
     inst:AddTag("fertilizerresearchable")
     inst.GetFertilizerKey = GetFertilizerKey
@@ -71,7 +68,7 @@ local function fn()
 
     inst:AddComponent("inspectable")
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/ea_jinkela.xml" --物品贴图
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/ea_jinkela.xml"
 
 	inst:AddComponent("stackable")
 

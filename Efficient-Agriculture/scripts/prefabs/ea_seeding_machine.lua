@@ -4,7 +4,6 @@ local assets = {
     Asset("ATLAS", "images/inventoryimages/ea_seeding_machine.xml"),
 }
 
-
 local function OnBurnt(inst)
     DefaultBurntStructureFn(inst)
 end
@@ -49,8 +48,6 @@ local function OnBuilt(inst)
     inst.AnimState:PushAnimation("idle", true)
 end
 
-
-
 local function fn()
     local inst = CreateEntity()
 
@@ -69,7 +66,7 @@ local function fn()
     inst.AnimState:SetBuild("ea_seeding_machine")
     inst.AnimState:PlayAnimation("idle")
 
-    inst:AddTag("fridge")       --冰箱保鲜功能
+    inst:AddTag("fridge")
     inst:AddTag("structure")
 
     inst.entity:SetPristine()
@@ -110,10 +107,8 @@ local function fn()
     return inst
 end
 
-
 return Prefab("ea_seeding_machine", fn, assets),
     MakePlacer("ea_seeding_machine_placer", "ea_seeding_machine", "ea_seeding_machine", "idle", nil, nil, nil, nil, nil, nil, function (inst)
-        --生成区域范围预览
         inst:AddComponent("ea_rectangle_replica")
         inst.components.ea_rectangle_replica:SetSize(EA_CONSTANTS.SEEDING_MAX_SIDE, EA_CONSTANTS.SEEDING_MAX_SIDE)
         inst.components.ea_rectangle_replica:ShowArea(true)

@@ -4,7 +4,6 @@ local assets = {
     Asset("ATLAS", "images/inventoryimages/ea_jinkela_ash.xml"),
 }
 
-
 local function fn()
     local inst = CreateEntity()
 
@@ -32,7 +31,7 @@ local function fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/ea_jinkela_ash.xml" --物品贴图
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/ea_jinkela_ash.xml"
 
     MakeHauntableLaunch(inst)
 

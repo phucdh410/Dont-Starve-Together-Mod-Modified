@@ -56,5 +56,4 @@ local function fn()
     return inst
 end
 
-
 return Prefab("ea_fx_shopnote", fn, assets)

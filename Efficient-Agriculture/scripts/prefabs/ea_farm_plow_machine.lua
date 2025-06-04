@@ -11,7 +11,7 @@ local assets_item = {
 }
 
 local prefabs = {
-    "farm_soil",
+  "farm_soil",
 	"dirt_puff",
 }
 
@@ -20,26 +20,6 @@ local prefabs_item = {
 }
 
 local ANIM_SCALE = 1.5
-
---[[
-	逻辑流程：
-	客户端发送RPC，接受后调用inst.SetTilesAndStart函数
-	SetTilesAndStart对传入的地块进行排序后，调用ea_move_queue组件的方法开始移动
-	ea_move_queue组件会在到达一个目标点之后触发OnReach函数，并等待下一次调用组件的Move函数方法继续移动
-	OnReach函数中处理到达一个目标点时的逻辑，首先会判断耐久还够不够，如果不够就会停止工作，否则扣除耐久，然后播放开始工作的动画，当动画播完时调用DoDrilling函数
-	DoDrilling函数会播放挖地的动画，然后判断是否需要开垦耕地
-		如果需要就会定时一段时间后调用reclaim函数
-		否则在一段时间后调用spawn_next_soil进行耕地
-	reclaim函数中会调用terraformer组件的Terraform方法改变地皮
-		如果返回值为true，就会定时一段时间后调用spawn_next_soil进行耕地
-		否则会调用try_continue_moving函数，继续移动到下一个目标点
-	spawn_next_soil函数会生成一个种植坑，然后继续在一段时间后调用自己生成下一个种植坑，直到数量超过最大值，就会调用try_continue_moving函数，继续移动到下一个目标点
-	当ea_move_queue组件的Move函数返回false的时候就表示已经完成了所有的移动，则会调用StopWorking函数处理完成工作的逻辑
-]]
-
---------------------------------------------------
--- ea_farm_plow_machine
---------------------------------------------------
 
 local function OnRemoveEntity(inst)
 	local x, y, z = inst.Transform:GetWorldPosition()
@@ -51,17 +31,17 @@ local function OnRemoveEntity(inst)
 		item.components.fueled:InitializeFuelLevel(inst.components.fueled.currentfuel)
 
 		inst.AnimState:PlayAnimation("item")
-	    item.SoundEmitter:PlaySound("farming/common/farm/plow/collapse")
+	  item.SoundEmitter:PlaySound("farming/common/farm/plow/collapse")
 
 		SpawnPrefab("dirt_puff").Transform:SetPosition(x, y, z)
-	    item.SoundEmitter:PlaySound("farming/common/farm/plow/dirt_puff")
+	  item.SoundEmitter:PlaySound("farming/common/farm/plow/dirt_puff")
 	else
 		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
 	end
 end
 
 local function OnTerraform(inst, pt, old_tile_type, old_tile_turf_prefab)
-    local cx, cy, cz = TheWorld.Map:GetTileCenterPoint(pt:Get())
+  local cx, cy, cz = TheWorld.Map:GetTileCenterPoint(pt:Get())
 	SpawnPrefab("dirt_puff").Transform:SetPosition(cx + math.random() + 1, cy, cz + math.random() + 1)
 	SpawnPrefab("dirt_puff").Transform:SetPosition(cx - math.random() - 1, cy, cz + math.random() + 1)
 	SpawnPrefab("dirt_puff").Transform:SetPosition(cx + math.random() + 1, cy, cz - math.random() - 1)
@@ -138,7 +118,7 @@ local function DoDrilling(inst)
 	end
 end
 
-local function re_order(inst, tiles)	--对地块列表重新排序, 尽可能不绕路
+local function re_order(inst, tiles)
 	local res = {}
 	local cur_pt = inst:GetPosition()
 	cur_pt = {cur_pt.x, cur_pt.z}
@@ -153,7 +133,7 @@ local function re_order(inst, tiles)	--对地块列表重新排序, 尽可能不
 	return res
 end
 
-local function StartWorking(inst, tiles)		--{{x, z}, {x, z}, ...}
+local function StartWorking(inst, tiles)
 	if inst.components.fueled:IsEmpty() then
 		return
 	end
@@ -196,7 +176,7 @@ local function StopWorking(inst)
 	inst.is_working = false
 end
 
-local function GetWorkableTiles(inst, tiles)			--{{x, z}, {x, z}, ...}
+local function GetWorkableTiles(inst, tiles)
 	if not inst.tiles or inst.is_working then
 		return
 	end
@@ -221,7 +201,7 @@ local function GetWorkableTiles(inst, tiles)			--{{x, z}, {x, z}, ...}
 	end
 end
 
-local function SetTilesAndStart(inst, tiles)	--{{x, z}, {x, z}, ...}
+local function SetTilesAndStart(inst, tiles)
 	if inst.doer then
 		inst.doer._current_operate_plow_tile_machine = nil
 		inst.doer = nil
@@ -233,10 +213,6 @@ local function SetTilesAndStart(inst, tiles)	--{{x, z}, {x, z}, ...}
 	end
 end
 
---------------------------------------------------
--- ea_move_stack
---------------------------------------------------
-
 local function OnReach(inst, pt)
 	if inst.components.fueled:IsEmpty() or inst.components.ea_move_stack:IsEmpty() then
 		StopWorking(inst)
@@ -247,10 +223,6 @@ local function OnReach(inst, pt)
 	inst.SoundEmitter:PlaySound("farming/common/farm/plow/drill_pre")
 	inst:ListenForEvent("animover", DoDrilling)
 end
-
---------------------------------------------------
--- ea_popupscreen
---------------------------------------------------
 
 local function CanShowScreen(inst, doer)
 	return inst.components.ea_move_stack:IsEmpty() and not inst.components.fueled:IsEmpty()
@@ -265,19 +237,10 @@ local function OnShowScreen(inst, doer)
 	inst.doer = doer
 end
 
---------------------------------------------------
--- fueled
---------------------------------------------------
-
 local function OnTakeFuel(inst, fuelvalue)
 	-- if not inst.components.fueled:IsEmpty() then
 	-- end
 end
-
-
---------------------------------------------------
--- Save & Load
---------------------------------------------------
 
 local function OnSave(inst, data)
 	data.deploy_item = inst.deploy_item_save_record
@@ -293,21 +256,17 @@ local function OnLoadPostPass(inst, newents, data)
 	end
 end
 
-
 local function DescriptionFn(inst, viewer)
 	return STRINGS.EA_FARM_PLOW_MACHINE_DESCRIBE..tostring(math.floor(inst.components.fueled:GetPercent() * 1000) / 10).."%"
 end
 
-
---------------------------------------------------
-
 local function fn()
-    local inst = CreateEntity()
+  local inst = CreateEntity()
 
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddNetwork()
-    inst.entity:AddSoundEmitter()
+  inst.entity:AddTransform()
+  inst.entity:AddAnimState()
+  inst.entity:AddNetwork()
+  inst.entity:AddSoundEmitter()
 	inst.entity:AddMiniMapEntity()
 	inst.entity:AddDynamicShadow()
 
@@ -315,8 +274,8 @@ local function fn()
 
 	inst.MiniMapEntity:SetIcon("ea_farm_plow_machine_mini.tex")
 
-    inst.AnimState:SetBank("ea_farm_plow_machine")
-    inst.AnimState:SetBuild("ea_farm_plow_machine")
+  inst.AnimState:SetBank("ea_farm_plow_machine")
+  inst.AnimState:SetBuild("ea_farm_plow_machine")
 	inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle", true)
 	inst.AnimState:SetScale(ANIM_SCALE, ANIM_SCALE)
@@ -324,34 +283,34 @@ local function fn()
 	inst.Transform:SetTwoFaced()
 	inst.DynamicShadow:SetSize(2, 1)
 
-    inst:AddTag("scarytoprey")	--会惊吓到小动物
+  inst:AddTag("scarytoprey")
 	inst:AddTag("NOBLOCK")
 
 	inst.ea_popupscreen_action_strid = "PLOW_TILE_SELECT"
 
-    inst.entity:SetPristine()
-    if not TheWorld.ismastersim then
-        return inst
-    end
+  inst.entity:SetPristine()
+  if not TheWorld.ismastersim then
+      return inst
+  end
 
 	inst.entity:SetCanSleep(false)
 
 	inst.tasks = {}
 
-    inst:AddComponent("inspectable")
+  inst:AddComponent("inspectable")
 	inst.components.inspectable.descriptionfn = DescriptionFn
 
-    inst:AddComponent("workable")
-    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-    inst.components.workable:SetWorkLeft(2)
-    inst.components.workable:SetOnFinishCallback(inst.Remove)
+  inst:AddComponent("workable")
+  inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+  inst.components.workable:SetWorkLeft(2)
+  inst.components.workable:SetOnFinishCallback(inst.Remove)
 
 	inst:AddComponent("locomotor")
 	inst.components.locomotor.runspeed = EA_CONSTANTS.PLOW_TILE_MACHINE_MOVE_SPEED
-    inst.components.locomotor.walkspeed = EA_CONSTANTS.PLOW_TILE_MACHINE_MOVE_SPEED
+  inst.components.locomotor.walkspeed = EA_CONSTANTS.PLOW_TILE_MACHINE_MOVE_SPEED
 
-    inst:AddComponent("terraformer")
-    inst.components.terraformer.turf = WORLD_TILES.FARMING_SOIL
+  inst:AddComponent("terraformer")
+  inst.components.terraformer.turf = WORLD_TILES.FARMING_SOIL
 	inst.components.terraformer.onterraformfn = OnTerraform
 	inst.components.terraformer.plow = true
 
@@ -365,16 +324,12 @@ local function fn()
 	inst.components.ea_popupscreen.on_show_fn = OnShowScreen
 
 	inst:AddComponent("fueled")
-    inst.components.fueled.fueltype = FUELTYPE.BURNABLE
+  inst.components.fueled.fueltype = FUELTYPE.BURNABLE
 	inst.components.fueled.rate = 0.75
 	inst.components.fueled.accepting = true
-    inst.components.fueled:InitializeFuelLevel(TUNING.LARGE_FUEL)
+  inst.components.fueled:InitializeFuelLevel(TUNING.LARGE_FUEL)
 	inst.components.fueled:SetTakeFuelFn(OnTakeFuel)
 	inst.components.fueled:SetDepletedFn(StopWorking)
-
-	-- inst.tiles = nil
-	-- inst.deploy_pos = nil --{[1] = x, [2] = z}
-	-- inst.deploy_item_save_record = nil
 
 	inst.SetTilesAndStart = SetTilesAndStart
 	inst.OnSave = OnSave

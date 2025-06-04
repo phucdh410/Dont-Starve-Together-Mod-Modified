@@ -4,7 +4,6 @@ local assets = {
     Asset("ATLAS", "images/inventoryimages/ea_well.xml"),
 }
 
-
 local function OnHammered(inst, worker)
     inst.SoundEmitter:KillSound("firesuppressor_idle")
     inst.components.lootdropper:DropLoot()
@@ -34,8 +33,6 @@ local function OnBuilt(inst)
     inst.AnimState:PushAnimation("idle", true)
 end
 
-
-
 local function fn()
     local inst = CreateEntity()
 
@@ -52,9 +49,8 @@ local function fn()
     inst.AnimState:PlayAnimation("idle", true)
 
 
-    inst.MiniMapEntity:SetIcon("ea_well_mini.tex")  --小地图图标
+    inst.MiniMapEntity:SetIcon("ea_well_mini.tex") 
 
-    -- From watersource component
     inst:AddTag("watersource")
     inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("birdblocker")
@@ -91,7 +87,6 @@ local function fn()
 
     return inst
 end
-
 
 return Prefab("ea_well", fn, assets),
     MakePlacer("ea_well_placer", "ea_well", "ea_well", "idle")

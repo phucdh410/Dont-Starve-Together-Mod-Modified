@@ -9,7 +9,7 @@ local area_assets = {
 local function edge_fn()
 	local inst = CreateEntity()
 
-    inst.entity:AddTransform()
+  inst.entity:AddTransform()
 	inst.entity:AddAnimState()
 	inst.AnimState:SetBank("ea_area_edge")
 	inst.AnimState:SetBuild("ea_area_edge")
@@ -20,11 +20,10 @@ local function edge_fn()
 	inst:AddTag("NOCLICK")
 	inst.entity:SetCanSleep(false)
 
-    return inst
+  return inst
 end
 
-
-local TEXTURE_SIZE = 6.83 * (128 / 1024)		--贴图对应地皮长度
+local TEXTURE_SIZE = 6.83 * (128 / 1024)
 local function SetSize(inst, w, h)	--x, z
 	inst.AnimState:SetScale(w/TEXTURE_SIZE, h/TEXTURE_SIZE)
 end
@@ -32,7 +31,7 @@ end
 local function area_fn()
 	local inst = CreateEntity()
 
-    inst.entity:AddTransform()
+  inst.entity:AddTransform()
 	inst.entity:AddAnimState()
 	inst.AnimState:SetBank("ea_rectangle")
 	inst.AnimState:SetBuild("ea_rectangle")
@@ -46,7 +45,7 @@ local function area_fn()
 
 	inst.SetSize = SetSize
 
-    return inst
+  return inst
 end
 
 
