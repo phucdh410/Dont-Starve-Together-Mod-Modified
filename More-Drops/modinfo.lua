@@ -560,7 +560,7 @@ configuration_options =
   {
     name = "tallbirdExtra",
     label = "Extra Tallbird's Meat",
-    hover = "Get more meat when killing tallbird",
+    hover = "How many extra meat when killing tallbird",
     options = amounts,
     default = 0
   },
@@ -570,7 +570,7 @@ configuration_options =
   {
     name = "royaljellyExtra",
     label = "Extra Royal Jelly",
-    hover = "Get more royal jelly when killing beequeen",
+    hover = "How many extra royal jelly when killing beequeen",
     options = amounts,
     default = 0
   }
