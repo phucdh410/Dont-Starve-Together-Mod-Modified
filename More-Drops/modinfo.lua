@@ -17,14 +17,13 @@ Loot options:
 - Voltgoat
 - Glommer poop
 - Meat (Tallbird)
-- Royal jelly (Beequeen)
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake. When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.53"
+version = "1.8.54"
 
 api_version = 6
 api_version_dst = 10
@@ -578,16 +577,6 @@ configuration_options =
     name = "tallbirdExtra",
     label = "Extra Tallbird's Meat",
     hover = "How many extra meat when killing tallbird",
-    options = amounts,
-    default = 0
-  },
-
-  SEPARATOR,
-  
-  {
-    name = "royaljellyExtra",
-    label = "Extra Royal Jelly",
-    hover = "How many extra royal jelly when killing beequeen",
     options = amounts,
     default = 0
   }

@@ -91,9 +91,3 @@ AddPrefabPostInit("glommer", utils.Bind(utils.RunFunctionServerOnly, ImproveGlom
 --Bonus for tallbird
 AddPrefabPostInit("tallbird", utils.Bind(utils.RunFunctionServerOnly, ImproveTallbird))
 
---Bonus for beequeen
-AddPrefabPostInitAny(function(inst)
-	if inst.prefab == "beequeen" and TheWorld and TheWorld.ismastersim then
-		ImproveBeequeen(inst)
-	end
-end)
