@@ -5,7 +5,6 @@ local FertilizerMachine = Class(function (self, inst)
 	self.fertilizer_num = 0
 end)
 
-
 function FertilizerMachine:Produce()
 	local inst = self.inst
     local item = inst.components.container:GetItemInSlot(1)
@@ -32,10 +31,6 @@ end
 function FertilizerMachine:Clean()
 	self.fertilizer_num = 0
 end
-
-------------------------------
--- Save & Load
-------------------------------
 
 function FertilizerMachine:OnSave()
 	return {

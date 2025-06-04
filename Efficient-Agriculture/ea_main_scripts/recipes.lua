@@ -6,7 +6,6 @@ AddRecipeFilter({
     image = "ea_filter.tex",
 })
 
-
 AddRecipe2("ea_jinkela",
 {Ingredient("ea_jinkela_ash", 8, "images/inventoryimages/ea_jinkela_ash.xml"), Ingredient("goldnugget", 1)},
     TECH.SCIENCE_ONE, {
@@ -89,7 +88,6 @@ AddRecipe2("ea_well",
     {CRAFTING_FILTERS.GARDENING.name, CRAFTING_FILTERS.EFFICIENT_AGRICULTURE.name}
 )
 
---自动开垦机
 if EA_CONSTANTS.ADDED_PLOW then
     AddRecipe2("ea_farm_plow_machine_item",
         {Ingredient("gears", 2), Ingredient("cutstone", 16), Ingredient("transistor", 8)},

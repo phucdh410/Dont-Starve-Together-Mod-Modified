@@ -32,11 +32,10 @@ local function IsNewFarm(ent)
 	return ent ~= nil and ent.prefab == "farm_soil"
 end
 
-local function IsLegionFarm(ent)	--棱镜的子圭垄
+local function IsLegionFarm(ent)
 	return ent ~= nil and ent:HasTag("soil_legion")
 end
 
--- 将rot(角度)转换到0~360的范围内
 local function RotAbs(rot)
     if rot < 0 then
         rot = rot + 360
@@ -47,9 +46,6 @@ local function RotAbs(rot)
     return rot
 end
 
--- 检查一个坐标是否在给定的四边形内, 函数内没有做数据结构的检查, 请在调用前确保参数正确
--- pos: {x = number, z = number}
--- quad: table 按连续的顺序存入4个顶点的坐标({x = number, z = number})
 local function IsPointInsideConvexQuad(pos, quad)
     local side = nil
     for i = 1, 4 do
@@ -81,7 +77,6 @@ local function GetGlobalRotation(inst)
 	return rot
 end
 
---[[获取一定半径内的所有地块的坐标]]
 local tile_size = 4
 local function GetTiles(x, z, radius)
 	if radius == 0 then return {} end
@@ -106,7 +101,6 @@ local function GetTiles(x, z, radius)
 
 	return tiles
 end
-
 
 _G.EA_TOOLS = {
 	IsValidFarmPlant = IsValidFarmPlant,

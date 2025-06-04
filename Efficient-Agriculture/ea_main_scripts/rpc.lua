@@ -1,9 +1,5 @@
 local json = require "json"
 
--------------------------
--- [Server Handle]
--------------------------
-
 AddModRPCHandler(EA_CONSTANTS.RPC_NAMESPACE, "spawn_plowsolid", function(player, tiles)
 	tiles = json.decode(tiles)
 	if player._current_operate_plow_tile_machine and player._current_operate_plow_tile_machine.doer == player then
@@ -22,7 +18,3 @@ AddModRPCHandler(EA_CONSTANTS.RPC_NAMESPACE, "start_seeding", function(player, m
 		machine.components.ea_seeding_machine:StartSeeding(player)
 	end
 end)
-
--------------------------
--- [Client Handle]
--------------------------

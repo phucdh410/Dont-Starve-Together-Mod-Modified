@@ -2,9 +2,8 @@ local Area = Class(function (self, inst)
 	self.inst = inst
 
 	self.size = {w = 1, h = 1}
-	self.offset = Vector3()		--本地偏移, 不是全局偏移
+	self.offset = Vector3()
 end)
-
 
 function Area:GetVertexsGlobalPosition()
 	local inst_pos = self.inst:GetPosition()
@@ -41,7 +40,7 @@ function Area:IsPointInArea(point)
 	return EA_TOOLS.IsPointInsideConvexQuad(point, vertexs)
 end
 
-function Area:SetSize(w, h)		--z轴的长度对应宽度
+function Area:SetSize(w, h)
 	if (type(w) ~= "number" or w < 0) or (type(h) ~= "number" or h < 0) then
 		return
 	end
@@ -101,6 +100,5 @@ end
 function Area:SetCanShowArea(val)
 	self.inst.replica.ea_rectangle:SetCanShowArea(val)
 end
-
 
 return Area

@@ -1,5 +1,3 @@
-
---<打开Screen动作>
 AddAction("EA_POPUP_SCREEN", STRINGS.ACTIONS.EA_POPUP_SCREEN, function(act)
     if act.target and act.target:IsValid() then
 		local popupscreen = act.target.components.ea_popupscreen
@@ -10,7 +8,6 @@ AddAction("EA_POPUP_SCREEN", STRINGS.ACTIONS.EA_POPUP_SCREEN, function(act)
 	return false
 end)
 STRINGS.ACTIONS.EA_POPUP_SCREEN = STRINGS.ACTIONS.EA_POPUP_SCREEN_OVERRIDE
---为EA_POPUP_SCREEN行为的目标配置ea_popupscreen_action_strid属性，可以改变行为的显示文本
 ACTIONS.EA_POPUP_SCREEN.strfn = function(act)
     return act.target ~= nil and act.target.ea_popupscreen_action_strid or nil
 end
@@ -23,8 +20,6 @@ AddComponentAction("SCENE", "ea_popupscreen", function(inst, doer, actions, righ
 	end
 end)
 
-
--- 启动肥料制造机
 AddAction("TUNRON_FERTILIZER_MACHINE", STRINGS.ACTIONS.TUNRON_FERTILIZER_MACHINE, function (act)
 	if act.target.components.ea_fertilizer_machine then
 		act.target.components.ea_fertilizer_machine:Produce()

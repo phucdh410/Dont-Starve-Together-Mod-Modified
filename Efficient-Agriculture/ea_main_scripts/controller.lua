@@ -1,9 +1,5 @@
 global("TheEAInteractive")
 
---------------------------------------------------
--- 用于驱动与鼠标交互
---------------------------------------------------
-
 local Interactive = Class(function(self)
 	self.functions = {}
 
@@ -39,7 +35,6 @@ local Interactive = Class(function(self)
 		end
     end
 
-    --初始化任务
     self.init_task = scheduler:ExecutePeriodic(FRAMES, function ()
         if TheInput.onmousebutton and TheInput.position then
             TheInput:AddMouseButtonHandler(self.CheckSelect)

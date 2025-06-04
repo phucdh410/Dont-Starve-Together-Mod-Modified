@@ -1,13 +1,10 @@
 local MoveStack = Class(function(self, inst)
-    self.inst = inst
-
-	-- self.on_reach_fn = function(inst, pt) end	--pt:Vector3
-	self.stack = nil	--{{x, z}, {x, z}, ...}
+  self.inst = inst
+	self.stack = nil
 	self.cur_stack = nil
 end)
 
-
-function MoveStack:SetStack(pts)	--{{x, z}, {x, z}, ...} 倒序，从最后一个元素向前移动
+function MoveStack:SetStack(pts)
 	self.stack = {}
 	self.cur_stack = {}
 	for i, pt in ipairs(pts) do

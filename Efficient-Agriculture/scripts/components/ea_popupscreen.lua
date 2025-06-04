@@ -1,8 +1,7 @@
 local json = require "json"
 
 local PopUpScreen = Class(function(self, inst)
-    self.inst = inst
-
+  self.inst = inst
 	self.pop_up = nil
 	self.can_show_fn = nil
 	self.get_data_fn = nil

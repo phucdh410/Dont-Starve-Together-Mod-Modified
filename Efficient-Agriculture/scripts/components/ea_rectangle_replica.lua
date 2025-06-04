@@ -45,7 +45,6 @@ local Area = Class(function (self, inst)
 	end
 end)
 
-
 function Area:SetCanShowArea(val)
 	if TheWorld.ismastersim then
 		self._can_show_area:set(val == true)
@@ -87,7 +86,7 @@ function Area:IsPointInArea(point)
 	return EA_TOOLS.IsPointInsideConvexQuad(point, vertexs)
 end
 
-function Area:SetSize(w, h)		--z轴的长度对应宽度
+function Area:SetSize(w, h)
 	if (type(w) ~= "number" or w < 0) or (type(h) ~= "number" or h < 0) then
 		return
 	end
@@ -99,7 +98,7 @@ function Area:SetSize(w, h)		--z轴的长度对应宽度
 end
 
 function Area:GetSize()
-	local w, h = string.match(self._size:value(), "(%-?%d+%.?%d*)x(%-?%d+%.?%d*)")	--使用模式匹配来提取宽度和高度
+	local w, h = string.match(self._size:value(), "(%-?%d+%.?%d*)x(%-?%d+%.?%d*)")
 	return (w and h) and {w = w, h = h} or {w = 0, h = 0}
 end
 
@@ -150,10 +149,6 @@ function Area:FindEntities(must_tags, ignore_tags, one_of_tags)
 	end
 	return res
 end
-
-------------------------------
--- Only Client
-------------------------------
 
 function Area:RemoveEdeges()
 	if TheNet:IsDedicated() then

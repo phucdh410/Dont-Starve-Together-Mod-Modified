@@ -3,10 +3,6 @@ local params = {}
 
 local WEED_DEFS = require("prefabs/weed_defs").WEED_DEFS
 
-
--------------------------
--- 自动播种机的容器
--------------------------
 params.ea_seeding_machine = {
     widget = {
         slotpos = {
@@ -60,10 +56,6 @@ params.ea_seeding_machine = {
     itemtestfn = function(inst, item, slot) return EA_TOOLS.IsValidSeed(item) end
 }
 
-
--------------------------
--- 金坷垃制造机的容器
--------------------------
 params.ea_fertilizer_machine = {
     widget = {
         slotpos = {Vector3(0, -10, 0)},
@@ -92,10 +84,6 @@ params.ea_fertilizer_machine = {
     type = "seeding",
 }
 
-
--------------------------
--- 自动收获机的容器
--------------------------
 params.ea_harvest_machine = {
     widget = {
         slotpos = {
@@ -127,8 +115,6 @@ params.ea_harvest_machine = {
 
 params.ea_harvest_machine2 = params.ea_harvest_machine
 
-
--------------------------
 for prefabs, data in pairs(params) do
     containers.params[prefabs] = data
 end

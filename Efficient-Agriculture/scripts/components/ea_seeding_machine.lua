@@ -7,12 +7,12 @@ end
 local SeedingMachine = Class(function (self, inst)
 	self.inst = inst
 	self.doer = nil
-    self.launch_interval = 2  --发射间隔(秒)
+    self.launch_interval = 2
 
     self.width = 1
 	self.length = 1
 
-    self.check_interval = 4		--检查时间间隔(秒)
+    self.check_interval = 4
 	self.left_time = 0
 
     self.is_working = false
@@ -38,15 +38,15 @@ function SeedingMachine:SetWorkingMode(mode)
 end
 
 local function OnHitSeed(seed, attacker, target)
-    if EA_TOOLS.IsOldFarm(seed.target) and seed.target.components.grower then   --旧农场
+    if EA_TOOLS.IsOldFarm(seed.target) and seed.target.components.grower then
         seed.target.components.grower:PlantItem(seed, attacker.components.ea_seeding_machine.doer or attacker)
         seed:Remove()
         return
     end
-    if EA_TOOLS.IsNewFarm(seed.target) and seed.components.farmplantable then   --新农场
+    if EA_TOOLS.IsNewFarm(seed.target) and seed.components.farmplantable then
         seed.components.farmplantable:Plant(seed.target, attacker.components.ea_seeding_machine.doer or attacker)
         return
-    elseif EA_TOOLS.IsLegionFarm(seed.target) and ACTIONS.PLANTSOIL_LEGION then --棱镜
+    elseif EA_TOOLS.IsLegionFarm(seed.target) and ACTIONS.PLANTSOIL_LEGION then
         for i = 1, 10 do
             local name, value = debug.getupvalue(ACTIONS.PLANTSOIL_LEGION.fn, i)
             if name == "OnPlant" and type(value) == "function" then
@@ -63,11 +63,9 @@ local function OnHitSeed(seed, attacker, target)
 end
 
 function SeedingMachine:LaunchSeed(seed, target)
-    --新农场在种植后会移除farm_soli，需要再次判空
     if not target or not seed then
         return
     end
-    --如果农场临时发生变化不能种植了，则不发射
     if EA_TOOLS.IsOldFarm(target) and not (target.components.grower:IsEmpty() and target.components.grower:IsFertile()) then
         return
     end
@@ -216,7 +214,7 @@ function SeedingMachine:StartSeeding(doer)
         end
     end
 
-    self.doer = doer    --存储按下播种按钮的玩家
+    self.doer = doer 
     inst.replica.container:SetCanBeOpened(false)
     if inst.components.container:IsOpen() then
         inst.components.container:Close()
@@ -233,7 +231,6 @@ function SeedingMachine:StopUpdating()
 	self.inst:StopUpdatingComponent(self)
 end
 
-
 function SeedingMachine:OnUpdate(dt)
 	if self.inst:HasTag("burnt") or self.is_working or self.inst.components.container:IsOpen() then
 		return
@@ -246,6 +243,5 @@ function SeedingMachine:OnUpdate(dt)
     self.left_time = self.check_interval
     self:StartSeeding(self.doer)
 end
-
 
 return SeedingMachine

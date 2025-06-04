@@ -1,7 +1,6 @@
 require("prefabs/veggies")
 local WEED_DEFS = require("prefabs/weed_defs").WEED_DEFS
 
-
 local function OnRange(self)
 	self.inst.components.ea_rectangle:SetSize(self.length, self.width)
 end
@@ -17,7 +16,6 @@ local function OnItemLose(inst, data)
 	inst.components.ea_harvest_machine.cant_hold_items = {}	--在失去物品时，清除数据
 end
 
-
 local HarvestMachine = Class(function (self, inst)
 	self.inst = inst
 
@@ -25,13 +23,13 @@ local HarvestMachine = Class(function (self, inst)
 	self.width = 2
 	self.length = 12
 
-	self.attraction_speed = 5	--吸引速度
-	self.check_interval = 4		--检查是否需要收获的时间间隔(秒)
+	self.attraction_speed = 5	
+	self.check_interval = 4	
 	self.left_time = 0
 	self.is_picking_up_items = false
 	self.pick_up_left_time = 0
 
-	self.cant_hold_items = {}	--装不下的物品(由于容器满了)
+	self.cant_hold_items = {}	
 
 	self.inst:ListenForEvent("itemlose", OnItemLose)
 end, nil, {
@@ -39,7 +37,6 @@ end, nil, {
 	length = OnRange,
 	offset = OnOffset,
 })
-
 
 function HarvestMachine:OnRemoveFromEntity()
 	self.inst:RemoveEventCallback("itemlose", OnItemLose)
@@ -60,19 +57,18 @@ local function HarvestCrop(inst, target)
 		return
 	end
 
-	--如果是巨大蔬菜，锤它
 	if target.components.workable and target.components.equippable and target.components.lootdropper then
 		target.components.lootdropper:DropLoot()
 		target:Remove()
 		return
 	end
 
-	if target.components.crop and target:HasTag("readyforharvest") then	--旧农场
+	if target.components.crop and target:HasTag("readyforharvest") then
 		target.components.crop:Harvest()
 		return
 	end
 
-	if target.components.pickable and target.components.pickable.canbepicked then	--新农场
+	if target.components.pickable and target.components.pickable.canbepicked then	
 		local target_pos = target:GetPosition()
 
 		local function ResetOversizedPlantPosition(ent, data)
@@ -90,7 +86,7 @@ local function HarvestCrop(inst, target)
 			inst:RemoveEventCallback("picked", ResetOversizedPlantPosition, target)
 		end
 
-		inst:ListenForEvent("picked", ResetOversizedPlantPosition, target)	--兼容永不妥协对Pick函数的修改
+		inst:ListenForEvent("picked", ResetOversizedPlantPosition, target)
 
 		target.components.pickable:Pick(inst)
 		for k, v in ipairs(TheSim:FindEntities(target_pos.x, 0, target_pos.z, 1.2, nil, {"FX", "INLIMBO"})) do	--如果是巨大蔬菜，锤它
@@ -107,14 +103,12 @@ function HarvestMachine:Check()
 	local will_harvest = false
 
 	for k, v in ipairs(self.inst.components.ea_rectangle:FindEntities(nil, {"FX", "INLIMBO"})) do
-		--成熟作物
 		if v.components.pickable and v.components.pickable.canbepicked or v:HasTag("readyforharvest") then
 			will_harvest = true
 			inst:DoTaskInTime(FRAMES * 5, function()
 				HarvestCrop(inst, v)
 			end)
 		end
-		--巨大作物
 		if v.components.workable and v.components.equippable and v.components.lootdropper then
 			will_harvest = true
 			inst:DoTaskInTime(FRAMES * 5, function()
@@ -122,7 +116,6 @@ function HarvestMachine:Check()
 			end)
 		end
 		if not self.cant_hold_items[v.prefab] and EA_CONSTANTS.ENABLE_HARVEST_MACHINE_AUTO_PICKING_UP then
-			--直接捡起蔬菜、种子和杂草
 			if EA_TOOLS.IsValidVeggie(v) or EA_TOOLS.IsValidSeed(v) or EA_TOOLS.IsValidFarmPlant(v) or EA_TOOLS.IsWeed(v) then
 				will_harvest = true
 			end
@@ -173,7 +166,6 @@ function HarvestMachine:PickUpItem()
 			if ent.Physics and dir:LengthSq() > (math.max(inst_radius + ent_radius, self.offset - self.length * 0.5) + 0.2) ^ 2 then
 				local velocity = dir:GetNormalized() * self.attraction_speed
 				ent.Physics:SetVel(velocity.x, 0, velocity.z)
-				-- ent.Physics:SetDontRemoveOnSleep(true)
 			else
 				SpawnAt("ea_fx_trans", ent:GetPosition())
 				if not self.inst.components.container:GiveItem(ent) then

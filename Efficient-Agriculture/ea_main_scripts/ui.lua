@@ -10,7 +10,6 @@ AddClassPostConstruct("widgets/widget", function(self)
 	end
 end)
 
---@region 选择开垦地块Screen
 local PlowTileSelectScreen = require "screens/ea_farm_plow_tile_select_screen"
 AddClassPostConstruct("screens/playerhud", function(self)
 	function self:Open_EA_TileSelectScreen(data)
@@ -44,8 +43,6 @@ popup_plow_tile_select.fn = function(inst, show, data)
     end
 end
 
-
---@region 修改containerwidget，增加额外按钮
 local ImageButton = require "widgets/imagebutton"
 local function RefreshButton(inst, self)
 	if self.isopen then
