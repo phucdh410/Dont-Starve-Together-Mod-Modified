@@ -8,7 +8,7 @@ Loot options:
 - Pickable plants (grass, twigs, reeds, berries, juicy berries, bananas, mushrooms, kelp)
 - Trees
 - Crops farm
-- Mining entities (rocks, flint, gems, ice, thulecite fragments)
+- Mining entities (rocks, flint, gems, ice, thulecite fragments, moonglass)
 - Birdcage (invicible; more seeds & eggs)
 - Beebox
 - Nightmare fuel (Crawlinghorror, Terrorbeak)
@@ -23,7 +23,7 @@ Loot options:
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.55"
+version = "1.8.56"
 
 api_version = 6
 api_version_dst = 10
@@ -429,6 +429,23 @@ configuration_options =
     name = "glacierAmount",
     label = "Extra Ice",
     hover = "How many extra ices you can get",
+    options = amounts,
+    default = 1,
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "moonglassChance",
+    label = "Extra Moonglass Chance",
+    hover = "Chance to get extra moonglass while mining",
+    options = mining,
+    default = .1
+  },
+  {
+    name = "moonglassAmount",
+    label = "Extra Moonglass",
+    hover = "How many extra moonglass you can get",
     options = amounts,
     default = 1,
   },

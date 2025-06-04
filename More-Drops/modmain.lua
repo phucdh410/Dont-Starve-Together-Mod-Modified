@@ -14,6 +14,7 @@ local ImproveLobster = GLOBAL.require("lobster")
 local ImproveVoltgoat = GLOBAL.require("voltgoat")
 local ImproveGlommer = GLOBAL.require("glommer")
 local ImproveTallbird = GLOBAL.require("tallbird")
+local ImproveMoonglassRock = GLOBAL.require("moonglass")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
 utils.setSeed()
@@ -56,6 +57,9 @@ AddPrefabPostInit("rock_moon", utils.Bind(utils.RunFunctionServerOnly, boulders.
 
 --Increase ice from mini glaciers
 AddPrefabPostInit("rock_ice", utils.Bind(utils.RunFunctionServerOnly, ImproveGlacier))
+
+--Increase moonglass
+AddPrefabPostInit("moonglass_rock", utils.Bind(utils.RunFunctionServerOnly, ImproveMoonglassRock))
 
 --Increase marble from marble shrubs
 AddPrefabPostInit("marbleshrub", utils.Bind(utils.RunFunctionServerOnly, ImproveMarble))
