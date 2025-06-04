@@ -27,10 +27,7 @@ Assets = {
 
     Asset("ATLAS", "images/minimap/ea_harvest_machine2_mini.xml"),
     Asset("IMAGE", "images/minimap/ea_harvest_machine2_mini.tex"),
-    
-    Asset("ATLAS", "anim/ea_harvest_chest_5x5.zip"),
-    
-    -- Asset("ATLAS", "anim/ea_harvest_chest_9x9.zip"),
+    Asset("ANIM", "anim/bmui_7x7.zip"),
 
     Asset("ATLAS", "images/minimap/ea_farm_plow_machine_mini.xml"),
     Asset("IMAGE", "images/minimap/ea_farm_plow_machine_mini.tex"),

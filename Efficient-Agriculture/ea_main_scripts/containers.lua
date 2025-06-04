@@ -84,20 +84,20 @@ params.ea_fertilizer_machine = {
     type = "seeding",
 }
 
+local harvest_slotpos = {}
+    for y = 2, -4, -1 do
+        for x = -3, 3 do
+            table.insert(harvest_slotpos, GLOBAL.Vector3(75 * x+37.5, 75 * y+37.5, 0))
+        end
+    end
 params.ea_harvest_machine = {
     widget = {
-        slotpos = {
-            Vector3(-144, 144, 0), Vector3(-72, 144, 0), Vector3(0, 144, 0), Vector3(72, 144, 0), Vector3(144, 144, 0),
-            Vector3(-144, 72, 0),  Vector3(-72, 72, 0),  Vector3(0, 72, 0),  Vector3(72, 72, 0),  Vector3(144, 72, 0),
-            Vector3(-144, 0, 0),   Vector3(-72, 0, 0),   Vector3(0, 0, 0),   Vector3(72, 0, 0),   Vector3(144, 0, 0),
-            Vector3(-144, -72, 0), Vector3(-72, -72, 0), Vector3(0, -72, 0), Vector3(72, -72, 0), Vector3(144, -72, 0),
-            Vector3(-144, -144, 0),Vector3(-72, -144, 0),Vector3(0, -144, 0),Vector3(72, -144, 0),Vector3(144, -144, 0)
-        },
-        animbank = "ea_harvest_chest_5x5",
-        animbuild = "ea_harvest_chest_5x5",
+        slotpos = harvest_slotpos,
+        animbank = "bmui_7x7",
+        animbuild = "bmui_7x7",
         pos = Vector3(0, -200, 0),
     },
-    numslots = 25,
+    numslots = 49,
     acceptsstacks = true,
     usespecificslotsforitems = false,
     issidewidget = false,
@@ -119,4 +119,5 @@ params.ea_harvest_machine2 = params.ea_harvest_machine
 
 for prefabs, data in pairs(params) do
     containers.params[prefabs] = data
+    containers.MAXITEMSLOTS = 49
 end
