@@ -7,8 +7,8 @@ local ANCHOR_BOTTOM = ANCHOR_BOTTOM
 local ANCHOR_LEFT = ANCHOR_LEFT
 local TheSim = TheSim
 
-local select_tile_button = EA_CONSTANTS.SELECT_UNIT_BUTTON		--选择地块的鼠标按键
-local diselect_tile_button = EA_CONSTANTS.DISELECT_TILE_BUTTON	--取消选择地块的鼠标按键
+local select_tile_button = EA_CONSTANTS.SELECT_UNIT_BUTTON		
+local diselect_tile_button = EA_CONSTANTS.DISELECT_TILE_BUTTON
 local selected_color = RGB(50, 220, 50)
 local diselect_color = RGB(255, 50, 50)
 local hover_color = RGB(255, 255, 255)
@@ -21,10 +21,6 @@ local function SpawnOutline(x, y, z, colour)
 	outline.AnimState:SetAddColour(unpack(colour))
 	return outline
 end
-
---------------------------------------------------
--- 地块选择交互功能
---------------------------------------------------
 
 local TileSelection = Class(Widget, function(self)
     Widget._ctor(self, "TileSelection")
@@ -83,22 +79,22 @@ local TileSelection = Class(Widget, function(self)
 	local _tile_unpreunselected_fn = _tile_unpreselected_fn
 	local _tile_unhovered_fn = _tile_unpreselected_fn
 
-    self.tile_selected_fn = _tile_selected_fn			--function(x, z) end 当地块被选中时，对该地块执行操作
-    self.tile_unselected_fn = _tile_unselected_fn		--function(x, z) end 当地块被取消选中时，对该地块执行操作
-    self.tile_preselected_fn = _tile_preselected_fn	--function(x, z) end 当地块被预选中时，对该地块执行操作
-    self.tile_unpreselected_fn = _tile_unpreselected_fn	--function(x, z) end 当地块被取消预选中时，对该地块执行操作
-	self.tile_preunselect_fn = _tile_preunselected_fn		--function(x, z) end 当地块被预取消选中时，对该地块执行操作
-	self.tile_unpreunselect_fn = _tile_unpreunselected_fn	--function(x, z) end 当地块被取消预取消选中时，对该地块执行操作
-	self.tile_hovered_fn = _tile_hovered_fn			--function(x, z) end 当鼠标悬浮在地块上时，对该地块执行操作
-	self.tile_unhovered_fn = _tile_unhovered_fn		--function(x, z) end 当悬浮中的鼠标离开地块时，对该地块执行操作
+    self.tile_selected_fn = _tile_selected_fn			
+    self.tile_unselected_fn = _tile_unselected_fn		
+    self.tile_preselected_fn = _tile_preselected_fn	
+    self.tile_unpreselected_fn = _tile_unpreselected_fn	
+	self.tile_preunselect_fn = _tile_preunselected_fn		
+	self.tile_unpreunselect_fn = _tile_unpreunselected_fn	
+	self.tile_hovered_fn = _tile_hovered_fn			
+	self.tile_unhovered_fn = _tile_unhovered_fn		
 
 	self.enable_ocean = false
 	self.disable_tile_types = {}
 
-    self.selected_tiles = {}        -- 2维矩阵 {[x] = {[z] = true}}
-    self.pre_selected_tiles = {}    -- 2维矩阵 {[x] = {[z] = true}}
-	self.pre_diselected_tiles = {}	-- 2维矩阵 {[x] = {[z] = true}}
-	self.current_hover_tile = {}	-- {x, z}
+    self.selected_tiles = {}  
+    self.pre_selected_tiles = {} 
+	self.pre_diselected_tiles = {}	
+	self.current_hover_tile = {}	
     self.mouse_isdown = nil
 
 	local hover_str = TheInput:GetLocalizedControl(TheInput:GetControllerID(), CONTROL_PRIMARY)..": "..STRINGS.TILE_SELECTION_HOVERER_TEXT_SELECT
@@ -119,9 +115,9 @@ end)
 
 function TileSelection:OnMouseButton(button, down)
     if button == select_tile_button or button == diselect_tile_button then
-        if not TheInput:GetHUDEntityUnderMouse() and down and not self.mouse_isdown then	--如果按下鼠标时，鼠标下没有UI并且之前不处于按下状态中，则进入选择状态
+        if not TheInput:GetHUDEntityUnderMouse() and down and not self.mouse_isdown then	
             self.mouse_isdown = button
-            TheCamera:LockHeadingTarget("ea_plow_tile_selection")	--锁定摄像机视角
+            TheCamera:LockHeadingTarget("ea_plow_tile_selection")	
             local pos = TheInput:GetScreenPosition()
             self.select_quad_screen[1] = {x = pos.x, y = pos.y}
             self.select_quad_screen[2] = {x = pos.x, y = pos.y}
@@ -129,21 +125,21 @@ function TileSelection:OnMouseButton(button, down)
             self.select_quad_screen[4] = {x = pos.x, y = pos.y}
             self:CreateMultSelectRangeImage()
 
-            if #self.selected_tiles ~= 0 then	--清除已经选择的地块
+            if #self.selected_tiles ~= 0 then	
                 self:ClearSelection()
             end
-        elseif self.mouse_isdown and not down then	--如果正在选择,且不是按下状态
-            TheCamera:UnLockHeadingTarget("ea_plow_tile_selection")	--解锁摄像机视角
+        elseif self.mouse_isdown and not down then	
+            TheCamera:UnLockHeadingTarget("ea_plow_tile_selection")	
             self:RemoveMultSelectRangeImage()
 			if #self.select_quad_screen == 4 then
                 local distance = Vector3(self.select_quad_screen[1].x, self.select_quad_screen[1].y):Dist(Vector3(self.select_quad_screen[3].x, self.select_quad_screen[3].y))
-				if distance > 10 then	--框选
+				if distance > 10 then	
 					if self.mouse_isdown == select_tile_button then
 						self:Select()
 					else
 						self:Diselect()
 					end
-                else					--单选
+                else					
 					local pt_world = TheInput:GetWorldPosition()
 					if self:IsEnableTile(pt_world.x, pt_world.z) then
 						local tile_center_x, tile_center_y, tile_center_z = TheWorld.Map:GetTileCenterPoint(pt_world.x, 0, pt_world.z)
@@ -163,29 +159,29 @@ function TileSelection:OnMouseButton(button, down)
 end
 
 function TileSelection:OnMoveMouse(x, y)
-	--移动 hoverer 文本
+	
 	self:RefreshHoverPos(x, y)
-    --更新框选范围的UI显示,并对范围内的地块进行预选择
+    
     if self.mouse_isdown then
-		--移除悬浮状态
+		
 		if self.current_hover_tile[1] and self.current_hover_tile[2] then
 			self:ClearHover()
 		end
-		--提取P_start和P_end的数据, 用于接下来的计算
+		
 		local x1, y1 = self.select_quad_screen[1].x,  self.select_quad_screen[1].y
 		local x2, y2 = x, y
 		local drag_vec = Vector3(x, y, 0) - Vector3(x1, y1, 0)
 		local center_x, center_y = x1 + drag_vec.x/2, y1 + drag_vec.y/2
-		--更新框选框的位置和缩放
+		
         if self.fx_multselect then
             self.fx_multselect:SetPosition(center_x, center_y, 0)
             self.fx_multselect:SetSize(math.abs(drag_vec.x), math.abs(drag_vec.y))
 		end
-		--更新四边形顶点坐标
+		
 		self.select_quad_screen[2] = {x = x2, y = y1}
 		self.select_quad_screen[3] = {x = x2, y = y2}
 		self.select_quad_screen[4] = {x = x1, y = y2}
-		--获取框选范围(圆形)内的所有地块(坐标)
+		
 		local start_pt_world = Vector3(TheSim:ProjectScreenPos(x1, y1))
 		local p1_pt_world = Vector3(TheSim:ProjectScreenPos(x2, y1))
 		local end_pt_world = Vector3(TheSim:ProjectScreenPos(x2, y2))
@@ -195,7 +191,7 @@ function TileSelection:OnMoveMouse(x, y)
 		local radius = math.sqrt(math.max(start_pt_world:DistSq(center_pt_world), p1_pt_world:DistSq(center_pt_world),
 			end_pt_world:DistSq(center_pt_world), p2_pt_world:DistSq(center_pt_world)))
 		local _tiles = EA_TOOLS.GetTiles(center_pt_world.x, center_pt_world.z, radius)
-		--筛选出真正在框选范围(四边形)内的所有地块(坐标)
+		
 		local tiles = {}
 		local quad = {start_pt_world, p1_pt_world, end_pt_world, p2_pt_world}
 		for i, tile in ipairs(_tiles) do
@@ -212,18 +208,16 @@ function TileSelection:OnMoveMouse(x, y)
 			self:PreDiselect(tiles)
 		end
     else
-		--移除框选框
+		
 		if self.fx_multselect then
 			self:RemoveMultSelectRangeImage()
 		end
-		--鼠标悬浮效果
+		
 		local pt_world_x, pt_world_y, pt_world_z = TheSim:ProjectScreenPos(x , y)
 		local tile_center_x, tile_center_y, tile_center_z = TheWorld.Map:GetTileCenterPoint(pt_world_x, 0, pt_world_z)
 		self:Hover({tile_center_x, tile_center_z})
     end
 end
-
---------------------------------------------------
 
 function TileSelection:GetSelectedTiles()
     return self.selected_tiles
@@ -247,7 +241,6 @@ function TileSelection:RemoveMultSelectRangeImage()
     end
 end
 
-
 function TileSelection:RefreshHoverPos(mouse_x, mouse_y)
 	local scale = self:GetScale()
 	local pt = (mouse_x and mouse_y) and Vector3(mouse_x, mouse_y) or TheInput:GetScreenPosition()
@@ -257,7 +250,7 @@ function TileSelection:RefreshHoverPos(mouse_x, mouse_y)
 	self.hover_text:SetPosition(pt:Get())
 end
 
-function TileSelection:Select(tiles)    --2维矩阵 {[x] = {[z] = true}}
+function TileSelection:Select(tiles) 
     if not tiles then
         tiles = self.pre_selected_tiles
     end
@@ -272,7 +265,7 @@ function TileSelection:Select(tiles)    --2维矩阵 {[x] = {[z] = true}}
 
     for x, zs in pairs(self.selected_tiles) do
 		for z, _ in pairs(zs) do
-			if tiles[x] and tiles[x][z] then	--筛选重复的
+			if tiles[x] and tiles[x][z] then	
 				tiles[x][z] = nil
 			end
 		end
@@ -302,7 +295,7 @@ function TileSelection:ClearSelection()
     end
 end
 
-function TileSelection:Diselect(tiles)	--2维矩阵 {[x] = {[z] = true}}
+function TileSelection:Diselect(tiles)
 	if not tiles then
         tiles = self.pre_diselected_tiles
     end
@@ -319,23 +312,23 @@ function TileSelection:Diselect(tiles)	--2维矩阵 {[x] = {[z] = true}}
     end
 end
 
-function TileSelection:PreSelect(tiles)	--2维矩阵 {[x] = {[z] = true}}
+function TileSelection:PreSelect(tiles)	
 	self:ClearPreDiselection()
 	for x, zs in pairs(self.pre_selected_tiles) do
 		for z, _ in pairs(zs) do
-			if tiles[x] and tiles[x][z] then	--筛选重复的
+			if tiles[x] and tiles[x][z] then	
 				tiles[x][z] = nil
 			else
-				self.pre_selected_tiles[x][z] = nil	--减去没有包括的地块
+				self.pre_selected_tiles[x][z] = nil	
 				if self.tile_unpreselected_fn then
 					self.tile_unpreselected_fn(x, z)
 				end
 			end
 		end
     end
-	for x, zs in pairs(tiles) do	--增加之前没有的地块
+	for x, zs in pairs(tiles) do
 		for z, _ in pairs(zs) do
-			if not self:IsTileSelected(x, z) then	--如果该地块已经被选择，则不需要标记为将会被选择
+			if not self:IsTileSelected(x, z) then
 				if not self.pre_selected_tiles[x] then
 					self.pre_selected_tiles[x] = {}
 				end
@@ -360,23 +353,23 @@ function TileSelection:ClearPreSelection()
     end
 end
 
-function TileSelection:PreDiselect(tiles)	--2维矩阵 {[x] = {[z] = true}}
+function TileSelection:PreDiselect(tiles)	
 	self:ClearPreSelection()
 	for x, zs in pairs(self.pre_diselected_tiles) do
 		for z, _ in pairs(zs) do
-			if tiles[x] and tiles[x][z] then	--筛选重复的
+			if tiles[x] and tiles[x][z] then	
 				tiles[x][z] = nil
 			else
-				self.pre_diselected_tiles[x][z] = nil	--减去没有包括的地块
+				self.pre_diselected_tiles[x][z] = nil	
 				if self.tile_unpreunselect_fn then
 					self.tile_unpreunselect_fn(x, z)
 				end
 			end
 		end
     end
-	for x, zs in pairs(tiles) do	--增加之前没有的地块
+	for x, zs in pairs(tiles) do
 		for z, _ in pairs(zs) do
-			if self:IsTileSelected(x, z) then	--如果该地块未被已经选择，则不需要标记为会被取消选择
+			if self:IsTileSelected(x, z) then
 				if not self.pre_diselected_tiles[x] then
 					self.pre_diselected_tiles[x] = {}
 				end
@@ -414,15 +407,11 @@ function TileSelection:ClearHover()
 	self.current_hover_tile = {}
 end
 
---------------------------------------------------
-
 function TileSelection:IsTileSelected(x, z)
 	return type(x) == "number" and type(z) == "number" and self.selected_tiles[x] and self.selected_tiles[x][z]
 end
 
---------------------------------------------------
-
-function TileSelection:SetDisableTileType(tile_types)	--{填WORLD_TILES的Key, ...}
+function TileSelection:SetDisableTileType(tile_types)
 	for i, tile in ipairs(tile_types) do
 		if WORLD_TILES[tile] then
 			table.insert(self.disable_tile_types, WORLD_TILES[tile])
@@ -442,15 +431,13 @@ function TileSelection:IsEnableTile(x, z)
 	return true
 end
 
---------------------------------------------------
-
 function TileSelection:OnEnable()
 	--Empty
 end
 
 function TileSelection:OnDisable()
 	self.mouse_isdown = false
-	TheCamera:UnLockHeadingTarget("ea_plow_tile_selection")	--解锁摄像机视角
+	TheCamera:UnLockHeadingTarget("ea_plow_tile_selection")
 	self:RemoveMultSelectRangeImage()
 	self.select_quad_screen = {}
 	self:ClearPreDiselection()
@@ -462,6 +449,5 @@ end
 function TileSelection:OnKill()	--Mod Function
 	self:OnDisable()
 end
-
 
 return TileSelection

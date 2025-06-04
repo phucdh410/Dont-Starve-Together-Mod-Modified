@@ -5,7 +5,6 @@ local Text = require "widgets/text"
 local Templates = require "widgets/redux/templates"
 local PlowTileSelect = require "widgets/ea_tile_selection"
 
-
 local PlowTileSelectScreen = Class(Screen, function(self, owner, data)
 	Screen._ctor(self, "PlowTileSelectScreen")
 	self.owner = owner
@@ -25,7 +24,7 @@ local PlowTileSelectScreen = Class(Screen, function(self, owner, data)
 			local _tiles = {}
 			for x, zs in pairs(tiles) do
 				for z, _ in pairs(zs) do
-					table.insert(_tiles, {x, z})	--由于json.encode会改变表结构，因此需要重新处理表结构
+					table.insert(_tiles, {x, z})
 				end
 			end
 			SendModRPCToServer(MOD_RPC[EA_CONSTANTS.RPC_NAMESPACE].spawn_plowsolid, json.encode(_tiles))
@@ -41,9 +40,6 @@ local PlowTileSelectScreen = Class(Screen, function(self, owner, data)
 
 	self.data = data
 end)
-
-
---------------------------------------------------
 
 function PlowTileSelectScreen:OnDestroy()
     SetAutopaused(false)
@@ -94,11 +90,5 @@ function PlowTileSelectScreen:OnControl(control, down)
 
 	return false
 end
-
-
--- function PlowTileSelectScreen:OnUpdate(dt)
--- end
-
-
 
 return PlowTileSelectScreen
