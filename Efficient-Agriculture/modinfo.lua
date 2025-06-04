@@ -8,7 +8,7 @@ More efficient agricultural production methods, liberating productivity! Its tim
 ]]
 
 author = "PhucDH410"
-version = "1.0.0"
+version = "1.0.1"
 
 forumthread = ""
 
