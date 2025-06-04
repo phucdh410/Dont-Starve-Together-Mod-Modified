@@ -14,6 +14,7 @@ local ImproveLobster = GLOBAL.require("lobster")
 local ImproveVoltgoat = GLOBAL.require("voltgoat")
 local ImproveGlommer = GLOBAL.require("glommer")
 local ImproveTallbird = GLOBAL.require("tallbird")
+local ImproveBeequeen = GLOBAL.require("beequeen")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
 utils.setSeed()
@@ -87,3 +88,10 @@ AddPrefabPostInit("glommer", utils.Bind(utils.RunFunctionServerOnly, ImproveGlom
 
 --Bonus for tallbird
 AddPrefabPostInit("tallbird", utils.Bind(utils.RunFunctionServerOnly, ImproveTallbird))
+
+--Bonus for beequeen
+AddPrefabPostInitAny(function(inst)
+	if inst.prefab == "beequeen" and TheWorld and TheWorld.ismastersim then
+		ImproveBeequeen(inst)
+	end
+end)

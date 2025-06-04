@@ -4,24 +4,14 @@ local function ImproveTreeguard(inst)
   if inst.components.lootdropper == nil then
     return
   end
-  local treeguardLoot = GetModConfigData("treeguardLoot", KnownModIndex:GetModActualName("More Drops - DHPModified"))
-  if treeguardLoot == 1 then
-    return
+  local livinglogTreeguard = GetModConfigData("livinglogTreeguard", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+  if livinglogTreeguard ~= 0 then
+    utils.DoTimes(livinglogTreeguard, function() inst.components.lootdropper:AddChanceLoot("livinglog", 1.00) end)
   end
-  local extraLivinglog = 0
-  local extraMonstermeat = 0
-  if treeguardLoot == 2 then
-    extraLivinglog = 4
-    extraMonstermeat = 2
-  elseif treeguardLoot == 3 then
-    extraLivinglog = 9
-    extraMonstermeat = 4
-  else
-    extraLivinglog = 14
-    extraMonstermeat = 9
+  local monstermeatTreeguard = GetModConfigData("monstermeatTreeguard", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+  if monstermeatTreeguard ~= 0 then
+    utils.DoTimes(monstermeatTreeguard, function() inst.components.lootdropper:AddChanceLoot("monstermeat", 1.00) end)
   end
-  utils.DoTimes(extraLivinglog, function() inst.components.lootdropper:AddChanceLoot("livinglog", 1.00) end)
-  utils.DoTimes(extraMonstermeat, function() inst.components.lootdropper:AddChanceLoot("monstermeat", 1.00) end)
 end
 
 return ImproveTreeguard

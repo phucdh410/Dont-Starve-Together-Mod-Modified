@@ -17,13 +17,14 @@ Loot options:
 - Voltgoat
 - Glommer poop
 - Meat (Tallbird)
+- Royal jelly (Beequeen)
 *** Infinite fertilized (replanted plants only need to be fertilized once)
 *** Jackpot reward when break rocks/boulders. 
 *** Mandrake. When you pick grass or berries, maybe a mandrake hides in it
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.52"
+version = "1.8.53"
 
 api_version = 6
 api_version_dst = 10
@@ -98,7 +99,12 @@ amounts =
 	{description = "7", data = 7},
 	{description = "8", data = 8},
 	{description = "9", data = 9},
-	{description = "10", data = 10}
+	{description = "10", data = 10},
+	{description = "11", data = 11},
+	{description = "12", data = 12},
+	{description = "13", data = 13},
+	{description = "14", data = 14},
+	{description = "15", data = 15}
 }
 
 local empty_options = {{description = "", data = 0 }}
@@ -492,16 +498,18 @@ configuration_options =
   SEPARATOR,
   
   {
-    name = "treeguardLoot",
-    label = "Treeguard Loot",
-    hover = "Select the range of loot you can get from killing treeguard",
-    options = {
-      { description = "Default", data = 1, hover = "6 Living logs, 1 Monster meat" },
-      { description = "More", data = 2, hover = "10 Living logs, 3 Monster meat" },
-      { description = "Rich", data = 3, hover = "15 Living logs, 5 Monster meat" },
-      { description = "Max", data = 4, hover = "20 Living logs, 10 Monster meat" },
-    },
-	  default = 1
+    name = "livinglogTreeguard",
+    label = "Extra Livinglog Treeguard",
+    hover = "How many extra livinglog you can get when killing treeguard",
+    options = amounts,
+	  default = 0
+  },
+  {
+    name = "monstermeatTreeguard",
+    label = "Extra Monstermeat Treeguard",
+    hover = "How many extra monstermeat you can get when killing treeguard",
+    options = amounts,
+	  default = 0
   },
 
   SEPARATOR,
@@ -543,13 +551,7 @@ configuration_options =
     name = "glommerfuelExtra",
     label = "Extra Glommer Poop",
     hover = "Glommer produces more glommerfuel",
-    options = {
-      { description = "Disable", data = 0, hover = "No extra" },
-      { description = "1", data = 1, hover = "2 glommer poop each spawn" },
-      { description = "2", data = 2, hover = "3 glommer poop each spawn" },
-      { description = "3", data = 3, hover = "4 glommer poop each spawn" },
-      { description = "4", data = 4, hover = "5 glommer poop each spawn" },
-    },
+    options = amounts,
     default = 0
   },
 
@@ -558,15 +560,18 @@ configuration_options =
   {
     name = "tallbirdExtra",
     label = "Extra Tallbird's Meat",
-    hover = "Get more meat from killing tallbird",
-    options = {
-      { description = "Disable", data = 0, hover = "No extra" },
-      { description = "1", data = 1, hover = "1 Extra" },
-      { description = "2", data = 2, hover = "2 Extra" },
-      { description = "3", data = 3, hover = "3 Extra" },
-      { description = "4", data = 4, hover = "4 Extra" },
-      { description = "5", data = 5, hover = "5 Extra" },
-    },
+    hover = "Get more meat when killing tallbird",
+    options = amounts,
+    default = 0
+  },
+
+  SEPARATOR,
+  
+  {
+    name = "royaljellyExtra",
+    label = "Extra Royal Jelly",
+    hover = "Get more royal jelly when killing beequeen",
+    options = amounts,
     default = 0
   }
 }
