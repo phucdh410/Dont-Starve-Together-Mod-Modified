@@ -119,5 +119,5 @@ params.ea_harvest_machine2 = params.ea_harvest_machine
 
 for prefabs, data in pairs(params) do
     containers.params[prefabs] = data
-    containers.MAXITEMSLOTS = 49
+    containers.MAXITEMSLOTS = math.max(containers.MAXITEMSLOTS, data.widget.slotpos ~= nil and #data.widget.slotpos or 0)
 end
