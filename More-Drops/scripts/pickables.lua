@@ -133,4 +133,15 @@ pickables.ImproveMushroom = function(inst)
 	FertilizedInfinite(inst)
 end
 
+-- Kelp
+pickables.ImproveKelp = function(inst)
+	local kelpChance = GetModConfigData("kelpChance", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+	local kelpAmount = GetModConfigData("kelpAmount", KnownModIndex:GetModActualName("More Drops - DHPModified"))
+	if utils.LootRandom(kelpChance) then
+		inst.components.pickable.numtoharvest = kelpAmount + 1
+	else
+		inst.components.pickable.numtoharvest = 1
+	end
+end
+
 return pickables

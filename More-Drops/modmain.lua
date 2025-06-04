@@ -37,6 +37,8 @@ AddPrefabPostInit("cave_banana_tree", utils.Bind(utils.RunFunctionServerOnly, pi
 AddPrefabPostInit("red_mushroom", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveMushroom))
 AddPrefabPostInit("blue_mushroom", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveMushroom))
 AddPrefabPostInit("green_mushroom", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveMushroom))
+--Increase kelp Drops
+AddPrefabPostInit("bullkelp_plant", utils.Bind(utils.RunFunctionServerOnly, pickables.ImproveKelp))
 
 --Add resources from trees
 local trees = {"evergreen", "evergreen_sparse", "deciduoustree", "twiggytree"}

@@ -5,7 +5,7 @@ From update version: 24 February 2025
 -------------------------------------------------------
 I updated with more options for loot amount (easier). 
 Loot options:
-- Pickable plants (grass, twigs, reeds, berries, juicy berries, bananas, mushrooms)
+- Pickable plants (grass, twigs, reeds, berries, juicy berries, bananas, mushrooms, kelp)
 - Trees
 - Crops farm
 - Mining entities (rocks, flint, gems, ice, thulecite fragments)
@@ -251,6 +251,23 @@ configuration_options =
     name = "mushroomChance",
     label = "Extra Mushroom Chance",
     hover = "Chance to get extra mushrooms",
+    options = chances,
+	  default = .25
+  },
+  
+  SEPARATOR,
+  
+  {
+    name = "kelpAmount",
+    label = "Extra Kelps",
+    hover = "How many extra kelps you can get",
+    options = amounts,
+    default = 1,
+  },
+  {
+    name = "kelpChance",
+    label = "Extra Kelps Chance",
+    hover = "Chance to get extra kelps",
     options = chances,
 	  default = .25
   },
