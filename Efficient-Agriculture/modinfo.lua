@@ -1,12 +1,14 @@
-local chinese = locale == "zh" or locale  == "zhr"
+name = "Efficient Agriculture - DHPModified"
 
-name = chinese and "高效农业" or "Efficient Agriculture"
+description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2303894106&searchtext=Efficient+Agriculture
+From update version: 21 May 2025
 
-description = chinese and "更高效的农业生产方式，解放生产力！是时候告别饥荒了"
-    or "More efficient agricultural production methods, liberating productivity! Its time to say good-bye to starvation!"
+More efficient agricultural production methods, liberating productivity! Its time to say good-bye to starvation!
+]]
 
-author = "liximi"
-version = "2.9.0"
+author = "PhucDH410"
+version = "1.0.0"
 
 forumthread = ""
 
@@ -23,25 +25,13 @@ icon = "modicon.tex"
 
 server_filter_tags = {
     "Efficient Agriculture",
-    "高效农业",
 }
 
 configuration_options = {
     {
-        name = "language",
-        label = chinese and "语言" or "Language",
-        hover = chinese and "设置语言" or "Set Language",
-        options = {
-            {description = "English", data = "ENGLISH"},
-            {description = "中文", data = "CHINESE"},
-            {description = "Auto/自动", data = "AUTO"}
-        },
-        default = "AUTO",
-    },
-    {
         name = "max_store_num",
-        label = chinese and "最大存储数量" or "Max Storage Quantity",
-        hover = chinese and "肥料机器最大可存储物品的数量" or "Max number of items that can be stored in the fertilizer machine",
+        label = "Max Storage Quantity",
+        hover = "Max number of items that can be stored in the fertilizer machine",
         options = {
             {description = "20", data = 20},
             {description = "40", data = 40},
@@ -52,8 +42,8 @@ configuration_options = {
     },
     {
         name = "coefficient_of_price",
-        label = chinese and "价格系数" or "Coefficient of Price",
-        hover = chinese and "自动贩卖机的兑换比例系数" or "Coefficient of vending machine exchange ratio",
+        label = "Coefficient of Price",
+        hover = "Coefficient of vending machine exchange ratio",
         options = {
             {description = "0.5", data = 0.5},
             {description = "0.6", data = 0.6},
@@ -68,31 +58,31 @@ configuration_options = {
     },
     {
         name = "refresh_frequency",
-        label = chinese and "贩卖机刷新频率" or "Vending Machine Refresh Frequency",
-        hover = chinese and "自动贩卖机货物刷新频率(单位:天)" or "Vending machine refresh frequency (unit:day)",
+        label = "Vending Machine Refresh Frequency",
+        hover = "Vending machine refresh frequency (unit:day)",
         options = {
-            {description = chinese and "1天" or "1 Day", data = 1},
-            {description = chinese and "2天" or "2 Day", data = 2},
-            {description = chinese and "3天" or "3 Day", data = 3},
-            {description = chinese and "4天" or "4 Day", data = 4},
-            {description = chinese and "5天" or "5 Day", data = 5},
+            {description = "1 Day", data = 1},
+            {description = "2 Day", data = 2},
+            {description = "3 Day", data = 3},
+            {description = "4 Day", data = 4},
+            {description = "5 Day", data = 5},
         },
         default = 2,
     },
     {
         name = "harvest_machine",
-        label = chinese and "启用自动收获机" or "Enable Harvest Machine",
-        hover = chinese and "启用自动收获机" or "Enable Harvest Machine",
+        label = "Enable Harvest Machine",
+        hover = "Enable Harvest Machine",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
     {
         name = "harvest_machine_rotate_key",
-        label = chinese and "收获机旋转按键" or "Harvester Rotation Key",
-        hover = chinese and "在放置收获机时旋转其方向的按键" or "The key that rotates the direction of the harvester when placing it",
+        label = "Harvester Rotation Key",
+        hover = "The key that rotates the direction of the harvester when placing it",
         options = {
             {description = "B", data = "B"},
             {description = "G", data = "G"},
@@ -112,8 +102,8 @@ configuration_options = {
     },
     {
         name = "harvest_machine_check_interval",
-        label = chinese and "收获机检测时间间隔" or "Harvest Machine Check Interval",
-        hover = chinese and "时间间隔越短，消耗的性能越大" or "The shorter the time interval, the greater the performance consumption",
+        label = "Harvest Machine Check Interval",
+        hover = "The shorter the time interval, the greater the performance consumption",
         options = {
             {description = "4s", data = 4},
             {description = "5s", data = 5},
@@ -128,51 +118,51 @@ configuration_options = {
     },
     {
         name = "seeding_machine",
-        label = chinese and "启用自动播种机" or "Enable Seeding Machine",
-        hover = chinese and "启用自动播种机" or "Enable Seeding Machine",
+        label = "Enable Seeding Machine",
+        hover = "Enable Seeding Machine",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
     {
         name = "vending_machine",
-        label = chinese and "启用自动贩卖机" or "Enable Vending Machine",
-        hover = chinese and "启用自动贩卖机" or "Enable Vending Machine",
+        label = "Enable Vending Machine",
+        hover = "Enable Vending Machine",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
     {
         name = "farm_plow_machine",
-        label = chinese and "启用自动耕地机" or "Enable Plowing Machine",
-        hover = chinese and "启用自动耕地机" or "Enable Plowing Machine",
+        label = "Enable Plowing Machine",
+        hover = "Enable Plowing Machine",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
     {
         name = "enable_harvest_machine_area_show",
-        label = chinese and "启用自动收获机范围显示" or "Show Harvest Machine Range",
-        hover = chinese and "启用自动收获机范围显示" or "Show Harvest Machine Range",
+        label = "Show Harvest Machine Range",
+        hover = "Show Harvest Machine Range",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
     {
         name = "enable_harvest_machine_auto_pickup",
-        label = chinese and "启用自动收获机拾取物品" or "Enable Harvest Machine Auto Picking Up",
-        hover = chinese and "启用后将自动拾取面前的农作物、种子和花瓣" or "Once enabled, it will automatically pick up crops, seeds, and petals in front of it",
+        label = "Enable Harvest Machine Auto Picking Up",
+        hover = "Once enabled, it will automatically pick up crops, seeds, and petals in front of it",
         options = {
-            {description = chinese and "开启" or "Yes", data = true},
-            {description = chinese and "关闭" or "No", data = false},
+            {description = "Yes", data = true},
+            {description = "No", data = false},
         },
         default = true,
     },
