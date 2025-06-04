@@ -14,7 +14,6 @@ local ImproveLobster = GLOBAL.require("lobster")
 local ImproveVoltgoat = GLOBAL.require("voltgoat")
 local ImproveGlommer = GLOBAL.require("glommer")
 local ImproveTallbird = GLOBAL.require("tallbird")
-local ImproveBeequeen = GLOBAL.require("beequeen")
 
 -- gives math.random a random seed to use every time it runs, so that results are more random
 utils.setSeed()
