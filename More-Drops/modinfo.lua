@@ -23,7 +23,7 @@ Loot options:
 ]]
 author = "PhucDH410"
 edited = "PhucDH410"
-version = "1.8.56"
+version = "1.8.65"
 
 api_version = 6
 api_version_dst = 10
@@ -503,12 +503,54 @@ configuration_options =
 
   SEPARATOR,
   
+  Title("Ultimate Beebox"),
   {
-    name = "honeyAmount",
-    label = "Extra Honey Amount",
-    hover = "How many extra honey you can get when harvest beebox",
-    options = amounts,
-    default = 1,
+    name = "buffBeebox",
+    label = "Active Ultimate Beebox",
+    hover = "Enable to active below features",
+    options = {
+      { description = "Disable", data = false },
+      { description = "Enable", data = true },
+    },
+    default = false
+  },
+  {
+    name = "boostBeebox",
+    label = "Boost Beebox Growtime",
+    hover = "Speed up multiply full of honey",
+    options = {
+      { description = "1x", data = 1, hover = "Default" },
+      { description = "2x", data = 0.5 },
+      { description = "4x", data = 0.25 },
+    },
+    default = 1
+  },
+  {
+    name = "maxHoney",
+    label = "Max Honey",
+    hover = "The more honey a Beebox can hold, the longer it takes to fill it up\nWith the default bee configuration, this process will be quite slow",
+    options = {
+      { description = "Default", data = 6, hover = "Like base game" },
+      { description = "10", data = 10 },
+      { description = "15", data = 15 },
+      { description = "20", data = 20 },
+    },
+    default = 6
+  },
+  {
+    name = "maxBee",
+    label = "Max Bees",
+    hover = "The number of bees that can nest in the Beebox\nPlace more 2 flowers than bee amount so that everything works",
+    options = {
+      { description = "Default", data = 4, hover = "Like base game" },
+      { description = "5", data = 5 },
+      { description = "6", data = 6 },
+      { description = "7", data = 7 },
+      { description = "8", data = 8 },
+      { description = "9", data = 9 },
+      { description = "10", data = 10 },
+    },
+    default = 4
   },
 
   SEPARATOR,
