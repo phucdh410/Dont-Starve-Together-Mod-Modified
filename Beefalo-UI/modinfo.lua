@@ -1,7 +1,9 @@
-name = "Beefalo Status Bar"
-version = "1.4.0"
-author = "MNK"
+name = "Beefalo Status Bar - DHPModified"
+version = "1.0.0"
+author = "PhucDH410"
 description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2477889104
+From update version: 27 Feb 2025 
 A status bar for your beefalo mount.
 
 Shows health, domestication and tendency, obedience, ride timer, saddle uses and hunger when riding a beefalo.
@@ -26,7 +28,6 @@ client_only_mod = false
 
 icon_atlas = "icon.xml"
 icon = "icon.tex"
-
 
 local KEYS = {
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",

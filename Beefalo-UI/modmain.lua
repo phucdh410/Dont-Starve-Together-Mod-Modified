@@ -188,36 +188,86 @@ local MOD_TUNING = {
 
 local function OnEat(inst, food, feeder)
     local full = inst.components.hunger:GetPercent() >= 1
+    if inst.components and inst.components.hunger then
+        inst.components.hunger:DoDelta(500)
+    end
+    inst.components.domesticatable:DeltaObedience(1)
+    inst.components.domesticatable:DeltaDomestication(0.1, feeder)
     if not full then
-        inst.components.domesticatable:DeltaObedience(TUNING.BEEFALO_DOMESTICATION_FEED_OBEDIENCE)
-        inst.components.domesticatable:DeltaDomestication(0.2, feeder)
         inst.components.domesticatable:TryBecomeDomesticated()
     else
-        inst.components.domesticatable:DeltaObedience(TUNING.BEEFALO_DOMESTICATION_OVERFEED_OBEDIENCE)
-        inst.components.domesticatable:DeltaDomestication(MOD_TUNING.BEEFALO_DOMESTICATION_OVERFEED_DOMESTICATION, feeder)
-        inst.components.domesticatable:DeltaTendency(TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
+        inst.components.domesticatable:DeltaTendency(GLOBAL.TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
     end
     inst:PushEvent("eat", { full = full, food = food })
     inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
-    
+end
+
+local function OnBuckTime(inst)
+    inst._bucktask = inst:DoTaskInTime(99999 + math.random(), OnBuckTime)
+    inst.components.rideable:Buck()
+end
+
+local function OnRiderChanged(inst, data)
     if inst._bucktask ~= nil then
         inst._bucktask:Cancel()
         inst._bucktask = nil
     end
-    inst._bucktask = inst:DoTaskInTime(99999, OnBuckTime) 
-    
-    if inst.components.domesticatable then
-        inst.components.domesticatable.lastdomesticationgain = GetTime() + 99999
-        inst.components.domesticatable:PauseDomesticationDecay(true)
+
+    if inst._ridersleeptask ~= nil then
+        inst._ridersleeptask:Cancel()
+        inst._ridersleeptask = nil
+    end
+
+    if data.newrider ~= nil then
+        if inst.components.sleeper ~= nil then
+            inst.components.sleeper:WakeUp()
+        end
+        inst._bucktask = inst:DoTaskInTime(99999, OnBuckTime)
+        inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
+        if inst.sg ~= nil then
+            inst.sg:GoToState("idle")
+        end
+    elseif inst.components.health:IsDead() then
+        if inst.sg.currentstate.name ~= "death" then
+            inst.sg:GoToState("death")
+        end
+    elseif inst.components.sleeper ~= nil then
+        inst.components.sleeper:StartTesting()
+        if inst._ridersleep ~= nil then
+            local sleeptime = inst._ridersleep.sleeptime + inst._ridersleep.time - GetTime()
+            if sleeptime > 2 then
+                inst._ridersleeptask = inst:DoTaskInTime(0, DoRiderSleep, inst._ridersleep.sleepiness, sleeptime)
+            end
+            inst._ridersleep = nil
+        end
+    end
+end
+
+local function OnObedienceDelta(inst, data)
+    inst.components.rideable:SetSaddleable(data.new >= TUNING.BEEFALO_SADDLEABLE_OBEDIENCE)
+
+    if data.new > data.old and inst._bucktask ~= nil then
+        inst._bucktask:Cancel()
+        inst._bucktask = inst:DoTaskInTime(99999, OnBuckTime)
     end
 end
 
 AddPrefabPostInit("beefalo",function(inst)
-    if not TheWorld.ismastersim then
-        return inst
-    end
-    
-    inst.OnEat = OnEat
-    
-    return inst
+    inst:DoTaskInTime(0.1, function(inst)
+        if inst.components and inst.components.eater then
+            inst.components.eater:SetOnEatFn(OnEat)
+        end
+        inst:ListenForEvent("obediencedelta", OnObedienceDelta)
+        inst:ListenForEvent("riderchanged", OnRiderChanged)
+        inst:WatchWorldState("cycles",function(inst)
+            if inst.components and inst.components.domesticatable then
+                if inst.components.domesticatable:IsDomesticated() then
+                    inst.components.domesticatable:DeltaObedience(1)         
+                    if inst.components and inst.components.hunger then
+                        inst.components.hunger:DoDelta(500)
+                    end
+                end
+            end
+        end)
+    end)
 end)
