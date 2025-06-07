@@ -30,8 +30,15 @@ local function OnLoad(inst, data)
     end
 end
 
-local function TradeTest(inst,item)
-  return item.prefab == "redgem" or item.prefab == "bluegem"
+local function TradeTest(inst, item, giver)
+    if item.prefab == "redgem" or item.prefab == "bluegem" then
+        return true
+    else
+        if giver and giver.components.talker then
+            giver.components.talker:Say("It needs Red or Blue gem")
+        end
+        return false
+    end
 end
 
 local function OnAcceptTrade(inst, giver, item)

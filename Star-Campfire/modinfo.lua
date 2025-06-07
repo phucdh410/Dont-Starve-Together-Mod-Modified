@@ -4,7 +4,7 @@ Give redgem to create Heat source
 Give bluegem to create Cold source
 ]]
 author = "PhucDH410"
-version = "1.0"
+version = "1.1"
 forumthread = ""
 api_version = 10
 dst_compatible = true
