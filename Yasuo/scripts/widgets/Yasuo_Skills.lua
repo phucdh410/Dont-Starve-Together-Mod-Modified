@@ -42,14 +42,14 @@ local Yasuo_Skills = Class(Widget, function(self, owner)
 
     self:StartUpdating()
 
-    --<UI可移动>
-    self.OnMouseButton = function(_self, button, down, x, y)    --注意:此处应将self.drag_button替换为你要拖拽的widget
-		if button == MOUSEBUTTON_RIGHT and down then    --鼠标右键按下
-			 _self.draging = true    --标志这个widget正在被拖拽，不需要可以删掉
-			_self:FollowMouse()     --开启控件的鼠标跟随
-		elseif button == MOUSEBUTTON_RIGHT then            --鼠标右键抬起
-			_self.draging = false        --标志这个widget没有被拖拽，不需要可以删掉
-			_self:StopFollowMouse()        --停止控件的跟随
+    
+    self.OnMouseButton = function(_self, button, down, x, y)    
+		if button == MOUSEBUTTON_RIGHT and down then    
+			 _self.draging = true    
+			_self:FollowMouse()     
+		elseif button == MOUSEBUTTON_RIGHT then            
+			_self.draging = false        
+			_self:StopFollowMouse()        
 		end
 	end
 end)

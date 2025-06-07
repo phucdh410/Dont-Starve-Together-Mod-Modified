@@ -3,16 +3,16 @@ local yasuo_skills =
 {
     way_of_wander =
         {
-            description = "亚索在移动的同时会积攒剑意，当剑意槽被充满时，在受到任意伤害的同时，".."\n"..
-            "会生成一个用于抵消伤害的护盾，护盾值等于剑意值。".."\n"..
-            "每次攻击可以立刻获得3点剑意值，使用一次【踏前斩】可以立刻获得5点剑意值。",
+            description = "Yasuo builds toward a shield whenever he is moving，".."\n"..
+            "The shield triggers when he takes damage. ".."\n"..
+            "Each attack gains 3 points. [Sweeping Blade] gains 5 points。",
             order = 1,
         },
     steel_tempest =
         {
-            description = "鼠标右键释放。向鼠标方向出剑，造成武器伤害x2倍的伤害，".."\n"..
-            "在命中时，斩钢闪获得一层旋风烈斩的效果，持续8秒。".."\n"..
-            "在积攒两层旋风烈斩的效果后，斩钢闪会形成一阵能够击飞敌人的旋风。",
+            description = "Thrusts forward, damaging all enemies in a line，".."\n"..
+            "On hit, grants a stack of Gathering Storm for 8 seconds。".."\n"..
+            "At 2 stacks, Steel Tempest fires a whirlwind that knocks Airborne。",
             order = 2,
             canskill = function (inst)
                 return inst.components.yasuo_skills and inst.components.yasuo_skills:CanDoSkill("steel_tempest")
@@ -95,7 +95,7 @@ local yasuo_skills =
         },
     wind_wall =
         {
-            description = "默认X键释放。形成一个持续10秒的气流之墙，可以阻挡任意飞行道具。",
+            description = "Creates a moving wall that blocks all enemy projectiles for 10 seconds。",
             order = 3,
             canskill = function (inst)
                 return inst.components.yasuo_skills and inst.components.yasuo_skills:CanDoSkill("wind_wall")
@@ -120,9 +120,9 @@ local yasuo_skills =
         },
     sweeping_blade =
         {
-            description = "鼠标选中目标释放或默认G键对鼠标附近的目标释放。".."\n"..
-            "向目标突进，在4秒内无法对相同的目标释放。".."\n"..
-            "在积攒两层旋风烈斩的效果后，如果踏前斩释放时，斩钢闪冷却完毕，则踏前斩会呈环状出剑，击飞自身周围的敌人。",
+            description = "Dashes through target enemy, dealing minor damage。".."\n"..
+            "Cannot be re-cast on the same enemy for a few seconds。".."\n"..
+            "If Steel Tempest ready with 2 stacks, it will knock airborne a circle。",
             order = 4,
             canskill = function (inst)
                 return inst.components.yasuo_skills and inst.components.yasuo_skills:CanDoSkill("sweeping_blade")
@@ -136,10 +136,10 @@ local yasuo_skills =
         },
     last_breath =
         {
-            description = "默认R键释放。闪烁到一个被击飞的敌人身边。".."\n"..
-            "造成武器伤害x5倍的伤害，并使敌人周围（包括敌人）击飞的效果延长。".."\n"..
-            "获得满额的剑意值，但是会重置旋风烈斩的层数。".."\n"..
-            "在接下来的15秒内，亚索的普通攻击伤害将提升至150%。",
+            description = "Blinks to an Airborne enemies, dealing damage。".."\n"..
+            "And holding all Airborne enemies in the area in the air。".."\n"..
+            "Grants maximum Flow but resets all stacks of Gathering Storm。".."\n"..
+            "For the next 15 seconds，Yasuo's normal attack damage will be increased to 150%。",
             order = 5,
             canskill = function (inst)
                 return inst.components.yasuo_skills and inst.components.yasuo_skills:CanDoSkill("last_breath")

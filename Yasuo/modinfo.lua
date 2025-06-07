@@ -1,5 +1,10 @@
 name = "Yasuo - DHPModified"
-description = '"Death is like the wind — always by my side."'
+description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3065307292&searchtext=%E4%BA%9A%E7%B4%A2
+From update version: 18 Mar 2025
+
+Death is like the wind — always by my side.
+]]
 author = "PhucDH410"
 version = "1.0.0"
 

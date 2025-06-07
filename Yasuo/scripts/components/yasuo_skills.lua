@@ -103,7 +103,7 @@ function Yasuo_Skills:AddSkillHit(skill, hit)
     self.steel_tempest_hited_targets = {}
 end
 
-function Yasuo_Skills:SpawnWindFlow()--生成旋风烈斩
+function Yasuo_Skills:SpawnWindFlow()
     self.inst.SoundEmitter:PlaySound("yasuo/yasuo_sfx/steel_tempest_secondhit", "steel_tempest_secondhit")
     self.inst:DoTaskInTime(2, function ()
         self.inst.SoundEmitter:KillSound("steel_tempest_secondhit")
@@ -227,9 +227,7 @@ end
 function Yasuo_Skills:OnUpdate(dt)
     for skill, cd in pairs(self.skills_cd) do
         self.skills_cd[skill] = self:GetSkillCdLeft(skill)
-        --if cd == math.floor(cd) then --判断是不是整数,使系统每秒发送一次而不是每帧发送一次
             self:PushEvent()
-        --end
     end
 end
 
