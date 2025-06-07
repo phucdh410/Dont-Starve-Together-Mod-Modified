@@ -1,0 +1,1 @@
+<?xml version="1.0" ?><Atlas><Texture filename="last_breath.tex"/><Elements><Element name="last_breath_enable.tex" u1="0.5" u2="1.0" v1="0.5" v2="1.0"/><Element name="last_breath_disable.tex" u1="0.0" u2="0.5" v1="0.5" v2="1.0"/></Elements></Atlas>
