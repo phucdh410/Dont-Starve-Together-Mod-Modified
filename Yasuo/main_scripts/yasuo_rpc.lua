@@ -6,7 +6,6 @@ local last_breath_key = GetModConfigData("last_breath_key") or KEY_R
 _G.YASUO_MOD_RPCNAME = "yasuo"
 local DoActionButton = require "yasuo_doactions"
 
---<斩钢闪>
 TheInput:AddKeyHandler(function (key, down)
     local doskill_way = GetModConfigData("doskill_way")
     if doskill_way == "only_mouse" then
@@ -28,7 +27,6 @@ TheInput:AddKeyHandler(function (key, down)
     end
 end)
 
---<风之障壁>
 TheInput:AddKeyHandler(function (key, down)
     local doskill_way = GetModConfigData("doskill_way")
     if doskill_way == "only_mouse" then
@@ -50,7 +48,6 @@ TheInput:AddKeyHandler(function (key, down)
     end
 end)
 
---<踏前斩>
 local function FindClosest(inst, x, y, z, radius, ignoreheight, musttags, canttags, mustoneoftags, fn)
     local ents = TheSim:FindEntities(x, ignoreheight and 0 or y, z, radius, musttags, canttags, mustoneoftags)
     local closestEntity = nil
@@ -89,7 +86,6 @@ TheInput:AddKeyHandler(function (key, down)
     end
 end)
 
---<狂风绝息斩>
 TheInput:AddKeyHandler(function (key, down)
     local doskill_way = GetModConfigData("doskill_way")
     if doskill_way == "only_mouse" then

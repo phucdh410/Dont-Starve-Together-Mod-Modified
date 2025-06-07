@@ -50,43 +50,43 @@ Assets = {
     Asset("FILE", "sound/yasuo.fsb"),
 
 
-    Asset( "IMAGE", "images/saveslot_portraits/yasuo.tex" ),     --存档头像
+    Asset( "IMAGE", "images/saveslot_portraits/yasuo.tex" ),     
     Asset( "ATLAS", "images/saveslot_portraits/yasuo.xml" ),
 
-	Asset( "IMAGE", "images/map_icons/yasuo.tex" ),              --小地图图标
+	Asset( "IMAGE", "images/map_icons/yasuo.tex" ),              
 	Asset( "ATLAS", "images/map_icons/yasuo.xml" ),
 
-	Asset( "IMAGE", "images/avatars/avatar_yasuo.tex" ),         --tab键人物列表显示的头像
+	Asset( "IMAGE", "images/avatars/avatar_yasuo.tex" ),         
     Asset( "ATLAS", "images/avatars/avatar_yasuo.xml" ),
 
-	Asset( "IMAGE", "images/avatars/avatar_ghost_yasuo.tex" ),   --tab键人物列表显示的头像（死亡）
+	Asset( "IMAGE", "images/avatars/avatar_ghost_yasuo.tex" ),   
     Asset( "ATLAS", "images/avatars/avatar_ghost_yasuo.xml" ),
 
-	Asset( "IMAGE", "images/avatars/self_inspect_yasuo.tex" ),   --人物检查按钮的图片
+	Asset( "IMAGE", "images/avatars/self_inspect_yasuo.tex" ),   
     Asset( "ATLAS", "images/avatars/self_inspect_yasuo.xml" ),
 
-	Asset( "IMAGE", "images/names_yasuo.tex" ),                  --人物名字
+	Asset( "IMAGE", "images/names_yasuo.tex" ),                  
     Asset( "ATLAS", "images/names_yasuo.xml" ),
 
-    Asset( "IMAGE", "bigportraits/yasuo_none.tex" ),             --人物大图（椭圆的那个）
+    Asset( "IMAGE", "bigportraits/yasuo_none.tex" ),             
     Asset( "ATLAS", "bigportraits/yasuo_none.xml" ),
 
-    Asset( "IMAGE", "bigportraits/yasuo.tex" ),                  --人物大图（方的那个）
+    Asset( "IMAGE", "bigportraits/yasuo.tex" ),                  
     Asset( "ATLAS", "bigportraits/yasuo.xml" ),
 }
 
---选人界面
-STRINGS.CHARACTER_TITLES.yasuo = "亚索"
-STRINGS.CHARACTER_NAMES.yasuo = "亚索"
-STRINGS.CHARACTER_DESCRIPTIONS.yasuo = "孤独的浪客\n精通疾风剑术"
-STRINGS.CHARACTER_QUOTES.yasuo = "\"死亡如风，常伴吾身\""
-STRINGS.CHARACTER_SURVIVABILITY.yasuo = "飘逸"
---台词包
+
+STRINGS.CHARACTER_TITLES.yasuo = "Yasuo"
+STRINGS.CHARACTER_NAMES.yasuo = "Yasuo"
+STRINGS.CHARACTER_DESCRIPTIONS.yasuo = "An Ionian of deep resolve, Yasuo is an agile swordsman who wields the air itself against his enemies"
+STRINGS.CHARACTER_QUOTES.yasuo = "Death is like the wind — always by my side"
+STRINGS.CHARACTER_SURVIVABILITY.yasuo = "Elegant"
+
 STRINGS.CHARACTERS.YASUO = require "speech_wilson"
---游戏内名字
-STRINGS.NAMES.YASUO = "亚索"
-STRINGS.SKIN_NAMES.yasuo_none = "亚索"
---选择界面人物皮肤
+
+STRINGS.NAMES.YASUO = "Yasuo"
+STRINGS.SKIN_NAMES.yasuo_none = "Yasuo"
+
 local skin_modes = {
     {
         type = "ghost_skin",

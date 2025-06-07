@@ -18,10 +18,6 @@ local function ToggleOnPhysics(inst)
     inst.Physics:CollidesWith(COLLISION.GIANTS)
 end
 
---------------------------------------------------------------------------------
-----------------------------------------斩钢闪-----------------------------------
---------------------------------------------------------------------------------
-
 local steel_tempest_pre = State{
     name = "yasuo_steel_tempest_pre",
     tags = { "doing", "busy", "yasuo_skill", "yasuo_steel_tempest" },
@@ -159,10 +155,6 @@ AddStategraphState("wilson", steel_tempest_pst)
 AddStategraphState("wilson", steel_tempest_tornado_pst)
 AddStategraphState("wilson_client", steel_tempest_pre_client)
 
---------------------------------------------------------------------------------
-----------------------------------------风之障壁---------------------------------
---------------------------------------------------------------------------------
-
 local wind_wall_pre = State{
     name = "yasuo_wind_wall_pre",
     tags = { "doing", "busy", "yasuo_skill", "yasuo_wind_wall" },
@@ -256,10 +248,6 @@ AddStategraphState("wilson", wind_wall_pre)
 AddStategraphState("wilson", wind_wall)
 AddStategraphState("wilson", wind_wall_pst)
 AddStategraphState("wilson_client", wind_wall_pre_client)
-
---------------------------------------------------------------------------------
-----------------------------------------踏前斩-----------------------------------
---------------------------------------------------------------------------------
 
 local function SpawnShadow_sweeping(inst)
     inst.sg.statemem.shadow_sweeping_task = inst:DoPeriodicTask(0, function ()
@@ -593,10 +581,6 @@ AddStategraphState("wilson", sweeping_blade)
 AddStategraphState("wilson", sweeping_blade_circle)
 AddStategraphState("wilson", sweeping_blade_pst)
 AddStategraphState("wilson_client", sweeping_blade_pre_client)
-
---------------------------------------------------------------------------------
--------------------------------------狂风绝息斩----------------------------------
---------------------------------------------------------------------------------
 
 local function SpawnShadow(inst, target)
     inst.yasuo_shadow = SpawnPrefab(inst.prefab)

@@ -34,17 +34,15 @@ _G.YASUO =
             DAMAGE = 5 * damage_mult,
             SUSTAIN = 15,
             DAMAGEMULTIPLIER = 1.5,
-            CD = 30 * cooldown_mult,
+            CD = 25 * cooldown_mult,
         }
     }
 }
 
---添加这些变量, 用于选人界面的角色三维显示
 TUNING.YASUO_HEALTH = YASUO.HEALTH
 TUNING.YASUO_SANITY = YASUO.SANITY
 TUNING.YASUO_HUNGER = YASUO.HUNGER
 
---添加这些变量, 用于选人界面的初始物品显示
 TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.YASUO =
 {
     "yasuo_sword"
