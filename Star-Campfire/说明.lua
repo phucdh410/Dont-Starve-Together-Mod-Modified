@@ -1,3 +1,0 @@
-直接从exported里面的fy_starmoonaltar_build内fy_starmoonaltar_build文件打开编辑
-
-然后双击autocompiler  重启游戏 不能直接重新加载 图是需要重新加载 所以必须重创建世界这里开始 不能游戏通过回档 无效果的 不改变图
