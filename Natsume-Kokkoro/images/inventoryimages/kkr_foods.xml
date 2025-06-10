@@ -1,0 +1,9 @@
+<Atlas>
+    <Texture filename="kkr_foods.tex"/>
+    <Elements>
+        <Element name="kkr_cactus_pancake.tex" u1="0.00390625" u2="0.49609375" v1="0.50390625" v2="0.99609375"/>
+        <Element name="kkr_cloudsea_monstermeat.tex" u1="0.50390625" u2="0.99609375" v1="0.50390625" v2="0.99609375"/>
+        <Element name="kkr_kantostyle_stew.tex" u1="0.00390625" u2="0.49609375" v1="0.00390625" v2="0.49609375"/>
+        <Element name="kkr_sea_snowsugar.tex" u1="0.50390625" u2="0.99609375" v1="0.00390625" v2="0.49609375"/>
+    </Elements>
+</Atlas>
