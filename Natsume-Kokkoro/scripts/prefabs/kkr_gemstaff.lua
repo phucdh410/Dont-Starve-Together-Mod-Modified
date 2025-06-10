@@ -1,68 +1,60 @@
-local assets =
-{
-    Asset("ANIM", "anim/kkr_gemstaff.zip"),  --地上的动画
-    Asset('ANIM', 'anim/swap_kkr_gemstaff.zip'), --手里的动画
-	Asset("ATLAS", "images/inventoryimages/kkr_gemstaff.xml"), --加载物品栏贴图
-    Asset("IMAGE", "images/inventoryimages/kkr_gemstaff.tex"),
+local assets = {
+    Asset("ANIM", "anim/kkr_gemstaff.zip"),
+    Asset("ANIM", "anim/swap_kkr_gemstaff.zip"),
+    Asset("ATLAS", "images/inventoryimages/kkr_gemstaff.xml"),
+    Asset("IMAGE", "images/inventoryimages/kkr_gemstaff.tex")
 }
 
 local function OnBroken(inst)
-	inst.components.weapon:SetDamage(12.5)
+    inst.components.weapon:SetDamage(12.5)
     if inst.components.aoetargeting then
         inst.components.aoetargeting:SetEnabled(false)
     end
 end
 
 local function OnRepaired(inst)
-	inst.components.weapon:SetDamage(42.5)
+    inst.components.weapon:SetDamage(42.5)
     if inst.components.aoetargeting then
         inst.components.aoetargeting:SetEnabled(true)
     end
 end
 
 local function ShouldAcceptItem(inst, item)
-    if item.prefab == 'goldnugget' or item.prefab == 'bluegem' or item.prefab == 'walrus_tusk' then
+    if item.prefab == "goldnugget" or item.prefab == "bluegem" or item.prefab == "walrus_tusk" then
         return true
     end
     return false
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-    if item.prefab == 'goldnugget' then
+    if item.prefab == "goldnugget" then
         inst.components.finiteuses:Use(-100)
-    elseif item.prefab == 'bluegem' then
+    elseif item.prefab == "bluegem" then
         inst.components.finiteuses:Use(-200)
     else
         inst:Remove()
-        giver.components.inventory:GiveItem(SpawnPrefab('kkr_elfstaff'))
+        giver.components.inventory:GiveItem(SpawnPrefab("kkr_elfstaff"))
     end
     if inst.components.finiteuses.current > inst.components.finiteuses.total then
         inst.components.finiteuses.current = inst.components.finiteuses.total
     end
     OnRepaired(inst)
-    
 end
 
 local function OnLunged(inst, doer, startingpos, targetpos)
     inst.components.finiteuses:Use(4)
     inst.components.rechargeable:Discharge(2)
-
 end
 
 local function OnLungedHit(inst, doer, target)
 end
 
-
-
 local function ReticuleTargetFn()
-    --Cast range is 8, leave room for error (6.5 lunge)
     return Vector3(ThePlayer.entity:LocalToWorldSpace(6.5, 0, 0))
 end
 
-
-
 local function SpellFn(inst, doer, pos)
-    doer:PushEvent('combat_lunge', {targetpos = pos, weapon = inst})
+    doer:PushEvent("combat_lunge", {targetpos = pos, weapon = inst})
 end
 
 local function ReticuleMouseTargetFn(inst, mousepos)
@@ -91,20 +83,16 @@ local function ReticuleUpdatePositionFn(inst, pos, reticule, ease, smoothing, dt
     reticule.Transform:SetRotation(rot)
 end
 
-local function onequip(inst, owner) --装备
-
+local function onequip(inst, owner)
     owner.AnimState:OverrideSymbol("swap_object", "swap_kkr_gemstaff", "symbol0")
-								--替换的动画部件	使用的动画	替换的文件夹（注意这里也是文件夹的名字）
+
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
-
-
 end
 
-local function onunequip(inst, owner) --解除装备
+local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
-
 end
 
 local function OnDischarged(inst)
@@ -122,19 +110,16 @@ local function OnCharged(inst)
     end
 end
 
-
 local function OnFinished(inst)
     OnBroken(inst)
 end
 
---加载
 local function onload(inst, data)
     if inst then
         if inst.components.finiteuses.current <= 0 then
             OnBroken(inst)
         end
     end
-
 end
 
 local function fn()
@@ -145,24 +130,23 @@ local function fn()
     inst.entity:AddNetwork()
 
     MakeInventoryPhysics(inst)
-    MakeInventoryFloatable(inst, "med", nil, 0.75) --漂浮
+    MakeInventoryFloatable(inst, "med", nil, 0.75)
 
-    inst.AnimState:SetBank("kkr_gemstaff")  --地上动画
+    inst.AnimState:SetBank("kkr_gemstaff")
     inst.AnimState:SetBuild("kkr_gemstaff")
     inst.AnimState:PlayAnimation("idle")
 
-
     inst.entity:SetPristine()
 
-    inst:AddTag("meteor_protection") --防止被流星破坏
-    inst:AddTag("nosteal") --防止被火药猴偷走
-    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
+    inst:AddTag("meteor_protection")
+    inst:AddTag("nosteal")
+    inst:AddTag("NORATCHECK")
 
     if KKRENV.KKR_LUNGE_ENABLE then
-        inst:AddComponent('aoetargeting')
+        inst:AddComponent("aoetargeting")
         inst.components.aoetargeting:SetAllowRiding(false)
-        inst.components.aoetargeting.reticule.reticuleprefab = 'reticuleline'
-        inst.components.aoetargeting.reticule.pingprefab = 'reticulelineping'
+        inst.components.aoetargeting.reticule.reticuleprefab = "reticuleline"
+        inst.components.aoetargeting.reticule.pingprefab = "reticulelineping"
         inst.components.aoetargeting.reticule.targetfn = ReticuleTargetFn
         inst.components.aoetargeting.reticule.mousetargetfn = ReticuleMouseTargetFn
         inst.components.aoetargeting.reticule.updatepositionfn = ReticuleUpdatePositionFn
@@ -176,50 +160,48 @@ local function fn()
         return inst
     end
 
-    inst:AddComponent("weapon") --增加武器组件 有了这个才可以打人
-    inst.components.weapon:SetDamage(42.5) --设置伤害
+    inst:AddComponent("weapon")
+    inst.components.weapon:SetDamage(42.5)
 
     if KKRENV.KKR_LUNGE_ENABLE then
-        inst:AddComponent('aoeweapon_lunge')
+        inst:AddComponent("aoeweapon_lunge")
         inst.components.aoeweapon_lunge:SetDamage(42.5)
-        inst.components.aoeweapon_lunge:SetSound('meta3/wigfrid/spear_lighting_lunge')
+        inst.components.aoeweapon_lunge:SetSound("meta3/wigfrid/spear_lighting_lunge")
         inst.components.aoeweapon_lunge:SetSideRange(2)
         inst.components.aoeweapon_lunge:SetOnLungedFn(OnLunged)
         inst.components.aoeweapon_lunge:SetOnHitFn(OnLungedHit)
-        inst.components.aoeweapon_lunge:SetTrailFX("kkr_spear_lungefx",1)
+        inst.components.aoeweapon_lunge:SetTrailFX("kkr_spear_lungefx", 1)
         inst.components.aoeweapon_lunge:SetWorkActions()
-        inst.components.aoeweapon_lunge:SetTags('_combat')
+        inst.components.aoeweapon_lunge:SetTags("_combat")
 
-        inst:AddComponent('aoespell')
+        inst:AddComponent("aoespell")
         inst.components.aoespell:SetSpellFn(SpellFn)
     end
 
-
-    inst:AddComponent('finiteuses')
+    inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetMaxUses(200)
     inst.components.finiteuses:SetUses(200)
     inst.components.finiteuses:SetOnFinished(OnFinished)
 
-    inst:AddComponent("inspectable") --可检查组件
+    inst:AddComponent("inspectable")
 
-    inst:AddComponent("inventoryitem") --物品组件
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/kkr_gemstaff.xml" --物品贴图
-	
-    inst:AddComponent("equippable") --可装备组件
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/kkr_gemstaff.xml"
+
+    inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
 
-    inst:AddComponent('trader')
+    inst:AddComponent("trader")
     inst.components.trader.onaccept = OnGetItemFromPlayer
     inst.components.trader:SetAcceptTest(ShouldAcceptItem)
 
     inst:AddComponent("rechargeable")
-	inst.components.rechargeable:SetMaxCharge(2)
+    inst.components.rechargeable:SetMaxCharge(2)
     inst.components.rechargeable:SetOnDischargedFn(OnDischarged)
     inst.components.rechargeable:SetOnChargedFn(OnCharged)
 
     inst.OnLoad = onload
-
 
     return inst
 end

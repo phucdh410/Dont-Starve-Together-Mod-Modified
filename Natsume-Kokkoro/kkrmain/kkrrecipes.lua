@@ -1,42 +1,3 @@
---------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------
-
---新版制作栏分类
-
---FAVORITES--收藏
---CRAFTING_STATION--科技站专属
---SPECIAL_EVENT--特殊节日
---MODS--模组物品(所有非科技站解锁的mod物品会自动添加这个标签)
-
---CHARACTER--人物专属
---TOOLS--工具
---LIGHT--光源
---PROTOTYPERS--科技
---REFINE--精炼
---WEAPONS--武器
---ARMOUR--盔甲
---CLOTHING--服装
---RESTORATION--治疗
---MAGIC--魔法
---DECOR--装饰
-
---STRUCTURES--建筑
---CONTAINERS--容器
---COOKING--烹饪
---GARDENING--食物、种植
---FISHING--钓鱼
---SEAFARING--航海
---RIDING--骑乘
---WINTER--保暖道具
---SUMMER--避暑道具
---RAIN--雨具
---EVERYTHING--所有
-
---------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------
-
-
---宝石杖
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_gemstaff.xml","kkr_gemstaff.tex")
 AddRecipe2(
     'kkr_gemstaff',
@@ -45,8 +6,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_gemstaff.xml', image = 'kkr_gemstaff.tex'},
     {'CHARACTER'}
 )
-
---大精灵杖
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_elfstaff_plus.xml","kkr_elfstaff_plus.tex")
 AddRecipe2(
     'kkr_elfstaff_plus',
@@ -55,8 +14,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_elfstaff_plus.xml', image = 'kkr_elfstaff_plus.tex'},
     {'CHARACTER'}
 )
-
---精灵长袍
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_elfrobe.xml","kkr_elfrobe.tex")
 AddRecipe2(
     'kkr_elfrobe',
@@ -65,8 +22,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_elfrobe.xml', image = 'kkr_elfrobe.tex'},
     {'CHARACTER'}
 )
-
---精灵披风
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_elfcloak_wing.xml","kkr_elfcloak_wing.tex")
 AddRecipe2(
     'kkr_elfcloak',
@@ -75,8 +30,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_elfcloak_wing.xml', image = 'kkr_elfcloak_wing.tex'},
     {'CHARACTER'}
 )
-
---花朵头饰
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_flower_ribbon.xml","kkr_flower_ribbon.tex")
 AddRecipe2(
     'kkr_flower_ribbon',
@@ -85,8 +38,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_flower_ribbon.xml', image = 'kkr_flower_ribbon.tex'},
     {'CHARACTER'}
 )
-
---花朵护身符
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_flower_amulet.xml","kkr_flower_amulet.tex")
 AddRecipe2(
     'kkr_flower_amulet',
@@ -95,8 +46,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_flower_amulet.xml', image = 'kkr_flower_amulet.tex'},
     {'CHARACTER'}
 )
-
---新春杖
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_newyear_staff.xml","kkr_newyear_staff.tex")
 AddRecipe2(
     'kkr_newyear_staff',
@@ -105,8 +54,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_newyear_staff.xml', image = 'kkr_newyear_staff.tex'},
     {'CHARACTER'}
 )
-
---便携包
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_pocket.xml","kkr_pocket.tex")
 AddRecipe2(
     'kkr_pocket',
@@ -115,8 +62,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_pocket.xml', image = 'kkr_pocket.tex'},
     {'CHARACTER'}
 )
-
---便携包大
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_pocket_plus.xml","kkr_pocket_plus.tex")
 AddRecipe2(
     'kkr_pocket_plus',
@@ -125,8 +70,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_pocket_plus.xml', image = 'kkr_pocket_plus.tex'},
     {'CHARACTER'}
 )
-
---龙尾肉
 RegisterInventoryItemAtlas("images/inventoryimages/kkr_dragon_meat.xml","kkr_dragon_meat.tex")
 AddRecipe2(
     'kkr_dragon_meat',
@@ -135,8 +78,6 @@ AddRecipe2(
     {builder_tag = 'kkr', atlas = 'images/inventoryimages/kkr_dragon_meat.xml', image = 'kkr_dragon_meat.tex',numtogive = 4},
     {'CHARACTER'}
 )
-
---大肉，防止和原版配方冲突，采用虚空预制物的方法
 AddRecipe2(
     'kkr_meat',
     {Ingredient('monstermeat', 3)},

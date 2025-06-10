@@ -1,9 +1,9 @@
-local KKRSEW = Action()--添加一个动作
-KKRSEW.id = "KKRSEW"--声明动作的id，全局唯一，不可重复
-KKRSEW.str = "修补"--动作的名称
+local KKRSEW = Action()
+KKRSEW.id = "KKRSEW"
+KKRSEW.str = "Repair"
 KKRSEW.priority = 999
 
-KKRSEW.fn = function(act) --定义动作的函数 
+KKRSEW.fn = function(act) 
     if act.target ~= nil and
         act.invobject ~= nil and
         act.target.components.armor ~= nil and
@@ -12,7 +12,7 @@ KKRSEW.fn = function(act) --定义动作的函数
         return act.invobject.components.sewing:DoSewing(act.target, act.doer)
     end
 end
-AddAction(KKRSEW)--添加自定义的动作到动作表中
+AddAction(KKRSEW)
 AddComponentAction("USEITEM", "sewing", function(inst, doer, target, actions, right)
     if target:HasTag("kkr_sewing") and
                 not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding() and

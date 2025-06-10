@@ -45,7 +45,6 @@ function params.kkr_pocket_plus.itemtestfn(container, item, slot)
     return not (item:HasTag("irreplaceable") or item:HasTag("_container"))
 end
 
---新年法杖
 params.kkr_newyear_staff = {
     widget = {
         slotpos = {
