@@ -1,7 +1,7 @@
-name = 'Rui Ta'
+name = 'Rui Ta - DHPModified'
 description = 'No Description'
-author = '丧芝，LUOXIA11，vandoordeep'
-version = '0.5.4'
+author = 'PhucDH410'
+version = '1.0.0'
 
 api_version = 10
 
@@ -18,7 +18,6 @@ icon = 'modicon.tex'
 
 server_filter_tags = {
     'character',
-    '芮塔',
     'ruita',
     'Rui Ta'
 }
@@ -26,54 +25,54 @@ server_filter_tags = {
 configuration_options = {
     {
         name = 'xxx3_wf_producebutterfly',
-        label = '蝴蝶生成',
-        hover = '世界花是否生成蝴蝶',
+        label = 'Butterfly Spawn',
+        hover = 'Should the World Flower spawn butterflies?',
         options = {
-            {description = '是', data = true},
-            {description = '否', data = false}
+            {description = 'Enable', data = true},
+            {description = 'Disable', data = false}
         },
         default = true
     },
     {
         name = 'xxx3_wf_producefirefly',
-        label = '萤火虫生成',
-        hover = '世界花是否生成萤火虫',
+        label = 'Firefly Spawn',
+        hover = 'Should the World Flower spawn fireflies?',
         options = {
-            {description = '是', data = true},
-            {description = '否', data = false}
+            {description = 'Enable', data = true},
+            {description = 'Disable', data = false}
         },
         default = true
     },
     {
         name = 'xxx3_wf_produceitem',
-        label = '世界花掉落',
-        hover = '世界花是否在每日清晨掉落物品',
+        label = 'World Flower Drop',
+        hover = 'Should the World Flower drop items every morning?',
         options = {
-            {description = '是', data = true},
-            {description = '否', data = false}
+            {description = 'Enable', data = true},
+            {description = 'Disable', data = false}
         },
         default = true
     },
     {
         name = 'xxx3_itemduring',
-        label = '物品耐久',
-        hover = '花束与各种眼球草花环是否有耐久',
+        label = 'Item Durability',
+        hover = 'Should bouquets and all types of Eyebrella garlands have durability?',
         options = {
-            {description = '是', data = true},
-            {description = '否', data = false}
+            {description = 'Enable', data = true},
+            {description = 'Disable', data = false}
         },
         default = false
     },
     {
         name = 'xxx3_foodvalue',
-        label = '食物属性',
-        hover = '芮塔专属食物的回复效果',
+        label = 'Food Values',
+        hover = "Ruita's exclusive food healing effects",
         options = {
-            {description = '大砍', data = 0.5},
-            {description = '小削', data = 0.75},
-            {description = '默认', data = 1},
-            {description = '加强', data = 1.5},
-            {description = '变态', data = 2}
+            {description = '50%', data = 0.5},
+            {description = '75%', data = 0.75},
+            {description = '100%', data = 1},
+            {description = '150%', data = 1.5},
+            {description = '200%', data = 2}
         },
         default = 1
     }

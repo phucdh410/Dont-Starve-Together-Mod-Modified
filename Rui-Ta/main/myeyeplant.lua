@@ -2,14 +2,9 @@ local _G = GLOBAL
 local FRAMES = _G.FRAMES
 local TimeEvent = _G.TimeEvent
 local EventHandler = _G.EventHandler
--- local require = _G.require
--- local STRINGS = _G.STRINGS
 local EQUIPSLOTS = _G.EQUIPSLOTS
 local ACTIONS = _G.ACTIONS
--- local ActionHandler = _G.ActionHandler
 local IsServer = _G.TheNet:GetIsServer() or _G.TheNet:IsDedicated()
-
-----------
 
 AddPrefabFiles(
     'xxx3_eyeplant_0',

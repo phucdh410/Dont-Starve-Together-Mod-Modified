@@ -1,5 +1,5 @@
 local tile_assets = {
-    -- 地皮的资源文件
+    
     Asset('ANIM', 'anim/xxx3_turf.zip'),
     Asset('IMAGE', 'images/inventoryimages/xxx3_turf_item.tex'),
     Asset('ATLAS', 'images/inventoryimages/xxx3_turf_item.xml')
@@ -10,43 +10,43 @@ for _, asset in ipairs(tile_assets) do
 end
 
 AddTile(
-    'XXX3_TURF', --地皮名称
-    'LAND', --地皮类型
+    'XXX3_TURF', 
+    'LAND', 
     {
-        ground_name = 'xxx3_turf' --自定义名字
+        ground_name = 'xxx3_turf' 
     },
     {
-        name = 'yellowgrass', --边缘样式 比如 牛毛地毯carpet 棋盘blocky 也可以自己做。这里设置为我们文件里的
-        noise_texture = 'xxx3_turf', --这里是图片
-        --定义在地皮上行走的声音
+        name = 'yellowgrass', 
+        noise_texture = 'xxx3_turf', 
+        
         runsound = 'dontstarve/movement/run_grass',
         walksound = 'dontstarve/movement/run_grass',
         snowsound = 'dontstarve/movement/run_snow',
         mudsound = 'dontstarve/movement/run_mud',
-        cannotbedug = nil --标记为true则不能挖掉
+        cannotbedug = nil 
     },
     {
         name = 'map_edge',
-        noise_texture = 'quagmire_parkfield_mini' --小地图图片
+        noise_texture = 'quagmire_parkfield_mini' 
     },
-    --挖掉的定义，如果这个表为空则挖掉之后不掉地皮
+    
     {
-        name = 'xxx3_item', -- 掉落物的代码
-        anim = 'idle', -- Ground item
+        name = 'xxx3_item', 
+        anim = 'idle', 
         bank_build = 'xxx3_turf'
     }
 )
 
 AddTile(
-    'XXX3_TURF_SP', --地皮名称
-    'LAND', --地皮类型
+    'XXX3_TURF_SP', 
+    'LAND', 
     {
-        ground_name = 'xxx3_turf_sp' --自定义名字
+        ground_name = 'xxx3_turf_sp' 
     },
     {
-        name = 'yellowgrass', --边缘样式 比如 牛毛地毯carpet 棋盘blocky 也可以自己做。这里设置为我们文件里的
-        noise_texture = 'xxx3_turf', --这里是图片
-        --定义在地皮上行走的声音
+        name = 'yellowgrass', 
+        noise_texture = 'xxx3_turf', 
+        
         runsound = 'dontstarve/movement/run_grass',
         walksound = 'dontstarve/movement/run_grass',
         snowsound = 'dontstarve/movement/run_snow',
@@ -57,7 +57,7 @@ AddTile(
     },
     {
         name = 'map_edge',
-        noise_texture = 'quagmire_parkfield_mini' --小地图图片
+        noise_texture = 'quagmire_parkfield_mini' 
     }
 )
 

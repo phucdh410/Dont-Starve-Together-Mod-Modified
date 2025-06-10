@@ -1,40 +1,38 @@
 local foods = {
     xxx3_hbsl = {
-        --花瓣沙拉
         test = function(cooker, names, tags)
-            --定义这个食物需要什么食材 ,完整的花*4
             return names.xxx3_bf and names.xxx3_bf == 4
         end,
-        name = 'xxx3_hbsl', -- 料理名
-        weight = 1, -- 食谱权重
-        priority = 30, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --菜类
+        name = 'xxx3_hbsl', 
+        weight = 1, 
+        priority = 30, 
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, 
         health = 50 * TUNING.XXX3_FOODVALUE,
         hunger = 25 * TUNING.XXX3_FOODVALUE,
         sanity = 0,
-        perishtime = TUNING.PERISH_FAST, --6天
+        perishtime = TUNING.PERISH_FAST, 
         cooktime = 0.1,
         potlevel = 'high',
         cookbook_tex = 'xxx3_hbsl.tex',
         cookbook_atlas = 'images/xxx3_hbsl.xml',
         floater = {'med', nil, 0.55},
         cookbook_category = 'cookpot',
-        oneat_desc = '持续吸引蝴蝶'
+        oneat_desc = 'Attracts butterflies continuously'
     },
     xxx3_hjmdj = {
-        --黄金蜜蝶卷
+        
         test = function(cooker, names, tags)
-            --定义这个食物需要什么食材 ,完整的花+黄金花粉+蝴蝶翅膀+蜂蜜
+            
             return names.xxx3_bf and names.xxx3_pollen and names.butterflywings and names.honey
         end,
-        name = 'xxx3_hjmdj', -- 料理名
-        weight = 1, -- 食谱权重
-        priority = 30, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --菜类
+        name = 'xxx3_hjmdj', 
+        weight = 1, 
+        priority = 30, 
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, 
         health = 35 * TUNING.XXX3_FOODVALUE,
         hunger = 50 * TUNING.XXX3_FOODVALUE,
         sanity = 20 * TUNING.XXX3_FOODVALUE,
-        perishtime = TUNING.PERISH_MED, --10天
+        perishtime = TUNING.PERISH_MED, 
         cooktime = 0.2,
         potlevel = 'high',
         cookbook_tex = 'xxx3_hjmdj.tex',
@@ -43,19 +41,19 @@ local foods = {
         cookbook_category = 'cookpot'
     },
     xxx3_hmhb = {
-        --花蜜汉堡
+        
         test = function(cooker, names, tags)
-            --定义这个食物需要什么食材 ,完整的花+黄金花粉+肉度大于=1
+            
             return names.xxx3_bf and names.xxx3_pollen and tags.meat and tags.meat >= 1
         end,
-        name = 'xxx3_hmhb', -- 料理名
-        weight = 1, -- 食谱权重
-        priority = 30, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.MEAT, --肉类
+        name = 'xxx3_hmhb', 
+        weight = 1, 
+        priority = 30, 
+        foodtype = GLOBAL.FOODTYPE.MEAT, 
         health = 15 * TUNING.XXX3_FOODVALUE,
         hunger = 112.5 * TUNING.XXX3_FOODVALUE,
         sanity = 5 * TUNING.XXX3_FOODVALUE,
-        perishtime = TUNING.PERISH_SLOW, --15天
+        perishtime = TUNING.PERISH_SLOW, 
         cooktime = 0.6,
         potlevel = 'high',
         cookbook_tex = 'xxx3_hmhb.tex',
@@ -64,19 +62,19 @@ local foods = {
         cookbook_category = 'cookpot'
     },
     xxx3_hjdg = {
-        --黄金蛋糕
+        
         test = function(cooker, names, tags)
-            --定义这个食物需要什么食材 ,黄金花粉=4
+            
             return names.xxx3_pollen and names.xxx3_pollen == 4
         end,
-        name = 'xxx3_hjdg', -- 料理名
-        weight = 1, -- 食谱权重
-        priority = 30, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --菜类
+        name = 'xxx3_hjdg', 
+        weight = 1, 
+        priority = 30, 
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, 
         health = 40 * TUNING.XXX3_FOODVALUE,
         hunger = 85 * TUNING.XXX3_FOODVALUE,
         sanity = 5 * TUNING.XXX3_FOODVALUE,
-        perishtime = TUNING.PERISH_SLOW, --15天
+        perishtime = TUNING.PERISH_SLOW, 
         cooktime = 1,
         potlevel = 'high',
         cookbook_tex = 'xxx3_hjdg.tex',
@@ -85,20 +83,20 @@ local foods = {
         cookbook_category = 'cookpot'
     },
     xxx3_nmtd = {
-        --纳米糖豆
+        
         test = function(cooker, names, tags)
-            --定义这个食物需要什么食材 ,黄金花粉+蜂王浆+蝴蝶翅膀+甜度大于等于5
+            
             return names.xxx3_pollen and names.royal_jelly and names.butterflywings and tags.sweetener and
                 tags.sweetener >= 5
         end,
-        name = 'xxx3_nmtd', -- 料理名
-        weight = 1, -- 食谱权重
-        priority = 30, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --零食类
+        name = 'xxx3_nmtd', 
+        weight = 1, 
+        priority = 30, 
+        foodtype = GLOBAL.FOODTYPE.GOODIES, 
         health = 0,
         hunger = 2,
         sanity = 0,
-        perishtime = nil, --无
+        perishtime = nil, 
         cooktime = 2,
         potlevel = 'high',
         cookbook_tex = 'xxx3_nmtd.tex',
@@ -123,7 +121,7 @@ AddIngredientValues({'xxx3_bf'}, {decoration = 2})
 RegisterInventoryItemAtlas('images/xxx3_pollen.xml', 'xxx3_pollen.tex')
 RegisterInventoryItemAtlas('images/xxx3_bf.xml', 'xxx3_bf.tex')
 
------------------------------------------------------------------------------
+
 
 require('tuning')
 
@@ -150,49 +148,49 @@ local function GenerateSpicedFoods(foods)
         for spicenameupper, spicedata in pairs(SPICES) do
             local newdata = shallowcopy(fooddata)
             local spicename = string.lower(spicenameupper)
-            -- if foodname == "wetgoop" then
-            --     newdata.test = function(cooker, names, tags) return names[spicename] end
-            --     newdata.priority = -10
-            -- else
+            
+            
+            
+            
             newdata.test = function(cooker, names, tags)
                 return names[foodname] and names[spicename]
             end
             newdata.priority = 100
-            -- end
+            
             newdata.cooktime = .12
             newdata.stacksize = nil
             newdata.spice = spicenameupper
             newdata.basename = foodname
             newdata.name = foodname .. '_' .. spicename
 
-            --这两个设置应该没用吧
-            -- newdata.official = true
-            -- newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
+            
+            
+            
 
-            ------------
+            
 
-            if newdata.float ~= nil then --原本就会沉的料理，即使加了调料一样会沉
+            if newdata.float ~= nil then 
                 newdata.float = {nil, 'med', 0.05, {0.8, 0.7, 0.8}}
             end
             TUNING.XXX3_FOODS_SPICED[newdata.name] = newdata
 
-            ------------
+            
 
             if spicename == 'spice_chili' then
                 if newdata.temperature == nil then
-                    --Add permanent "heat" to regular food
+                    
                     newdata.temperature = TUNING.HOT_FOOD_BONUS_TEMP
                     newdata.temperatureduration = TUNING.FOOD_TEMP_LONG
                     newdata.nochill = true
                 elseif newdata.temperature > 0 then
-                    --Upgarde "hot" food to permanent heat
+                    
                     newdata.temperatureduration = math.max(newdata.temperatureduration, TUNING.FOOD_TEMP_LONG)
                     newdata.nochill = true
                 end
             end
 
             if spicedata.prefabs ~= nil then
-                --make a copy (via ArrayUnion) if there are dependencies from the original food
+                
                 newdata.prefabs =
                     newdata.prefabs ~= nil and ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
             end

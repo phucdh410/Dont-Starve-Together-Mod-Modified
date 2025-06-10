@@ -13,7 +13,6 @@ TUNING.XXX3_WF_PRODUCEITEM = GetModConfigData('xxx3_wf_produceitem')
 TUNING.XXX3_ITEMDURING = GetModConfigData('xxx3_itemduring')
 TUNING.XXX3_FOODVALUE = GetModConfigData('xxx3_foodvalue')
 
---加入新科技树
 modimport('scripts/newtech_xxx3.lua')
 
 PrefabFiles = {
@@ -140,38 +139,33 @@ local RECIPETABS = GLOBAL.RECIPETABS
 local ACTIONS = GLOBAL.ACTIONS
 local ActionHandler = GLOBAL.ActionHandler
 
--- The character select screen lines
-STRINGS.CHARACTER_TITLES.xxx3 = '芮塔'
-STRINGS.CHARACTER_NAMES.xxx3 = '芮塔'
-STRINGS.CHARACTER_DESCRIPTIONS.xxx3 = '*是一朵食人花\n*不会受到食人花的攻击\n*可以种植世界之花'
-STRINGS.CHARACTER_QUOTES.xxx3 = '"种出一片花丛！"'
-STRINGS.CHARACTER_SURVIVABILITY.xxx3 = '普通'
+STRINGS.CHARACTER_TITLES.xxx3 = 'Ruita'
+STRINGS.CHARACTER_NAMES.xxx3 = 'Ruita'
+STRINGS.CHARACTER_DESCRIPTIONS.xxx3 = "*Is a girl flower\n*Immune to attacks from eyeplants\n*Can plant the World Flower"
+STRINGS.CHARACTER_QUOTES.xxx3 = '"Grow a field of flowers!"'
+STRINGS.CHARACTER_SURVIVABILITY.xxx3 = 'Normal'
 
--- Custom speech strings
 STRINGS.CHARACTERS.XXX3 = require 'speech_xxx3'
 
--- The character's name as appears in-game
-STRINGS.NAMES.XXX3 = '芮塔'
-STRINGS.SKIN_NAMES.xxx3_none = '芮塔'
+STRINGS.NAMES.XXX3 = 'Ruita'
+STRINGS.SKIN_NAMES.xxx3_none = 'Ruita'
 
-STRINGS.SKIN_NAMES.xxx3_victorian = '女仆-芮塔'
-STRINGS.SKIN_QUOTES.xxx3_victorian = '"需要上门服务吗"'
-STRINGS.SKIN_DESCRIPTIONS.xxx3_victorian = '女仆装芮塔'
+STRINGS.SKIN_NAMES.xxx3_victorian = 'Maid Ruita'
+STRINGS.SKIN_QUOTES.xxx3_victorian = '"Need house service?"'
+STRINGS.SKIN_DESCRIPTIONS.xxx3_victorian = 'Maid outfit Ruita'
 
-STRINGS.SKIN_NAMES.xxx3_shadow = '天祈-芮塔'
-STRINGS.SKIN_QUOTES.xxx3_shadow = '"我只是在盯着你看"'
-STRINGS.SKIN_DESCRIPTIONS.xxx3_shadow = '天祈芮塔'
+STRINGS.SKIN_NAMES.xxx3_shadow = 'Tianqi Ruita'
+STRINGS.SKIN_QUOTES.xxx3_shadow = '"I\'m just staring at you"'
+STRINGS.SKIN_DESCRIPTIONS.xxx3_shadow = 'Tianqi Ruita'
 
-STRINGS.SKIN_NAMES.xxx3_myth = '魔花教主-芮塔'
-STRINGS.SKIN_QUOTES.xxx3_myth = '"这朵花好看吗"'
-STRINGS.SKIN_DESCRIPTIONS.xxx3_myth = '魔花教主芮塔'
+STRINGS.SKIN_NAMES.xxx3_myth = 'Demon Flower Master Ruita'
+STRINGS.SKIN_QUOTES.xxx3_myth = '"Does this flower look good?"'
+STRINGS.SKIN_DESCRIPTIONS.xxx3_myth = 'Demon Flower Master Ruita'
 
-STRINGS.SKIN_NAMES.xxx3_huohuo = '星穹铁道-藿藿'
-STRINGS.SKIN_QUOTES.xxx3_huohuo = '"我是……僵尸……请别……打我……"'
-STRINGS.SKIN_DESCRIPTIONS.xxx3_huohuo = '这是打扮成藿藿的芮塔，还是打扮成芮塔的藿藿？'
+STRINGS.SKIN_NAMES.xxx3_huohuo = 'Star Rail - Huohuo'
+STRINGS.SKIN_QUOTES.xxx3_huohuo = '"I am... a zombie... please... don\'t hit me..."'
+STRINGS.SKIN_DESCRIPTIONS.xxx3_huohuo = 'Is this Ruita dressed as Huohuo, or Huohuo dressed as Ruita?'
 
--- The skins shown in the cycle view window on the character select screen.
--- A good place to see what you can put in here is in skinutils.lua, in the function GetSkinModes
 local skin_modes = {
     {
         type = 'ghost_skin',
@@ -182,131 +176,128 @@ local skin_modes = {
     }
 }
 
-STRINGS.NAMES.XXX3_WF = '世界花'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WF = '她真漂亮'
-STRINGS.RECIPE_DESC.XXX3_WF = '集世间之华'
+STRINGS.NAMES.XXX3_WF = 'World Flower'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WF = 'She is so beautiful'
+STRINGS.RECIPE_DESC.XXX3_WF = 'Gather the beauty of the world'
 
-STRINGS.NAMES.XXX3_WF_SEED = '世界花种子'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WF_SEED = '她一定会变得很漂亮'
-STRINGS.RECIPE_DESC.XXX3_WF_SEED = '集世间之华'
+STRINGS.NAMES.XXX3_WF_SEED = 'World Flower Seed'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WF_SEED = 'She will surely become beautiful'
+STRINGS.RECIPE_DESC.XXX3_WF_SEED = 'Gather the beauty of the world'
 
-STRINGS.NAMES.XXX3_HAT = '眼球草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_HAT = '我是眼球草'
-STRINGS.RECIPE_DESC.XXX3_HAT = '我是眼球草'
+STRINGS.NAMES.XXX3_HAT = 'Eyebrella Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_HAT = 'I am an eyeplant'
+STRINGS.RECIPE_DESC.XXX3_HAT = 'I am an eyeplant'
 
-STRINGS.NAMES.XXX3_SPRINGHAT = '毒囊草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SPRINGHAT = '我是毒囊草'
-STRINGS.RECIPE_DESC.XXX3_SPRINGHAT = '我是毒囊草'
+STRINGS.NAMES.XXX3_SPRINGHAT = 'Venom Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SPRINGHAT = 'I am venom grass'
+STRINGS.RECIPE_DESC.XXX3_SPRINGHAT = 'I am venom grass'
 
-STRINGS.NAMES.XXX3_SUMMERHAT = '火龙草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SUMMERHAT = '我是火龙草'
-STRINGS.RECIPE_DESC.XXX3_SUMMERHAT = '我是火龙草'
+STRINGS.NAMES.XXX3_SUMMERHAT = 'Fire Dragon Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SUMMERHAT = 'I am fire dragon grass'
+STRINGS.RECIPE_DESC.XXX3_SUMMERHAT = 'I am fire dragon grass'
 
-STRINGS.NAMES.XXX3_AUTUMNHAT = '岩棘草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_AUTUMNHAT = '我是岩棘草'
-STRINGS.RECIPE_DESC.XXX3_AUTUMNHAT = '我是岩棘草'
+STRINGS.NAMES.XXX3_AUTUMNHAT = 'Rock Thorn Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_AUTUMNHAT = 'I am rock thorn grass'
+STRINGS.RECIPE_DESC.XXX3_AUTUMNHAT = 'I am rock thorn grass'
 
-STRINGS.NAMES.XXX3_WINTERHAT = '冰锤草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WINTERHAT = '我是冰锤草'
-STRINGS.RECIPE_DESC.XXX3_WINTERHAT = '我是冰锤草'
+STRINGS.NAMES.XXX3_WINTERHAT = 'Ice Hammer Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_WINTERHAT = 'I am ice hammer grass'
+STRINGS.RECIPE_DESC.XXX3_WINTERHAT = 'I am ice hammer grass'
 
-STRINGS.NAMES.XXX3_SHADOWHAT = '黑蚀草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SHADOWHAT = '我是黑蚀草'
-STRINGS.RECIPE_DESC.XXX3_SHADOWHAT = '我是黑蚀草'
+STRINGS.NAMES.XXX3_SHADOWHAT = 'Shadow Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SHADOWHAT = 'I am shadow grass'
+STRINGS.RECIPE_DESC.XXX3_SHADOWHAT = 'I am shadow grass'
 
-STRINGS.NAMES.XXX3_LUNARHAT = '月神草花环'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_LUNARHAT = '我是月神草'
-STRINGS.RECIPE_DESC.XXX3_LUNARHAT = '我是月神草'
+STRINGS.NAMES.XXX3_LUNARHAT = 'Moon Grass Garland'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_LUNARHAT = 'I am moon grass'
+STRINGS.RECIPE_DESC.XXX3_LUNARHAT = 'I am moon grass'
 
-STRINGS.NAMES.XXX3_SF = '金日玫'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SF = '好像成熟了'
+STRINGS.NAMES.XXX3_SF = 'Golden Rose'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SF = 'Seems ripe'
 
-STRINGS.NAMES.XXX3_SF_NF = '金日玫'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SF_NF = '再等等就能吃了'
+STRINGS.NAMES.XXX3_SF_NF = 'Golden Rose'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SF_NF = 'Wait a bit longer to eat'
 
-STRINGS.NAMES.XXX3_BF = '完整的花'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BF = '它完整了'
-STRINGS.RECIPE_DESC.XXX3_BF = '它完整了'
+STRINGS.NAMES.XXX3_BF = 'Complete Flower'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BF = 'It is complete'
+STRINGS.RECIPE_DESC.XXX3_BF = 'It is complete'
 
-STRINGS.NAMES.XXX3_SEED = '黄金花籽'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SEED = '或许能种出好吃的'
+STRINGS.NAMES.XXX3_SEED = 'Golden Flower Seed'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_SEED = 'Maybe it can grow something tasty'
 
-STRINGS.NAMES.XXX3_POLLEN = '黄金花粉'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_POLLEN = '好像能吃'
+STRINGS.NAMES.XXX3_POLLEN = 'Golden Pollen'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_POLLEN = 'Seems edible'
 
-STRINGS.NAMES.XXX3_YDG = '伊甸果'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_YDG = '金色传说！'
+STRINGS.NAMES.XXX3_YDG = 'Eden Fruit'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_YDG = 'Golden legend!'
 
-STRINGS.NAMES.XXX3_CHYDG = '彩虹伊甸果'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_CHYDG = '彩色传说！'
-STRINGS.RECIPE_DESC.XXX3_CHYDG = '彩色传说！'
+STRINGS.NAMES.XXX3_CHYDG = 'Rainbow Eden Fruit'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_CHYDG = 'Colorful legend!'
+STRINGS.RECIPE_DESC.XXX3_CHYDG = 'Colorful legend!'
 
-STRINGS.NAMES.XXX3_BOUQUET = '花束'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET = '也许可以用来送给喜欢的人'
-STRINGS.RECIPE_DESC.XXX3_BOUQUET = '也许可以用来送给喜欢的人'
+STRINGS.NAMES.XXX3_BOUQUET = 'Bouquet'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET = 'Maybe you can give it to someone you like'
+STRINGS.RECIPE_DESC.XXX3_BOUQUET = 'Maybe you can give it to someone you like'
 
-STRINGS.NAMES.XXX3_BOUQUET_SHADOW = '恐惧花束'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET_SHADOW = '致阴影中尖刺缠绕的爱意'
-STRINGS.RECIPE_DESC.XXX3_BOUQUET_SHADOW = '致阴影中尖刺缠绕的爱意'
+STRINGS.NAMES.XXX3_BOUQUET_SHADOW = 'Fear Bouquet'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET_SHADOW = 'Love entwined with thorns in the shadows'
+STRINGS.RECIPE_DESC.XXX3_BOUQUET_SHADOW = 'Love entwined with thorns in the shadows'
 
-STRINGS.NAMES.XXX3_BOUQUET_LUNAR = '辉煌花束'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET_LUNAR = '致月光中永不丢失的温暖'
-STRINGS.RECIPE_DESC.XXX3_BOUQUET_LUNAR = '致月光中永不丢失的温暖'
+STRINGS.NAMES.XXX3_BOUQUET_LUNAR = 'Brilliant Bouquet'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_BOUQUET_LUNAR = 'Warmth never lost in the moonlight'
+STRINGS.RECIPE_DESC.XXX3_BOUQUET_LUNAR = 'Warmth never lost in the moonlight'
 
-STRINGS.NAMES.XXX3_FLGUN_PLANT = '繁花炮手'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_FLGUN_PLANT = '带来美丽的谢幕'
+STRINGS.NAMES.XXX3_FLGUN_PLANT = 'Floral Gunner'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_FLGUN_PLANT = 'Brings a beautiful finale'
 
-STRINGS.NAMES.XXX3_FLGUN = '繁花炮'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_FLGUN = '带来美丽的谢幕'
-STRINGS.RECIPE_DESC.XXX3_FLGUN = '带来美丽的谢幕'
+STRINGS.NAMES.XXX3_FLGUN = 'Floral Gun'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_FLGUN = 'Brings a beautiful finale'
+STRINGS.RECIPE_DESC.XXX3_FLGUN = 'Brings a beautiful finale'
 
-STRINGS.NAMES.XXX3_KILLERBUTTERFLY = '杀人蝶'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY = '美丽的死亡'
+STRINGS.NAMES.XXX3_KILLERBUTTERFLY = 'Killer Butterfly'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY = 'Beautiful death'
 
-STRINGS.NAMES.XXX3_KILLERBUTTERFLY_SHADOW = '暗影杀人蝶'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY_SHADOW = '黑暗的威胁'
+STRINGS.NAMES.XXX3_KILLERBUTTERFLY_SHADOW = 'Shadow Killer Butterfly'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY_SHADOW = 'Dark threat'
 
-STRINGS.NAMES.XXX3_KILLERBUTTERFLY_LUNAR = '月亮杀人蝶'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY_LUNAR = '华丽的谢幕'
+STRINGS.NAMES.XXX3_KILLERBUTTERFLY_LUNAR = 'Moon Killer Butterfly'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_KILLERBUTTERFLY_LUNAR = 'Gorgeous finale'
 
-STRINGS.NAMES.XXX3_EYEPLANT_0 = '芮塔的眼球草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_0 = '眼睛真大！'
+STRINGS.NAMES.XXX3_EYEPLANT_0 = "Ruita's Eyeplant"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_0 = 'Such big eyes!'
 
-STRINGS.NAMES.XXX3_EYEPLANT_1 = '毒囊草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_1 = '一大朵花！'
+STRINGS.NAMES.XXX3_EYEPLANT_1 = 'Venom Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_1 = 'A big flower!'
 
-STRINGS.NAMES.XXX3_EYEPLANT_2 = '火龙草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_2 = '看上去就很危险！'
+STRINGS.NAMES.XXX3_EYEPLANT_2 = 'Fire Dragon Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_2 = 'Looks dangerous!'
 
-STRINGS.NAMES.XXX3_EYEPLANT_3 = '岩棘草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_3 = '我可不想用手去打它。'
+STRINGS.NAMES.XXX3_EYEPLANT_3 = 'Rock Thorn Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_3 = "I don't want to hit it by hand."
 
-STRINGS.NAMES.XXX3_EYEPLANT_4 = '冰锤草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_4 = '我很好奇它是怎么长出来的。'
+STRINGS.NAMES.XXX3_EYEPLANT_4 = 'Ice Hammer Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_4 = "I'm curious how it grows."
 
-STRINGS.NAMES.XXX3_EYEPLANT_SHADOW = '黑蚀草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_SHADOW = '它好可怕！'
+STRINGS.NAMES.XXX3_EYEPLANT_SHADOW = 'Shadow Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_SHADOW = "It's so scary!"
 
-STRINGS.NAMES.XXX3_EYEPLANT_LUNAR = '月神草'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_LUNAR = '它好疯狂！'
+STRINGS.NAMES.XXX3_EYEPLANT_LUNAR = 'Moon Grass'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_EYEPLANT_LUNAR = "It's so crazy!"
 
-STRINGS.NAMES.NL_ESSENCE_NATURE = '自然精华'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.NL_ESSENCE_NATURE = '魔法能量在其中涌动'
-STRINGS.RECIPE_DESC.NL_ESSENCE_NATURE = '自然系魔法能量的结晶'
+STRINGS.NAMES.NL_ESSENCE_NATURE = 'Nature Essence'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.NL_ESSENCE_NATURE = 'Magic energy surges within'
+STRINGS.RECIPE_DESC.NL_ESSENCE_NATURE = 'Crystal of nature magic energy'
 
-STRINGS.NAMES.TURF_XXX3_ITEM = '黄金花地皮'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TURF_XXX3_ITEM = '充溢着生命的气息。'
-STRINGS.RECIPE_DESC.TURF_XXX3_ITEM = '充溢着生命的气息。'
+STRINGS.NAMES.TURF_XXX3_ITEM = 'Golden Flower Turf'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TURF_XXX3_ITEM = 'Full of the breath of life.'
+STRINGS.RECIPE_DESC.TURF_XXX3_ITEM = 'Full of the breath of life.'
 
-STRINGS.NAMES.XXX3_CANE = '黄金花手杖'
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_CANE = '充溢着生命的能量。'
-STRINGS.RECIPE_DESC.XXX3_CANE = '黄金体验！'
+STRINGS.NAMES.XXX3_CANE = 'Golden Flower Cane'
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.XXX3_CANE = 'Full of life energy.'
+STRINGS.RECIPE_DESC.XXX3_CANE = 'Golden Experience!'
 
 AddMinimapAtlas('images/xxx3_wf.xml')
 AddMinimapAtlas('images/xxx3_sf.xml')
----------------------------------------------------------
-
--- local xxx3tab = AddRecipeTab("花园", 600, "images/xxx3_wf.xml", "xxx3_wf.tex", "xxx3")
 
 AddRecipe2(
     'xxx3_butterfly',
@@ -315,14 +306,6 @@ AddRecipe2(
     {builder_tag = 'xxx3', atlas = 'images/xxx3_butterfly.xml', image = 'xxx3_butterfly.tex', product = 'butterfly'},
     {'CHARACTER', 'GARDENING'}
 )
-
--- AddRecipe2(
---     'xxx3_wf',
---     {Ingredient('petals', 40)},
---     nil,
---     {builder_tag = 'xxx3', atlas = 'images/xxx3_wf.xml', image = 'xxx3_wf.tex', placer = 'xxx3_wf_placer'},
---     {'CHARACTER', 'PROTOTYPERS', 'GARDENING'}
--- )
 
 AddRecipe2(
     'xxx3_wf_seed',
@@ -534,17 +517,11 @@ AddRecipe2(
     {'CHARACTER', 'REFINE', 'GARDENING'}
 )
 
------------------------------------------------------------
-
--- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter('xxx3', 'FEMALE', skin_modes)
 
---加入新食谱
 modimport('scripts/xxx3_foods')
---加入新地皮
 modimport('scripts/xxx3_turf')
 
--- 食人花友好
 AddPrefabPostInit(
     'eyeplant',
     function(inst)
@@ -561,7 +538,7 @@ AddPrefabPostInit(
                             guy:HasTag('eyeplant') or
                             guy:HasTag('lureplant'))
                     end,
-                    RETARGET_MUST_TAGS, -- see entityreplica.lua
+                    RETARGET_MUST_TAGS,
                     RETARGET_CANT_TAGS,
                     RETARGET_ONEOF_TAGS
                 )
@@ -571,7 +548,6 @@ AddPrefabPostInit(
     end
 )
 
---小切友好
 AddPrefabPostInit(
     'chester',
     function(inst)
@@ -590,9 +566,6 @@ AddPrefabPostInit(
     end
 )
 
---------------------------------------------------------------
-
---容器
 local containers = require('containers')
 local params = containers.params
 
@@ -637,7 +610,6 @@ for k, v in pairs(params) do
     containers.MAXITEMSLOTS = math.max(containers.MAXITEMSLOTS, v.widget.slotpos ~= nil and #v.widget.slotpos or 0)
 end
 
----------------------------------------------------------------
 local function autoeat(inst, data)
     if data.newpercent and data.newpercent < .25 then
         local items =
@@ -656,13 +628,11 @@ local function autoeat(inst, data)
     end
 end
 
---技能状态
 local bulb_state =
     State {
     name = 'xxx3_turnintobulb',
     tags = {'hiding', 'notalking', 'nomorph', 'busy', 'nopredict', 'nodangle', 'drowning'},
     onenter = function(inst)
-        -- inst:PushEvent("nightvision", true)
         inst.components.hunger.burnratemodifiers:SetModifier(inst, 4.0, 'quickconsume')
         inst:ListenForEvent('hungerdelta', autoeat)
         inst.check_starve =
@@ -694,19 +664,18 @@ local bulb_state =
         inst.AnimState:PlayAnimation('hide')
         inst.AnimState:PushAnimation('hide_idle', false)
         inst.SoundEmitter:PlaySound('dontstarve/movement/foley/hidebush')
-        inst.components.eater:SetStrongStomach(true) -- can eat monster meat!
+        inst.components.eater:SetStrongStomach(true) 
         inst.components.eater:SetCanEatRawMeat(true)
     end,
     onexit = function(inst)
         inst.components.hunger.burnratemodifiers:RemoveModifier(inst, 'quickconsume')
         inst:RemoveEventCallback('hungerdelta', autoeat)
-        inst.components.eater:SetStrongStomach(false) -- can eat monster meat!
+        inst.components.eater:SetStrongStomach(false) 
         inst.components.eater:SetCanEatRawMeat(false)
         if inst.check_starve then
             inst.check_starve:Cancel()
         end
 
-        -- inst:PushEvent("nightvision", false)
         if inst.bulbfx then
             inst.bulbfx:Remove()
             inst.bulbfx = nil
@@ -737,9 +706,6 @@ local bulb_state =
 AddStategraphState('wilson', bulb_state)
 AddStategraphState('wilson_client', bulb_state)
 
----------------------------------------------------------------
-
---技能
 local VALID_TILE_TYPES = {
     [GROUND.DIRT] = true,
     [GROUND.SAVANNA] = true,
@@ -755,7 +721,7 @@ local VALID_TILE_TYPES = {
     [GROUND.FUNGUSGREEN] = true,
     --EXPANDED FLOOR TILES
     [GROUND.DECIDUOUS] = true,
-    --自定义地皮
+
     [WORLD_TILES.XXX3_TURF] = true,
     [WORLD_TILES.XXX3_TURF_SP] = true
 }
@@ -946,13 +912,13 @@ local function GROW(inst)
             local num = 0
             local hat = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HEAD)
             if hat and hat.prefab == 'bushhat' then
-                inst.components.talker:Say('我不应该戴着这个扎根!')
+                inst.components.talker:Say('I shouldn"t take root while wearing this!')
                 return
             end
             if inst.components.xxx3_skill.enabled == false then
                 for k, v in pairs(ents) do
                     if (v.prefab == 'xxx3' and v.components.xxx3_skill.enabled == true) or v.prefab == 'lureplant' then
-                        inst.components.talker:Say('这里养分太少了，我应该离远一点扎根!')
+                        inst.components.talker:Say('The nutrients here are too low, I should take root farther away!')
                         num = 1
                         break
                     end
@@ -960,7 +926,7 @@ local function GROW(inst)
             end
             if num == 0 then
                 if not CheckSea(inst) then
-                    inst.components.talker:Say('我不应该在悬崖边扎根！')
+                    inst.components.talker:Say('I shouldn"t take root at the edge of a cliff!')
                 else
                     useskill(inst)
                 end
@@ -969,7 +935,7 @@ local function GROW(inst)
     end
 end
 
-AddModRPCHandler(modname, 'GROW', GROW) --添加对应rpc以及对应的funcion
+AddModRPCHandler(modname, 'GROW', GROW)
 
 TheInput:AddKeyDownHandler(
     GLOBAL.KEY_Z,
@@ -1002,7 +968,7 @@ local function collectitems(lureplant, inst)
             inst.components.inventory:GiveItem(item)
             judge = true
         else
-            inst.components.talker:Say('不行了...')
+            inst.components.talker:Say('Can"t do it anymore...')
             return true
         end
     end
@@ -1021,11 +987,11 @@ AddPrefabPostInit(
 )
 local lureplant_pick = Action({priority = 1, mount_valid = true})
 lureplant_pick.id = 'LUREPLANT_PICK'
-lureplant_pick.str = '收集'
+lureplant_pick.str = 'Collect'
 lureplant_pick.fn = function(action)
     if action.doer and action.doer.prefab == 'xxx3' then
         if not collectitems(action.target, action.doer) then
-            action.doer.components.talker:Say('空的!')
+            action.doer.components.talker:Say('Empty!')
         end
         return true
     else
@@ -1045,9 +1011,6 @@ AddComponentAction(
     end
 )
 
-------------------------------------------------------------------
-
---黄金花手杖快采动作
 local function NewPickSg(sg)
     local old_pick = sg.actionhandlers[ACTIONS.PICK].deststate
     sg.actionhandlers[ACTIONS.PICK].deststate = function(inst, action)
@@ -1060,9 +1023,6 @@ end
 AddStategraphPostInit('wilson', NewPickSg)
 AddStategraphPostInit('wilson_client', NewPickSg)
 
-------------------------------------------------------------------
-
---射击动作
 AddStategraphPostInit(
     'wilson',
     function(sg)
@@ -1271,12 +1231,8 @@ AddStategraphState(
     }
 )
 
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
-
---大力士用繁花炮崩溃修复（给官方擦屁股
 local upvaluehelper = require 'xxx3_upvaluehelper'
---出自 风铃草大佬
+
 AddPrefabPostInit(
     'wolfgang',
     function(inst)
@@ -1296,10 +1252,6 @@ AddPrefabPostInit(
     end
 )
 
-------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------
-
---棱镜幻化联动
 local xxx3_dressup_data = {
     xxx3_hat = {buildfile = 'xxx3_hat', buildsymbol = 'swap_hat'},
     xxx3_springhat = {buildfile = 'xxx3_springhat', buildsymbol = 'swap_hat'},

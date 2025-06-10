@@ -23,25 +23,6 @@ local TARGET_FOLLOW = 10
 local MAX_FOLLOW = 15
 local MAX_WANDER_DIST = 20
 
-
--- local function HasStateTags(inst, tags)
---     for i, v in ipairs(tags) do
---         if inst.sg:HasStateTag(v) then
---             return true
---         end
---     end
--- end
-
--- local function AttackAction(inst)
---     local target = FindEntity(inst, TUNING.PIG_TARGET_DIST, function(guy)
---         return guy:HasTag("monster") and guy.components.health and not guy.components.health:IsDead()
---                 and inst.components.combat:CanTarget(guy)
---     end, nil, { "character" }, nil)
---     if target ~= nil then 
---         return BufferedAction(inst, target, ACTIONS.ATTACK) or nil
---     end
--- end
-
 local function GetLeader(inst)
     return inst.components.follower.leader
 end
