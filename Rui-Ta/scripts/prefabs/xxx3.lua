@@ -20,14 +20,12 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.XXX3 = {
     'lureplantbulb'
 }
 
---摘花掉san
 local function onpick(inst, data)
     if data.object.prefab == 'flower' then
         inst.components.sanity:DoDelta(-20)
     end
 end
 
---在花边上回san
 local function getsanfromflowers(inst)
     local n = 0
     local x, y, z = inst.Transform:GetWorldPosition()
@@ -126,33 +124,22 @@ local function onattack(inst, tar)
 end
 -- This initializes for the server only. Components are added here.
 local master_postinit = function(inst)
-    -- 选择这个角色将播放的声音
     inst.soundsname = 'wendy'
 
-    -- 属性
     inst.Transform:SetScale(1.0, 1.0, 1.0)
-    --最大生命值
     inst.components.health:SetMaxHealth(90)
-    --最大饥饿值
     inst.components.hunger:SetMax(100)
-    --最大精神值
     inst.components.sanity:SetMax(200)
     inst.components.sanity.no_moisture_penalty = true
-    -- 损坏乘数 (可选)
     inst.components.combat.damagemultiplier = 1
 
     inst.components.combat:SetAttackPeriod(TUNING.WILSON_ATTACK_PERIOD * 1)
-    -- 饥饿率(可选)
     inst.components.hunger.hungerrate = 1 * TUNING.WILSON_HUNGER_RATE --0.15625
-    -- 移动速度 (可选)
     inst.components.locomotor.walkspeed = (TUNING.WILSON_WALK_SPEED * 1)
-    --跑步速度
     inst.components.locomotor.runspeed = (TUNING.WILSON_RUN_SPEED * 1)
     inst.components.health:StartRegen(0, 0)
-    --免疫潮湿掉san
     inst.components.sanity.no_moisture_penalty = true
 
-    --专属地皮加移速
     for _, tile in ipairs(XXX3_BONUS_TILES) do
         inst.components.locomotor:SetFasterOnGroundTile(tile, true)
     end
@@ -174,7 +161,6 @@ local master_postinit = function(inst)
     -- inst:DoPeriodicTask(4, getposition)
 end
 
---皮肤代码使用了风铃的api，感谢风铃大佬
 local function MakeSkin(name, data)
     local d = {}
     d.skin_tags = {'XXX3', 'CHARACTER', 'BASE'}

@@ -1,6 +1,3 @@
---V2C: ughh, needs some serious refactoring, but won't bother now.
---     whatever you do, do NOT base any new files off of this one.
-
 local function generatefreepositions(max)
     local pos_table = {}
     for num = 1, max do
@@ -33,7 +30,6 @@ local DEFAULT_VALID_TILE_TYPES = {
     [GROUND.SINKHOLE] = true,
     [GROUND.UNDERROCK] = true,
     [GROUND.MUD] = true,
-    --自定义地皮
     [WORLD_TILES.XXX3_TURF] = true,
     [WORLD_TILES.XXX3_TURF_SP] = true
 }

@@ -1,7 +1,7 @@
 local assets = {
-    Asset('ANIM', 'anim/xxx3_cane.zip'), --地上的动画
-    Asset('ANIM', 'anim/swap_xxx3_cane.zip'), --手里的动画
-    Asset('ATLAS', 'images/inventoryimages/xxx3_cane.xml'), --加载物品栏贴图
+    Asset('ANIM', 'anim/xxx3_cane.zip'), 
+    Asset('ANIM', 'anim/swap_xxx3_cane.zip'), 
+    Asset('ATLAS', 'images/inventoryimages/xxx3_cane.xml'), 
     Asset('IMAGE', 'images/inventoryimages/xxx3_cane.tex')
 }
 
@@ -28,7 +28,6 @@ local function onequip(inst, owner)
 
     owner:AddTag('xxx3_quickpick')
 
-    --行走特效
     if inst._vfx_fx_inst == nil then
         inst._vfx_fx_inst = SpawnPrefab('cane_victorian_fx')
         inst._vfx_fx_inst.entity:AddFollower()

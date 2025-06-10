@@ -16,7 +16,6 @@ local assets_plant = {
 
 local brain = require 'brains/eyeturretbrain'
 
---转移容器内物品(原容器,新容器)
 local function transferEverything(inst, obj)
     if inst.components.container and not inst.components.container:IsEmpty() then
         if obj.components.container then

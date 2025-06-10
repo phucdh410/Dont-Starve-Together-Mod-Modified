@@ -24,7 +24,6 @@ end
 
 --------------------------------------------
 
---掉落概率表
 local prizevalues = {
     petals = 0.6,
     xxx3_pollen = 0.3,
@@ -32,132 +31,6 @@ local prizevalues = {
     xxx3_ydg = 0.01
 }
 
--- local easing = require('easing')
--- local function OnFalling(inst, startpos, starttime, duration)
---     local t = math.max(0, GetTime() - starttime)
---     local pos = startpos + (inst.fallingpos - startpos) * easing.inOutQuad(t, 0, 1, duration)
---     if t < duration and pos.y > 0 then
---         inst.Transform:SetPosition(pos:Get())
---     else
---         inst.Physics:Teleport(inst.fallingpos:Get())
---         inst.fallingtask:Cancel()
---         inst.fallingtask = nil
---         inst.fallingpos = nil
---         if inst.components.inventoryitem ~= nil then
---             inst.components.inventoryitem.canbepickedup = true
---         end
---     end
--- end
-
--- local function Spawnitems(inst)
---     if TUNING.XXX3_WF_PRODUCEITEM == true then
---         local x, y, z = inst:GetPosition():Get()
---         local space = 2
---         local offset = 5.5
---         local max_nums = 12
---         local max_tries = 25
---         local prefab1 = weighted_random_choice(prizevalues)
---         local prefab2 = weighted_random_choice(prizevalues)
---         local prefab3 = weighted_random_choice(prizevalues)
-
---         local ents = TheSim:FindEntities(x, y, z, 4, {prefab1})
---         if #ents < max_nums then
---             for i = 1, max_tries do
---                 local rad = math.random(2, 5)
---                 local arc = math.random(0, 360)
---                 local a, b, c = x + rad * math.cos(arc), 0, z + rad * math.sin(arc)
---                 if TheWorld.Map:IsAboveGroundAtPoint(a, b, c) then
---                     local item = SpawnPrefab(prefab1)
---                     item.Transform:SetPosition(a, b + offset, c)
---                     item.fallingpos = item:GetPosition()
---                     item.fallingpos.y = 0
---                     item.fallingtask =
---                         item:DoPeriodicTask(FRAMES, OnFalling, 0, item:GetPosition(), GetTime(), 5 * FRAMES)
---                     if item.components.inventoryitem ~= nil then
---                         item.components.inventoryitem.canbepickedup = false
---                     end
---                     SpawnPrefab('bile_splash').Transform:SetPosition(a, b + offset, c)
---                     break
---                 end
---             end
---         end
-
---         local ents = TheSim:FindEntities(x, y, z, 4, {prefab2})
---         if #ents < max_nums then
---             for i = 1, max_tries do
---                 local rad = math.random(2, 5)
---                 local arc = math.random(0, 360)
---                 local a, b, c = x + rad * math.cos(arc), 0, z + rad * math.sin(arc)
---                 if TheWorld.Map:IsAboveGroundAtPoint(a, b, c) then
---                     local item = SpawnPrefab(prefab2)
---                     item.Transform:SetPosition(a, b + offset, c)
---                     item.fallingpos = item:GetPosition()
---                     item.fallingpos.y = 0
---                     item.fallingtask =
---                         item:DoPeriodicTask(FRAMES, OnFalling, 0, item:GetPosition(), GetTime(), 5 * FRAMES)
---                     if item.components.inventoryitem ~= nil then
---                         item.components.inventoryitem.canbepickedup = false
---                     end
---                     SpawnPrefab('bile_splash').Transform:SetPosition(a, b + offset, c)
---                     break
---                 end
---             end
---         end
-
---         local ents = TheSim:FindEntities(x, y, z, 4, {prefab3})
---         if #ents < max_nums then
---             for i = 1, max_tries do
---                 local rad = math.random(2, 5)
---                 local arc = math.random(0, 360)
---                 local a, b, c = x + rad * math.cos(arc), 0, z + rad * math.sin(arc)
---                 if TheWorld.Map:IsAboveGroundAtPoint(a, b, c) then
---                     local item = SpawnPrefab(prefab3)
---                     item.Transform:SetPosition(a, b + offset, c)
---                     item.fallingpos = item:GetPosition()
---                     item.fallingpos.y = 0
---                     item.fallingtask =
---                         item:DoPeriodicTask(FRAMES, OnFalling, 0, item:GetPosition(), GetTime(), 5 * FRAMES)
---                     if item.components.inventoryitem ~= nil then
---                         item.components.inventoryitem.canbepickedup = false
---                     end
---                     SpawnPrefab('bile_splash').Transform:SetPosition(a, b + offset, c)
---                     break
---                 end
---             end
---         end
---         local ents = TheSim:FindEntities(x, y, z, 8, nil, {'INLIMBO'})
---         for _, v in pairs(ents) do
---             if
---                 v.prefab == 'spoiled_food' or v.prefab == 'rottenegg' or v.prefab == 'spoiled_fish' or
---                     v.prefab == 'spoiled_fish_small' or
---                     v.prefab == 'poop' or
---                     (v.components.perishable and v.components.perishable:GetPercent() < .25)
---              then
---                 if v.components.inventoryitem ~= nil then
---                     v.components.inventoryitem.canbepickedup = false
---                 end
---                 v:DoPeriodicTask(
---                     0.1,
---                     function()
---                         local nx, ny, nz = v.Transform:GetScale()
---                         nx = nx * 0.9
---                         ny = ny * 0.9
---                         nz = nz * 0.9
---                         v.Transform:SetScale(nx, ny, nz)
---                     end
---                 )
---                 v:DoTaskInTime(
---                     1.5,
---                     function()
---                         v:Remove()
---                     end
---                 )
---             end
---         end
---     end
--- end
-
---生成掉落物
 local function Spawnitems(inst)
     if TUNING.XXX3_WF_PRODUCEITEM == true then
         local x, y, z = inst:GetPosition():Get()
@@ -191,7 +64,6 @@ local function Spawnitems(inst)
             end
         end
 
-        --清理腐烂物
         local ents = TheSim:FindEntities(x, y, z, 8, nil, {'INLIMBO'})
         for _, v in pairs(ents) do
             if
@@ -224,7 +96,6 @@ local function Spawnitems(inst)
     end
 end
 
---生成蝴蝶
 local function Spawnbutterfly(inst)
     if not TheWorld.state.isday then
         return
@@ -253,7 +124,6 @@ local function Spawnbutterfly(inst)
         end
     end
 end
---生成萤火虫
 local function SpawnFireflies(inst)
     if TUNING.XXX3_WF_PRODUCEFIREFLY == true then
         local x, y, z = inst:GetPosition():Get()
@@ -370,8 +240,6 @@ local function fn()
 
     return inst
 end
-
-----------------------------------------------------------------------
 
 local function OnDeploy(inst, pt, deployer)
     local wf = SpawnPrefab('xxx3_wf')

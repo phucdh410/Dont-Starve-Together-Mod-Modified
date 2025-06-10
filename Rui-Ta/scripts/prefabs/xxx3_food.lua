@@ -50,17 +50,12 @@ local function foodfn(mc, nc, ms, hs)
             end
 
             inst:AddComponent('stackable')
-            --可堆叠组件
             inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
-            --堆叠上限40
 
             inst:AddComponent('inspectable')
-            --可检查组件
 
             inst:AddComponent('inventoryitem')
-            --物品组件
             inst.components.inventoryitem.atlasname = 'images/' .. mc .. '.xml'
-            --物品贴图
             return inst
         end,
         {
@@ -132,7 +127,6 @@ local function MakePreparedFood(data)
 
             inst:AddTag('spicedfood')
 
-            --设置作为背景的料理图
             inst.inv_image_bg = {atlas = 'images/' .. realname .. '.xml', image = realname .. '.tex'}
         else
             inst.AnimState:SetBuild(data.overridebuild or realname)
@@ -194,12 +188,11 @@ local function MakePreparedFood(data)
             inst:ListenForEvent('onputininventory', data.OnPutInInventory)
         end
         inst.components.inventoryitem.imagename = realname
-        if spicename ~= nil then --官方调料过的料理
+        if spicename ~= nil then 
             inst.components.inventoryitem:ChangeImageName(spicename .. '_over')
-        elseif data.basename ~= nil then --不想用官方调料贴图的调料过的料理
+        elseif data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)
-        else --普通料理
-            --因为作为前景图的香料是官方的，所以只有这里需要设置自己的料理atlas
+        else
             inst.components.inventoryitem.atlasname = 'images/' .. realname .. '.xml'
         end
         if data.float == nil then
@@ -245,13 +238,12 @@ end
 
 return foodfn(
     'xxx3_hbsl',
-    '花瓣沙拉',
-    '花朵可是很美味的，不尝一下吗？',
+    'Flower Salad',
+    'Flowers are delicious, why not try some？',
     function(inst)
         inst:AddTag('preparedfood')
 
         inst:AddComponent('edible')
-        --可食用的组件
         inst.components.edible.healthvalue = 50 * TUNING.XXX3_FOODVALUE
         inst.components.edible.hungervalue = 25 * TUNING.XXX3_FOODVALUE
         inst.components.edible.sanityvalue = 0
@@ -259,80 +251,72 @@ return foodfn(
         inst.components.edible:SetOnEatenFn(oneaten_hbsl)
 
         inst:AddComponent('perishable')
-        --易腐烂的组件
         inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
         inst.components.perishable:StartPerishing()
         inst.components.perishable.onperishreplacement = 'spoiled_food'
     end
 ), foodfn(
     'xxx3_hjmdj',
-    '黄金蜜蝶卷',
-    '看上去就很甜',
+    'Golden Honey Butterfly Roll',
+    'Looks so sweet',
     function(inst)
         inst:AddTag('preparedfood')
 
         inst:AddComponent('edible')
-        --可食用的组件
         inst.components.edible.healthvalue = 35 * TUNING.XXX3_FOODVALUE
         inst.components.edible.hungervalue = 50 * TUNING.XXX3_FOODVALUE
         inst.components.edible.sanityvalue = 20 * TUNING.XXX3_FOODVALUE
         inst.components.edible.foodtype = FOODTYPE.VEGGIE
 
         inst:AddComponent('perishable')
-        --易腐烂的组件
         inst.components.perishable:SetPerishTime(TUNING.PERISH_MED)
         inst.components.perishable:StartPerishing()
         inst.components.perishable.onperishreplacement = 'spoiled_food'
     end
 ), foodfn(
     'xxx3_hmhb',
-    '花蜜汉堡',
-    '应该能吃的饱饱的',
+    'Nectar burger',
+    'It should be filling enough',
     function(inst)
         inst:AddTag('preparedfood')
 
         inst:AddComponent('edible')
-        --可食用的组件
         inst.components.edible.healthvalue = 15 * TUNING.XXX3_FOODVALUE
         inst.components.edible.hungervalue = 112.5 * TUNING.XXX3_FOODVALUE
         inst.components.edible.sanityvalue = 5 * TUNING.XXX3_FOODVALUE
         inst.components.edible.foodtype = FOODTYPE.MEAT
 
         inst:AddComponent('perishable')
-        --易腐烂的组件
         inst.components.perishable:SetPerishTime(TUNING.PERISH_SLOW)
         inst.components.perishable:StartPerishing()
         inst.components.perishable.onperishreplacement = 'spoiled_food'
     end
 ), foodfn(
     'xxx3_hjdg',
-    '黄金蛋糕',
-    '烘焙的美味',
+    'Golden Cake',
+    'Delicious Baking',
     function(inst)
         inst:AddTag('preparedfood')
 
         inst:AddComponent('edible')
-        --可食用的组件
         inst.components.edible.healthvalue = 40 * TUNING.XXX3_FOODVALUE
         inst.components.edible.hungervalue = 85 * TUNING.XXX3_FOODVALUE
         inst.components.edible.sanityvalue = 5 * TUNING.XXX3_FOODVALUE
         inst.components.edible.foodtype = FOODTYPE.VEGGIE
 
         inst:AddComponent('perishable')
-        --易腐烂的组件
         inst.components.perishable:SetPerishTime(TUNING.PERISH_SLOW)
         inst.components.perishable:StartPerishing()
         inst.components.perishable.onperishreplacement = 'spoiled_food'
     end
 ), foodfn(
     'xxx3_nmtd',
-    '纳米糖豆',
-    '某种神秘科技的产物',
+    'Nano jelly beans',
+    'The product of some mysterious technology',
     function(inst)
         inst:AddTag('preparedfood')
 
         inst:AddComponent('edible')
-        --可食用的组件
         inst.components.edible.healthvalue = 0
         inst.components.edible.hungervalue = 2
         inst.components.edible.sanityvalue = 0
