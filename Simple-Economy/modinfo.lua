@@ -150,41 +150,6 @@ configuration_options = {
         default = 3
     },
     {
-        name = "recovery_time", --//TODO: check removable
-        label = "Nerf Recycling Same Item",
-        hover = "The adjustment multiplier for recycling the same item over time.",
-        options = {
-            {description = "Off", data = false},
-            {description = "30S", data = 30},
-            {description = "60S", data = 60},
-            {description = "120S", data = 120},
-            {description = "180S", data = 180},
-            {description = "240S", data = 240},
-            {description = "300S", data = 300},
-            {description = "480S", data = 480}
-        },
-        default = 120
-    },
-    {
-        name = "recovery_t", --//TODO: check removable
-        label = "The multiplier for recycling the same item again.",
-        hover = "Counting stacked items as one item.",
-        options = {
-            {description = "0", data = 0},
-            {description = "10%", data = 0.1},
-            {description = "20%", data = 0.2},
-            {description = "30%", data = 0.3},
-            {description = "40%", data = 0.4},
-            {description = "50%", data = 0.5},
-            {description = "60%", data = 0.6},
-            {description = "70%", data = 0.7},
-            {description = "80%", data = 0.8},
-            {description = "90%", data = 0.90},
-            {description = "100%", data = 1.0}
-        },
-        default = 0.5
-    },
-    {
         name = "precious_sell",
         label = "All Precious Items",
         hover = "The precious items refresh every 3 days.",
@@ -260,43 +225,6 @@ configuration_options = {
             {description = "5%", data = 0.05, hover = "Coins = 5% max health"},
             {description = "3%", data = 0.03, hover = "Coins = 3% max health"},
             {description = "1%", data = 0.01, hover = "Coins = 1% max health"},
-        },
-        default = 0.1
-    },
-    {
-        name = "deathcd", --//TODO: check removable
-        label = "Creature death coin multiplier adjustment timeframe.",
-        hover = "Creature death coin multiplier adjustment timeframe.",
-        options = {
-            {description = "off", data = 0},
-            {description = "10S", data = 10},
-            {description = "30S", data = 30},
-            {description = "50S", data = 50},
-            {description = "60S", data = 60},
-            {description = "120S", data = 120},
-            {description = "180S", data = 180},
-            {description = "240S", data = 240},
-            {description = "300S", data = 300},
-            {description = "480S", data = 480}
-        },
-        default = 120
-    },
-    {
-        name = "coinrate", --//TODO: check removable
-        label = "Coin multiplier during creature death",
-        hover = "Coin multiplier during creature death",
-        options = {
-            {description = "0", data = 0},
-            {description = "10%", data = 0.1},
-            {description = "20%", data = 0.2},
-            {description = "30%", data = 0.3},
-            {description = "40%", data = 0.4},
-            {description = "50%", data = 0.5},
-            {description = "60%", data = 0.6},
-            {description = "70%", data = 0.7},
-            {description = "80%", data = 0.8},
-            {description = "90%", data = 0.90},
-            {description = "100%", data = 1.0}
         },
         default = 0.1
     },

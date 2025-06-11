@@ -67,9 +67,7 @@ TUNING.UNCOMPROMISING_MODE = CheckMod("󰀕 Uncompromising Mode")
 TUNING.Island_Adventures_se = CheckMod("Island Adventures - Shipwrecked") or CheckMod("岛屿冒险")
 
 local creaturesdeath = GetModConfigData("creaturesdeath")
-local deathcd = GetModConfigData("deathcd")
 local limitphmod = GetModConfigData("limitphmod")
-local coinrate = GetModConfigData("coinrate")
 local limitcoin = GetModConfigData("limitcoin")
 
 if creaturesdeath then
@@ -96,19 +94,6 @@ if creaturesdeath then
             ) do
                 local item = inst.components.lootdropper:SpawnLootPrefab("secoin")
                 item.components.secoin.amount = bounty
-                if deathcd ~= 0 then
-                    if inst.components.health.maxhealth >= limitphmod or limitphmod == nil then
-                        player.last_get_coin_time = player.last_get_coin_time or {}
-                        if not player.last_get_coin_time[mob_namesd] then
-                            player.last_get_coin_time[mob_namesd] = -1 * deathcd
-                        end
-                        if GLOBAL.GetTime() - player.last_get_coin_time[mob_namesd] <= deathcd then
-                            item.components.secoin.amount = item.components.secoin.amount * coinrate
-                        end
-
-                        player.last_get_coin_time[mob_namesd] = GLOBAL.GetTime()
-                    end
-                end
 
                 if item.components.secoin.amount > limitcoin and limitcoin ~= 0 then
                     item.components.secoin.amount = limitcoin

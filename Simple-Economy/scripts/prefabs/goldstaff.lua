@@ -114,21 +114,6 @@ local function goldstafffn(staff, target, pos)
                 stacksize = v.components.stackable.stacksize
             end
 
-            if TUNING.PRICERATErecoverytime then
-                if not IsInallowItems(v.prefab, allowone) then
-                    local currentTime = GetTime()
-                    if itemCounts[v.prefab] then
-                        local lastTime = lastConversionTime[v.prefab] or 0
-                        if currentTime - lastTime < TUNING.PRICERATErecoverytime then
-                            recovery = TUNING.PRICERATErecovery
-                        end
-                    end
-
-                    itemCounts[v.prefab] = v.prefab or nil
-                    lastConversionTime[v.prefab] = currentTime
-                end
-            end
-
             for i, j in pairs(TUNING.allgoods) do
                 if v.prefab == j.name then
                     price = j.price / TUNING.recyclingprice1 * stacksize * TUNING.PRICERATE * recovery
