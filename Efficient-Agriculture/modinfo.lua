@@ -22,7 +22,7 @@ Combination from mods
 ]]
 
 author = "PhucDH410"
-version = "1.0.8"
+version = "1.0.12"
 
 forumthread = ""
 
@@ -195,6 +195,16 @@ configuration_options = {
         options = {
             {description = "No", data = false},
             {description = "Yes", data = true}
+        },
+        default = false
+    },
+    {
+        name = "no_soil_debris",
+        label = "No Spawn Soil Debris",
+        hover = "Remove spawning soil debris when using garden digamajig",
+        options = {
+            {description = "Disable", data = false},
+            {description = "Enable", data = true}
         },
         default = false
     },

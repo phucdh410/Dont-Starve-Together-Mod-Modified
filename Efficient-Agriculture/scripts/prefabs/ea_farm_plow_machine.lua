@@ -325,7 +325,7 @@ local function fn()
 
 	inst:AddComponent("fueled")
   inst.components.fueled.fueltype = FUELTYPE.BURNABLE
-	inst.components.fueled.rate = 0.75
+	inst.components.fueled.rate = 0.000005
 	inst.components.fueled.accepting = true
   inst.components.fueled:InitializeFuelLevel(TUNING.LARGE_FUEL)
 	inst.components.fueled:SetTakeFuelFn(OnTakeFuel)

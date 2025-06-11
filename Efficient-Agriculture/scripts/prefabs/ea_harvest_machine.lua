@@ -128,6 +128,10 @@ local function MakeHarvestMachine(name, assets, prefabs, build, bank, length, wi
         inst.components.ea_harvest_machine:SetOnHarvestFn(type(on_harvest) == "function" and on_harvest or OnHarvest)
         inst.components.ea_harvest_machine:StartUpdating()
 
+        inst:AddComponent("preserver")
+		inst.components.preserver:SetPerishRateMultiplier(-100); -- Refresh
+
+
         MakeMediumBurnable(inst, nil, nil, true)
         MakeMediumPropagator(inst)
         inst.components.burnable:SetOnBurntFn(OnBurnt)

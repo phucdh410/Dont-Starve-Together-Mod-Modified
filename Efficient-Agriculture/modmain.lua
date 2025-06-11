@@ -255,6 +255,23 @@ AddComponentPostInit(
     end
 )
 
+-- No spawn soil debris
+if GetModConfigData("no_soil_debris") == true then
+    TUNING.FARM_PLOW_DRILLING_DEBRIS_MIN = 0
+    TUNING.FARM_PLOW_DRILLING_DEBRIS_MAX = 0
+    AddPrefabPostInit("farm_soil_debris",function(inst)
+        if not GLOBAL.TheWorld.ismastersim then
+            return
+        end
+    
+        inst:DoTaskInTime(0.01, function()
+            if inst and inst:IsValid() then
+                inst:Remove()
+            end
+        end)  
+    end)
+end
+
 --Quick plant
 if GetModConfigData("quick_plant") == true then
     AddStategraphPostInit(
@@ -287,7 +304,7 @@ end
 
 -- No spoil drying meat
 if GetModConfigData("dhp410_no_spoil_drying") then
-    local FREEZE_TIME = 99999 * 60 * 60 -- 99999 hours
+    local FREEZE_TIME = 999999 * 60 * 60 -- 999999 hours
     AddComponentPostInit(
         "dryer",
         function(self)
@@ -307,8 +324,7 @@ if GetModConfigData("dhp410_no_spoil_drying") then
                 end
             end
             self.Resume = NewResume
-            self.DoSpoil = function()
-            end
+            self.DoSpoil = function() end
         end
     )
 end
