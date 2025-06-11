@@ -63,7 +63,7 @@ configuration_options = {
     {
         name = "Disintegrate",
         label = "Recycling Items",
-        hover = "Recycling items by golden staff, Golden Staff attacks low health creatures with a 25% chance to kill them"
+        hover = "Recycling items by golden staff, Golden Staff attacks low health creatures with a 25% chance to kill them",
         options = {
             {
                 description = "No",
@@ -88,8 +88,8 @@ configuration_options = {
         label = "Start Goldstaff",
         hover = "You need to enable Recycling feature, a goldstaff at starting game",
         options = {
-            {description = "on", data = false },
-            {description = "yes", data = true }
+            {description = "No", data = false },
+            {description = "Yes", data = true }
         },
         default = true
     },
@@ -98,8 +98,8 @@ configuration_options = {
         label = "Start Luckamulet",
         hover = "A amulet at starting game",
         options = {
-            {description = "no", data = false},
-            {description = "yes", data = true}
+            {description = "No", data = false},
+            {description = "Yes", data = true}
         },
         default = false
     },
@@ -145,9 +145,7 @@ configuration_options = {
             {description = "Seven Tenths", data = 7},
             {description = "Eight Tenths", data = 8},
             {description = "Nine Tenths", data = 9},
-            {description = "Ten Tenths", data = 10},
-            {description = "Fifteen Tenths", data = 15},
-            {description = "Twenty Tenths", data = 20}
+            {description = "Ten Tenths", data = 10}
         },
         default = 3
     },
@@ -221,7 +219,7 @@ configuration_options = {
     {
         name = "seasonalchange",
         label = "Seasonal Price",
-        hover = "The price changes over seasons"
+        hover = "The price changes over seasons",
         options = {
             {description = "Yes", data = true},
             {description = "No", data = false}
@@ -251,7 +249,7 @@ configuration_options = {
     {
         name = "creaturesdeath",
         label = "Creature Coins",
-        hover = "Coins received depend on the target's max health."
+        hover = "Coins received depend on the target's max health.",
         options = {
             {description = "None", data = false, hover = "Not receive coins by killing"},
             {description = "100%", data = 1.0, hover = "Coins = 100% max health"},
@@ -323,7 +321,7 @@ configuration_options = {
     {
         name = "limitcoin",
         label = "Max Coin Kill",
-        label = "Max gold coins per creature death.",
+        hover = "Max gold coins per creature death.",
         options = {
             {description = "off", data = 0},
             {description = "100", data = 100},
@@ -341,10 +339,10 @@ configuration_options = {
     {
         name = "ghostshopping",
         label = "Ghostshopping",
-        hover = "Allow shopping when you died"
+        hover = "Allow shopping when you died",
         options = {
-            {description = "no", data = true},
-            {description = "yes", data = false}
+            {description = "Yes", data = true},
+            {description = "No", data = false}
         },
         default = true
     },
