@@ -1,11 +1,5 @@
-local LAN_ = GetModConfigData('Language')
-if LAN_ then
-	require 'SEscripts/strings_cn'
-	TUNING.SElan = "cn"
-else
-	require 'SEscripts/strings_en'
-	TUNING.SElan = "en"
-end
+require 'SEscripts/strings_en'
+TUNING.SElan = "en"
 
 PrefabFiles = {
 	"secoin",

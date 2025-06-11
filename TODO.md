@@ -6,5 +6,12 @@
 3. Merge Happy Farm & Soil Retainer & Effigy Agilauture
 
 4. Refactor Simple Economy
+   **DoneTranslate** [Not Yet Deployed]()
 
-5. Optimize beefalo bucktime by TUNING.BEEFALO_MAX_BUCK_TIME
+5. Optimize beefalo bucktime by TUNING.BEEFALO_MAX_BUCK_TIME (Beefalo-UI mod)
+
+6. Rui Ta character mod
+   **DoneTranslate** [Not Yet Deployed]()
+
+7. Natsume Kokkoro character mod
+   **DoneTranslate** [Not Yet Deployed]()

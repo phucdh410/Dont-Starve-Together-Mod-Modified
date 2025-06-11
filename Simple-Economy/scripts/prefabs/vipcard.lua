@@ -1,19 +1,20 @@
-local assets=
-{
+local assets = {
     Asset("ANIM", "anim/vipcard.zip"),
-    Asset("ATLAS", "images/inventoryimages/vipcard.xml"),
+    Asset("ATLAS", "images/inventoryimages/vipcard.xml")
 }
 
 local function removeorputin(inst)
-    if not inst then return end
+    if not inst then
+        return
+    end
     local owner = inst.components.inventoryitem.owner
     local se = nil
     if owner and owner.components.seplayerstatus then
         se = owner.components.seplayerstatus
-    elseif owner
-    and owner.components.inventoryitem
-    and owner.components.inventoryitem.owner
-    and owner.components.inventoryitem.owner.components.seplayerstatus then
+    elseif
+        owner and owner.components.inventoryitem and owner.components.inventoryitem.owner and
+            owner.components.inventoryitem.owner.components.seplayerstatus
+     then
         se = owner.components.inventoryitem.owner.components.seplayerstatus
     end
     if se ~= nil then
@@ -28,7 +29,7 @@ local function fn(Sim)
     MakeInventoryPhysics(inst)
     inst.entity:AddNetwork()
     inst.entity:AddSoundEmitter()
-    
+
     anim:SetBank("vipcard")
     anim:SetBuild("vipcard")
     anim:PlayAnimation("idle")
@@ -39,7 +40,7 @@ local function fn(Sim)
     if not TheWorld.ismastersim then
         return inst
     end
-    
+
     inst._player = nil
 
     inst:AddComponent("inspectable")
@@ -57,8 +58,8 @@ local function fn(Sim)
         removeorputin(self.inst)
         return self.inst.components.inventoryitem.oOldOnRemoved(self)
     end
-    
+
     return inst
 end
 
-return Prefab( "vipcard", fn, assets) 
+return Prefab("vipcard", fn, assets)

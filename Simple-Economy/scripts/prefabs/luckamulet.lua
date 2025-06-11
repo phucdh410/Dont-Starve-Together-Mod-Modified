@@ -1,7 +1,6 @@
-local assets =
-{
+local assets = {
     Asset("ANIM", "anim/luckamulet.zip"),
-    Asset("ATLAS", "images/inventoryimages/luckamulet.xml"),
+    Asset("ATLAS", "images/inventoryimages/luckamulet.xml")
 }
 
 local function getcoin(inst, chance)
@@ -14,11 +13,14 @@ local function getcoin(inst, chance)
             local angle = math.random() * 2 * PI
             loots.Transform:SetPosition(pt.x, pt.y, pt.z)
             loots.Physics:SetVel(2 * math.cos(angle), 10, 2 * math.sin(angle))
-            loots:DoTaskInTime(.3, function()
-                if owner.components.seplayerstatus ~= nil then
-                    owner.components.seplayerstatus:givesecoin(loots)
+            loots:DoTaskInTime(
+                .3,
+                function()
+                    if owner.components.seplayerstatus ~= nil then
+                        owner.components.seplayerstatus:givesecoin(loots)
+                    end
                 end
-            end)
+            )
             inst.components.finiteuses:Use(1)
         end
     end
@@ -49,13 +51,13 @@ local function onequip(inst, owner)
         getcoin(inst, 25)
     end
 
-    inst:ListenForEvent("locomote", inst.onwalk, owner)      --走路
-    inst:ListenForEvent("picksomething", inst.get4, owner)   --采摘
-    inst:ListenForEvent("working", inst.get3, owner)         --作业
-    inst:ListenForEvent("oneat", inst.get3, owner)           --吃东西
-    inst:ListenForEvent("fishingstrain", inst.get1, owner)   --成功钓鱼
-    inst:ListenForEvent("refreshcrafting", inst.get2, owner) --成功制造
-    inst:ListenForEvent("attacked", inst.get3, owner)        --被打
+    inst:ListenForEvent("locomote", inst.onwalk, owner)
+    inst:ListenForEvent("picksomething", inst.get4, owner)
+    inst:ListenForEvent("working", inst.get3, owner)
+    inst:ListenForEvent("oneat", inst.get3, owner)
+    inst:ListenForEvent("fishingstrain", inst.get1, owner)
+    inst:ListenForEvent("refreshcrafting", inst.get2, owner)
+    inst:ListenForEvent("attacked", inst.get3, owner)
 end
 
 local function onunequip(inst, owner)
@@ -99,8 +101,8 @@ local function fn(Sim)
 
     inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished(inst.Remove)
-    inst.components.finiteuses:SetMaxUses(200)
-    inst.components.finiteuses:SetUses(200)
+    inst.components.finiteuses:SetMaxUses(300)
+    inst.components.finiteuses:SetUses(300)
 
     return inst
 end
