@@ -128,6 +128,11 @@ function HarvestMachine:Check()
 				HarvestCrop(inst, v)
 			end)
 		end
+		if WEED_DEFS[v.prefab] then
+			inst:DoTaskInTime(FRAMES * 5, function()
+				HarvestCrop(inst, v)
+			end)
+		end
 		if not self.cant_hold_items[v.prefab] and EA_CONSTANTS.ENABLE_HARVEST_MACHINE_AUTO_PICKING_UP then
 			if EA_TOOLS.IsValidVeggie(v) or EA_TOOLS.IsValidSeed(v) or EA_TOOLS.IsValidFarmPlant(v) or EA_TOOLS.IsWeed(v) then
 				will_harvest = true

@@ -22,7 +22,7 @@ Combination from mods
 ]]
 
 author = "PhucDH410"
-version = "1.0.16"
+version = "1.0.18"
 
 forumthread = ""
 
