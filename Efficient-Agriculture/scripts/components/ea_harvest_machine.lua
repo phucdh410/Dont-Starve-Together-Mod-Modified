@@ -57,6 +57,19 @@ local function HarvestCrop(inst, target)
 		return
 	end
 
+	if WEED_DEFS[target.prefab] then
+		local weed = WEED_DEFS[target.prefab]
+		local product = weed.product
+		if product ~= nil then
+			local loot = SpawnPrefab(product)
+			if loot ~= nil then
+				loot.Transform:SetPosition(target.Transform:GetWorldPosition())
+			end
+		end
+		target:Remove()
+		return
+	end
+
 	if target.components.workable and target.components.equippable and target.components.lootdropper then
 		target.components.lootdropper:DropLoot()
 		target:Remove()

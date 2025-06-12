@@ -182,92 +182,42 @@ if CONFIG.TOGGLE_KEY then
     end)
 end
 
-local MOD_TUNING = {
-    BEEFALO_DOMESTICATION_OVERFEED_DOMESTICATION = TUNING.BEEFALO_DOMESTICATION_OVERFEED_DOMESTICATION * 10,
-}
-
-local function OnEat(inst, food, feeder)
-    local full = inst.components.hunger:GetPercent() >= 1
-    if inst.components and inst.components.hunger then
-        inst.components.hunger:DoDelta(500)
-    end
-    inst.components.domesticatable:DeltaObedience(1)
-    inst.components.domesticatable:DeltaDomestication(0.1, feeder)
-    if not full then
-        inst.components.domesticatable:TryBecomeDomesticated()
-    else
-        inst.components.domesticatable:DeltaTendency(GLOBAL.TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
-    end
-    inst:PushEvent("eat", { full = full, food = food })
-    inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
-end
-
-local function OnBuckTime(inst)
-    inst._bucktask = inst:DoTaskInTime(99999 + math.random(), OnBuckTime)
-    inst.components.rideable:Buck()
-end
-
-local function OnRiderChanged(inst, data)
-    if inst._bucktask ~= nil then
-        inst._bucktask:Cancel()
-        inst._bucktask = nil
-    end
-
-    if inst._ridersleeptask ~= nil then
-        inst._ridersleeptask:Cancel()
-        inst._ridersleeptask = nil
-    end
-
-    if data.newrider ~= nil then
-        if inst.components.sleeper ~= nil then
-            inst.components.sleeper:WakeUp()
+if GetModConfigData("isBuffDomestication") == true then
+    TUNING.BEEFALO_MIN_BUCK_TIME = 999 * 60 * 60 -- 999 hours
+    TUNING.BEEFALO_MAX_BUCK_TIME = 9999 * 60 * 60 -- 9999 hours
+    
+    local function OnEat(inst, food, feeder)
+        local full = inst.components.hunger:GetPercent() >= 1
+        if inst.components and inst.components.hunger then
+            inst.components.hunger:DoDelta(500)
         end
-        inst._bucktask = inst:DoTaskInTime(99999, OnBuckTime)
+        inst.components.domesticatable:DeltaObedience(1)
+        inst.components.domesticatable:DeltaDomestication(0.1, feeder)
+        if not full then
+            inst.components.domesticatable:TryBecomeDomesticated()
+        else
+            inst.components.domesticatable:DeltaTendency(GLOBAL.TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
+        end
+        inst:PushEvent("eat", { full = full, food = food })
         inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
-        if inst.sg ~= nil then
-            inst.sg:GoToState("idle")
-        end
-    elseif inst.components.health:IsDead() then
-        if inst.sg.currentstate.name ~= "death" then
-            inst.sg:GoToState("death")
-        end
-    elseif inst.components.sleeper ~= nil then
-        inst.components.sleeper:StartTesting()
-        if inst._ridersleep ~= nil then
-            local sleeptime = inst._ridersleep.sleeptime + inst._ridersleep.time - GetTime()
-            if sleeptime > 2 then
-                inst._ridersleeptask = inst:DoTaskInTime(0, DoRiderSleep, inst._ridersleep.sleepiness, sleeptime)
+    end
+    
+    AddPrefabPostInit("beefalo",function(inst)
+        inst:DoTaskInTime(0.1, function(inst)
+            if inst.components and inst.components.eater then
+                inst.components.eater:SetOnEatFn(OnEat)
             end
-            inst._ridersleep = nil
-        end
-    end
-end
-
-local function OnObedienceDelta(inst, data)
-    inst.components.rideable:SetSaddleable(data.new >= TUNING.BEEFALO_SADDLEABLE_OBEDIENCE)
-
-    if data.new > data.old and inst._bucktask ~= nil then
-        inst._bucktask:Cancel()
-        inst._bucktask = inst:DoTaskInTime(99999, OnBuckTime)
-    end
-end
-
-AddPrefabPostInit("beefalo",function(inst)
-    inst:DoTaskInTime(0.1, function(inst)
-        if inst.components and inst.components.eater then
-            inst.components.eater:SetOnEatFn(OnEat)
-        end
-        inst:ListenForEvent("obediencedelta", OnObedienceDelta)
-        inst:ListenForEvent("riderchanged", OnRiderChanged)
-        inst:WatchWorldState("cycles",function(inst)
-            if inst.components and inst.components.domesticatable then
-                if inst.components.domesticatable:IsDomesticated() then
-                    inst.components.domesticatable:DeltaObedience(1)         
-                    if inst.components and inst.components.hunger then
-                        inst.components.hunger:DoDelta(500)
+            inst:WatchWorldState("cycles",function(inst)
+                if inst.components and inst.components.domesticatable then
+                    if inst.components.domesticatable:IsDomesticated() then
+                        inst.components.domesticatable:DeltaObedience(1)         
+                        if inst.components and inst.components.hunger then
+                            inst.components.hunger:DoDelta(500)
+                        end
                     end
                 end
-            end
+            end)
         end)
     end)
-end)
+end
+ 
