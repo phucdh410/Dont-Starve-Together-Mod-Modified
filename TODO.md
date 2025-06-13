@@ -1,4 +1,5 @@
 1. Handle build rope_bridge_kit on ground
 
-2. Instant pick weeds in farm
-   **Waiting to test**[Undeployed]()
+2. Optimize harvest & transfer product of harvest machine
+
+3. Refactor AI FARM
