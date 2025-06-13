@@ -20,7 +20,11 @@ local function onhammered(inst, worker)
         inst.doortask = nil
     end
     if inst.components.spawner ~= nil and inst.components.spawner:IsOccupied() then
-        inst.components.spawner:ReleaseChild()
+        -- inst.components.spawner:ReleaseChild()
+        local child = inst.components.spawner.child
+            if child ~= nil and child:IsValid() then
+        child:Remove()
+    end
     end
     inst.components.lootdropper:DropLoot()
     local fx = SpawnPrefab("collapse_big")

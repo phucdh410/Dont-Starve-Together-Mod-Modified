@@ -143,7 +143,7 @@ local function fn()
     inst.components.eater:SetOnEatFn(OnEat)
 
     inst:AddComponent("health")
-    inst.components.health:StartRegen(10, 3)
+    inst.components.health:StartRegen(30, 3)
 
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "pig_torso"

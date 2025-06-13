@@ -1,5 +1,16 @@
 name = "AI Farmer - DHPModified"
-description = "Update later"
+description = [[
+A.I Farmer
+
+Feature:
+- Pickup (sapling, grass, ...)
+- Harvest (Berrybush, Beebox at full, Farm's product)
+- Chop tree and replant it
+- Mining rocks
+- Auto fertilize farm and other plants (grass, berrybush)
+
+***IMPORTANT: If you want to destroy the home, make sure to take all everything from the farmer's backpack first, as the farmer will be destroyed along with the home.
+]]
 author = "PhucDH410"
 
 version = "1.0.0"
