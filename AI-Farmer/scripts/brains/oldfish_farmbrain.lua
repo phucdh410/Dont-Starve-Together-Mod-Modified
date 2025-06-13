@@ -21,85 +21,111 @@ local LEASH_MAX_DIST = 20
 
 local COOLING_TIME = 5
 
+local prefab_name = {
+    -- FOOD
+    berries = true,
+    berries_juicy = true,
+    carrot = true,
+    watermelon = true,
+    dragonfruit = true,
+    corn = true,
+    eggplant = true,
+    durian = true,
+    pumpkin = true,
+    pomegranate = true,
+    tomato = true,
+    potato = true,
+    onion = true,
+    garlic = true,
+    pepper = true,
+    asparagus = true,
+    cave_banana = true,
+    cactus_meat = true,
+    kelp = true,
+    butter = true,
+    goatmilk = true,
 
-local prefabName = {
-    "berries"
-    ,"berries_juicy"
-    ,"cutgrass"
-    , "twigs"
-    ,"bird_egg"
-    ,"seeds"
-    ,"poop"
-    , "honey"
-    ,"pinecone"
-    ,"log"
-    ,"blue_cap"
-    , "green_cap"
-    ,"red_cap"
-    ,"drumstick"
-    ,"spoiled_food"
-    ,"carrot"
-    ,"watermelon"
-    ,"boards"
-    ,"dragonfruit"
-    ,"corn"
-    ,"froglegs"
-    ,"livinglog"
-    ,"guano"
-    ,"bird_egg"
-    ,"rottenegg"
-    ,"charcoal"
-    ,"twiggy_nut"
-    ,"acorn"
-    ,"eggplant"
-    ,"durian"
-    ,"pumpkin"
-    ,"dug_sapling"
-    ,"dug_berrybush"
-    ,"dug_berrybush2"
-    ,"dug_berrybush_juicy"
-    ,"dug_grass"
-    ,"dug_marsh_bush"
-    ,"dug_rock_avocado_bush"
-    ,"dug_sapling_moon"
-    ,"meat"
-    ,"monstermeat"
-    ,"pomegranate"
-    ,"fertilizer"
-    ,"nitre"
-    ,"flint"
-    ,"rocks"
-    ,"marble"
-    ,"marblebean"
-    ,"goldnugget"
-    ,"peach"
-    ,"smallmeat"
-    ,"smallmeat_dried"
-    ,"meat_dried"
-    ,"monstermeat_dried"
-    ,"fish"
-    ,"ice"
-    ,"tomato"
-    ,"potato"
-    ,"onion"
-    ,"garlic"
-    ,"pepper"
-    ,"asparagus"
-    ,"cave_banana"
-    ,"cactus_meat"
-    ,"cactus_flower"
-    ,"kelp"
-    ,"eel"
-    ,"batwing"
-    ,"butter"
-    ,"goatmilk"
-    ,"wormlight"
-    ,"wormlight_lesser"
-    ,"cutlichen"
-    ,"hambat"
-    ,"rock_avocado_fruit_ripe"
-    ,"rock_avocado_fruit_ripe_cooked"
-    ,"rock_avocado_fruit_sprout"
+    -- MUSHROOM
+    blue_cap = true,
+    green_cap = true,
+    red_cap = true,
+
+    -- MEAT
+    eel = true,
+    batwing = true,
+    bird_egg = true,
+    drumstick = true,
+    froglegs = true,
+    meat = true,
+    smallmeat = true,
+    monstermeat = true,
+    fish = true,
+
+    -- SPOIL/ROT/POOP
+    spoiled_food = true,
+    rottenegg = true,
+    poop = true,
+    guano = true,
+    fertilizer = true,
+
+    -- DRIED
+    smallmeat_dried = true,
+    meat_dried = true,
+    monstermeat_dried = true,
+
+    -- SEED
+    seeds = true,
+
+    -- PICKUP ITEMS
+    cutgrass = true,
+    twigs = true,
+    log = true,
+    charcoal = true,
+    livinglog = true,
+    cactus_flower = true,
+
+    -- MINING ITEMS
+    flint = true,
+    rocks = true,
+    nitre = true,
+    goldnugget = true,
+    thulecite_pieces = true,
+    ice = true,
+    redgem = true,
+    bluegem = true,
+    purplegem = true,
+    orangegem = true,
+    yellowgem = true,
+    greengem = true,
+    marble = true,
+    marblebean = true,
+    rock_avocado_fruit_ripe = true,
+    rock_avocado_fruit_ripe_cooked = true,
+    rock_avocado_fruit_sprout = true,
+
+    -- PLANT
+    pinecone = true,
+    acorn = true,
+    twiggy_nut = true,
+    dug_sapling = true,
+    dug_sapling_moon = true,
+    dug_grass = true,
+    dug_marsh_bush = true,
+    dug_berrybush = true,
+    dug_berrybush2 = true,
+    dug_berrybush_juicy = true,
+    dug_rock_avocado_bush = true,
+
+    -- OTHERS
+    wormlight = true,
+    wormlight_lesser = true,
+    cutlichen = true,
+
+    -- Công cụ / vũ khí
+    hambat = true,
+
+    -- Đồ chế tạo
+    boards = true,
 }
 
 local excludes = { "INLIMBO","burnt","oldfish_farmer","oldfish_farmhome","insect", "playerghost","animal","player","spider" }
@@ -157,10 +183,8 @@ local function IsPrefab(item, inst)
         return false
     end
 
-    for i,v in ipairs(prefabName) do
-        if v == item.prefab then
-            return true
-        end
+    if prefab_name[item.prefab] then
+        return true
     end
 
     if item.prefab ~= nil then
