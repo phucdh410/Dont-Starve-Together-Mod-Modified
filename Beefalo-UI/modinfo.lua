@@ -1,5 +1,5 @@
 name = "Beefalo Status Bar - DHPModified"
-version = "1.0.4"
+version = "1.0.5"
 author = "PhucDH410"
 description = [[
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2477889104
@@ -22,6 +22,8 @@ reign_of_giants_compatible = true
 dst_compatible = true
 
 api_version = 10
+
+priority = -201
 
 all_clients_require_mod = true
 client_only_mod = false
