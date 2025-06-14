@@ -193,7 +193,23 @@ if CONFIG.TOGGLE_KEY then
     end)
 end
 
-local BuffBeefalo(inst)
+local function OnEat(inst, food, feeder)
+    local full = inst.components.hunger:GetPercent() >= 1
+    if inst.components and inst.components.hunger then
+        inst.components.hunger:DoDelta(500)
+    end
+    inst.components.domesticatable:DeltaObedience(1)
+    inst.components.domesticatable:DeltaDomestication(0.1, feeder)
+    if not full then
+        inst.components.domesticatable:TryBecomeDomesticated()
+    else
+        inst.components.domesticatable:DeltaTendency(GLOBAL.TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
+    end
+    inst:PushEvent("eat", { full = full, food = food })
+    inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
+end
+
+local function BuffBeefalo(inst)
     if inst.components and inst.components.eater then
         inst.components.eater:SetOnEatFn(OnEat)
     end
@@ -212,22 +228,6 @@ end
 if GetModConfigData("isBuffDomestication") == true then
     TUNING.BEEFALO_MIN_BUCK_TIME = 999 * 60 * 60 -- 999 hours
     TUNING.BEEFALO_MAX_BUCK_TIME = 9999 * 60 * 60 -- 9999 hours
-    
-    local function OnEat(inst, food, feeder)
-        local full = inst.components.hunger:GetPercent() >= 1
-        if inst.components and inst.components.hunger then
-            inst.components.hunger:DoDelta(500)
-        end
-        inst.components.domesticatable:DeltaObedience(1)
-        inst.components.domesticatable:DeltaDomestication(0.1, feeder)
-        if not full then
-            inst.components.domesticatable:TryBecomeDomesticated()
-        else
-            inst.components.domesticatable:DeltaTendency(GLOBAL.TENDENCY.PUDGY, TUNING.BEEFALO_PUDGY_OVERFEED)
-        end
-        inst:PushEvent("eat", { full = full, food = food })
-        inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
-    end
     
     for k, v in ipairs(prefab_names) do 
         AddPrefabPostInit(k, BuffBeefalo)

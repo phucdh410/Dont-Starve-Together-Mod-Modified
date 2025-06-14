@@ -35,10 +35,9 @@ configuration_options = {
     {
         name = "refresh_time",
         label = "Revival Time",
-        hover = "Revival time of farmer's death"
+        hover = "Revival time of farmer's death",
         options =
         {
-
             {description = "1", data = 1},
             {description = "2", data = 2},
             {description = "3", data = 3},

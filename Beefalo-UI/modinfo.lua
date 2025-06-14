@@ -1,5 +1,5 @@
 name = "Beefalo Status Bar - DHPModified"
-version = "1.0.3"
+version = "1.0.4"
 author = "PhucDH410"
 description = [[
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2477889104
