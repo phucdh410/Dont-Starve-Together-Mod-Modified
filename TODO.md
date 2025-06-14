@@ -3,4 +3,7 @@
 2. Optimize harvest & transfer product of harvest machine
 
 3. Refactor AI FARM
-   **Changing**
+
+4. Update Beefalo UI mod for koalebeef (UI & domestication)
+
+5. Translate Koalebeef taming
