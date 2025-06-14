@@ -1,5 +1,5 @@
 name = "Beefalo Status Bar - DHPModified"
-version = "1.0.2"
+version = "1.0.3"
 author = "PhucDH410"
 description = [[
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2477889104
@@ -324,6 +324,16 @@ configuration_options = {
         options = {
             {description = "Disabled", data = false, hover = "Taming beefalo like base game"},
             {description = "Enabled", data = true, hover = "Superfast taming & Superlong riding"}
+        },
+        default = false
+    },
+    {
+        name = "koalefantCompatible",
+        label = "Koalefant Compatible",
+        hover = "Allow easier domestication with taming koalefant mod",
+        options = {
+            {description = "Disabled", data = false},
+            {description = "Enabled", data = true}
         },
         default = false
     },

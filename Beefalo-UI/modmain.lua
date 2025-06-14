@@ -1,13 +1,24 @@
 -- Utilities
 
 local function RGBA(R, G, B, A) return {R / 255, G / 255, B / 255, A or 1} end
+local prefab_names = {
+    beefalo = true
+}
 
+local koalefantCompatible = GetModConfigData("koalefantCompatible")
+
+if koalefantCompatible == true then
+    prefab_names.koalefant_summer = true
+    prefab_names.koalefant_winter = true
+    prefab_names.koalebeef_summer = true
+    prefab_names.koalebeef_winter = true
+end
 
 -- Server handlers
 
 local function OnMount(rider, data)
     local mount = data.target
-    if mount and mount.prefab == "beefalo" then
+    if mount and prefab_names[mount.prefab] then
         local saddle = rider.replica.rider:GetSaddle()
         local mountData = {
             health = mount.replica.health:GetCurrent(),
@@ -35,7 +46,7 @@ end
 
 local function OnDismount(rider, data)
     local mount = data.target
-    if mount and mount.prefab == "beefalo" then
+    if mount and prefab_names[mount.prefab] then
         rider.player_classified.beefaloData:set("dismount")
         rider:RemoveEventCallback("healthdelta", rider.player_classified.OnBeefaloHealthDelta, mount)
         rider:RemoveEventCallback("domesticationdelta", rider.player_classified.OnBeefaloDomesticationDelta, mount)
@@ -182,6 +193,22 @@ if CONFIG.TOGGLE_KEY then
     end)
 end
 
+local BuffBeefalo(inst)
+    if inst.components and inst.components.eater then
+        inst.components.eater:SetOnEatFn(OnEat)
+    end
+    inst:WatchWorldState("cycles",function(inst)
+        if inst.components and inst.components.domesticatable then
+            if inst.components.domesticatable:IsDomesticated() then
+                inst.components.domesticatable:DeltaObedience(1)         
+                if inst.components and inst.components.hunger then
+                    inst.components.hunger:DoDelta(500)
+                end
+            end
+        end
+    end)
+end
+
 if GetModConfigData("isBuffDomestication") == true then
     TUNING.BEEFALO_MIN_BUCK_TIME = 999 * 60 * 60 -- 999 hours
     TUNING.BEEFALO_MAX_BUCK_TIME = 9999 * 60 * 60 -- 9999 hours
@@ -202,22 +229,8 @@ if GetModConfigData("isBuffDomestication") == true then
         inst.components.knownlocations:RememberLocation("loiteranchor", inst:GetPosition())
     end
     
-    AddPrefabPostInit("beefalo",function(inst)
-        inst:DoTaskInTime(0.1, function(inst)
-            if inst.components and inst.components.eater then
-                inst.components.eater:SetOnEatFn(OnEat)
-            end
-            inst:WatchWorldState("cycles",function(inst)
-                if inst.components and inst.components.domesticatable then
-                    if inst.components.domesticatable:IsDomesticated() then
-                        inst.components.domesticatable:DeltaObedience(1)         
-                        if inst.components and inst.components.hunger then
-                            inst.components.hunger:DoDelta(500)
-                        end
-                    end
-                end
-            end)
-        end)
-    end)
+    for k, v in ipairs(prefab_names) do 
+        AddPrefabPostInit(k, BuffBeefalo)
+    end    
 end
  
