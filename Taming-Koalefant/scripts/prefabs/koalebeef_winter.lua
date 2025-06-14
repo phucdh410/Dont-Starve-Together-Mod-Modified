@@ -77,7 +77,6 @@ fns.OnDespawnRequest = function(inst)
 end
 
 
---牛的皮肤相关
 local function getbasebuild(inst)
     return (inst:HasTag("baby") and "beefalo_baby_build")
             or (not inst:HasTag("has_beard") and "beefalo_shaved_build")
@@ -91,18 +90,9 @@ local function dobeefalounhitch(inst)
 end
 
 local function OnHitchTo(inst, data)
-    -- inst.hitchingspot = data.target
-    -- inst:ListenForEvent("death", dobeefalounhitch)
-    -- inst:ListenForEvent("gotosleep", dobeefalounhitch)
-    -- inst:ListenForEvent("onignite", dobeefalounhitch)
-    -- inst:ListenForEvent("onremove", dobeefalounhitch)
 end
 
 local function OnUnhitch(inst, data)
-    -- inst:RemoveEventCallback("death", dobeefalounhitch)
-    -- inst:RemoveEventCallback("gotosleep", dobeefalounhitch)
-    -- inst:RemoveEventCallback("onignite", dobeefalounhitch)
-    -- inst:RemoveEventCallback("onremove", dobeefalounhitch)
 end
 local function GetBaseSkin(inst)
     return inst.tendency and tendencies[inst.tendency].build or getbasebuild(inst)
@@ -186,7 +176,6 @@ local prefabs =
     "meat",
     "poop",
     "trunk_winter",
- --   "trunk_winter",
  "spoiled_food",
  "koalefant_winter",
 }
@@ -384,191 +373,155 @@ local function getDescription(inst,viewer)
     local desc = ""
 	local owner = viewer
 	local leader = inst.components.follower:GetLeader()
-	if inst.components.domesticatable and inst.components.domesticatable.near_death then --濒死状态最优先检查
-	    if owner.prefab == "willow" then
-	        desc = "她的生命之火要熄灭了，快用强心针重新点燃！"
-		elseif owner.prefab == "wolfgang" then
-		    desc = "小象快要撑不住了，沃尔夫冈忒拿强心针救救它！"
-		elseif owner.prefab == "wendy" then
-		    desc = "她马上就要真正解脱了，但我可以用强心针将她重新拉回地狱。"
-		elseif owner.prefab == "wx78" then
-		    desc = "生命体征微弱，使用强心针再重启"
-		elseif owner.prefab == "wickerbottom" then
-		    desc = "再撑一会亲爱的，强心针马上就来！"
-		elseif owner.prefab == "woodie" then
-		    desc = "哦露西，我们要赶紧给它一针强心剂！"
-		elseif owner.prefab == "waxwell" then
-		    desc = "呸，你也太脆弱了，拿强心针过来！"
-		elseif owner.prefab == "wathgrithr" then
-		    desc = "维京勇士决不会抛弃战友！我会为你寻得强心针！"
-		elseif owner.prefab == "webber" then
-		    desc = "抱歉，我们不是故意让你受重伤的！我们马上去找强心针！"
-		elseif owner.prefab == "winona" then
-		    desc = "这头考拉象运转不了多久了，我需要制作强心针……"
-		elseif owner.prefab == "warly" then
-		    desc = "你不是要上餐桌的考拉象，强心针会拯救你的。"
-		elseif owner.prefab == "wortox" then
-		    desc = "欸你怎么死了？强心针呢救一下啊！"
-		elseif owner.prefab == "wormwood" then
-		    desc = "肉球朋友快不行了，需要带着刺的红色筒子"
-		elseif owner.prefab == "wurt" then
-		    desc = "格嘞格，薇克女士说这种情况需要把那什么强心针给它扎一下。"
-		elseif owner.prefab == "walter" then
-		    desc = "沃比，把强心针叼给我，我们不能看着她就这样死去！"
-		elseif owner.prefab == "wanda" then
-		    desc = "我也不会把第二次机会表给考拉象用，强心针在哪里？"
-		elseif owner.prefab == "wirlywings" then
-		    desc = "唔姆，我的考拉象朋友急需强心针！！"
-		elseif owner.prefab == "daidai" then
-		    desc = "强心针呢？象象快要死了！"
-		elseif owner.prefab == "wathom" then
-		    desc = "不是所有生物都会垂死一战，强心针，拿来。"
-		elseif owner.prefab == "winky" then
-		    desc = "真可怜，我上哪个巢穴给你找强心针呢？"
-		elseif owner.prefab == "wixie" then
-		    desc = "虽然我不想靠近它，但用强心针帮它一把还是可以的。"
-		else
-		    desc = "这头考拉象正处于濒死状态，需要强心针来救它一命。"
-		end
-	elseif leader and leader.components.inventoryitem and leader.components.inventoryitem:GetGrandOwner() == owner then 
-	    if owner.prefab == "willow" then
-	        desc = STRINGS.CHARACTERS.WILLOW.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wolfgang" then
-		    desc = "小象在跟着我！"
-		elseif owner.prefab == "wendy" then
-		    desc = STRINGS.CHARACTERS.WENDY.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wx78" then
-		    desc = STRINGS.CHARACTERS.WX78.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wickerbottom" then
-		    desc = STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "woodie" then
-		    desc = STRINGS.CHARACTERS.WOODIE.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "waxwell" then
-		    desc = STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wathgrithr" then
-		    desc = STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "webber" then
-		    desc = STRINGS.CHARACTERS.WEBBER.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "winona" then
-		    desc = STRINGS.CHARACTERS.WINONA.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "warly" then
-		    desc = STRINGS.CHARACTERS.WARLY.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wortox" then
-		    desc = STRINGS.CHARACTERS.WORTOX.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wormwood" then
-		    desc = STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wurt" then
-		    desc = STRINGS.CHARACTERS.WURT.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "walter" then
-		    desc = STRINGS.CHARACTERS.WALTER.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wanda" then
-		    desc = STRINGS.CHARACTERS.WANDA.DESCRIBE.BEEFALO.FOLLOWER
-		elseif owner.prefab == "wirlywings" then
-		    desc = "唔，跟考拉象朋友玩的很开心！"
-		elseif owner.prefab == "daidai" then
-		    desc = "象象是好朋友！"
-		elseif owner.prefab == "wathom" then
-		    desc = "跟着我。"
-		elseif owner.prefab == "winky" then
-		    desc = "跟我去下一个巢穴。"
-		elseif owner.prefab == "wixie" then
-		    desc = "别跟着我了！"
-		else
-		    desc = STRINGS.CHARACTERS.GENERIC.DESCRIBE.BEEFALO.FOLLOWER
-		end
-	elseif inst.components.domesticatable and inst.components.domesticatable:IsDomesticated() then
-	    if owner.prefab == "willow" then
-	        desc = "我在它眼里能看到火焰！"
-		elseif owner.prefab == "wolfgang" then
-		    desc = "沃尔夫冈跟小象处的不错！"
-		elseif owner.prefab == "wendy" then
-		    desc = "它已褪去野性。"
-		elseif owner.prefab == "wx78" then
-		    desc = "驯化完成"
-		elseif owner.prefab == "wickerbottom" then
-		    desc = "驯化考拉象是值得的，真是个不错的帮手。"
-		elseif owner.prefab == "woodie" then
-		    desc = "你看起来没那么野了，伙计。"
-		elseif owner.prefab == "waxwell" then
-		    desc = "它现在很听话。"
-		elseif owner.prefab == "wathgrithr" then
-		    desc = "高贵战士的尊贵战象！"
-		elseif owner.prefab == "webber" then
-		    desc = "我们跟考拉象成为朋友了。"
-		elseif owner.prefab == "winona" then
-		    desc = "哈，去干点活吧！"
-		elseif owner.prefab == "warly" then
-		    desc = "你的价值足以让你远离屠刀。"
-		elseif owner.prefab == "wortox" then
-		    desc = "玩！"
-		elseif owner.prefab == "wormwood" then
-		    desc = "肉球朋友是好朋友"
-		elseif owner.prefab == "wurt" then
-		    desc = "浮浪噗，肉肉的好朋友。"
-		elseif owner.prefab == "walter" then
-		    desc = "你和沃比是朋友了！"
-		elseif owner.prefab == "wanda" then
-		    desc = "希望你不会辜负我花的时间。"
-		elseif owner.prefab == "wirlywings" then
-		    desc = "唔姆，你真软！"
-		elseif owner.prefab == "daidai" then
-		    desc = "象象真可爱"
-		elseif owner.prefab == "wathom" then
-		    desc = "走，去猎杀。"
-		elseif owner.prefab == "winky" then
-		    desc = "我们去往巢穴运吃的！"
-		elseif owner.prefab == "wixie" then
-		    desc = "我还是不能靠近它太久。"
-		else
-		    desc = "科学驯服了它的野性。"
-		end
-    else	
-	    if owner.prefab == "willow" then
-	        desc = "哈哈，你不怕我烧你？就因为我给了你一口吃的？"
-		elseif owner.prefab == "wolfgang" then
-		    desc = "沃尔夫冈跟小象建立了友谊！"
-		elseif owner.prefab == "wendy" then
-		    desc = "我轻而易举的获得了这个生物的信任，它真傻。"
-		elseif owner.prefab == "wx78" then
-		    desc = "有机物的信任真是廉价"
-		elseif owner.prefab == "wickerbottom" then
-		    desc = "投喂食物可以有效获得考拉象的信任。"
-		elseif owner.prefab == "woodie" then
-		    desc = "我给你口吃的，你帮我运送木头，很合理吧伙计。"
-		elseif owner.prefab == "waxwell" then
-		    desc = "我记得我并没有让它们可以这样……"
-		elseif owner.prefab == "wathgrithr" then
-		    desc = "你愿意成为我的战象吗？"
-		elseif owner.prefab == "webber" then
-		    desc = "我们跟考拉象打好关系了。"
-		elseif owner.prefab == "winona" then
-		    desc = "哈，你这家伙一口吃的就被收买了！"
-		elseif owner.prefab == "warly" then
-		    desc = "我暂时不会把你端上餐桌。"
-		elseif owner.prefab == "wortox" then
-		    desc = "你比皮弗娄牛还柔软！"
-		elseif owner.prefab == "wormwood" then
-		    desc = "肉球朋友没那么害怕了"
-		elseif owner.prefab == "wurt" then
-		    desc = "浮浪噗，不害怕咱了。"
-		elseif owner.prefab == "walter" then
-		    desc = "沃比，我们可能有新朋友了！"
-		elseif owner.prefab == "wanda" then
-		    desc = "你比皮弗娄牛好在哪呢？"
-		elseif owner.prefab == "wirlywings" then
-		    desc = "唔姆，我还是第一次跟考拉象交朋友！"
-		elseif owner.prefab == "daidai" then
-		    desc = "象象真可爱"
-		elseif owner.prefab == "wathom" then
-		    desc = "想宰杀。"
-		elseif owner.prefab == "winky" then
-		    desc = "呵，那个可不是白给你吃的！"
-		elseif owner.prefab == "wixie" then
-		    desc = "我不喜欢它庞大的身躯……"
-		else
-		    desc = "这只大象跟我建立了初步的信任，不再害怕我了。"
-		end
-	end 
+	if inst.components.domesticatable and inst.components.domesticatable.near_death then -- Prioritize checking near-death state
+        if owner.prefab == "willow" then
+            desc = "Her fire of life is about to go out. Use a booster shot to reignite it!"
+        elseif owner.prefab == "wolfgang" then
+            desc = "The little elephant is barely hanging on! Wolfgang must use a booster shot!"
+        elseif owner.prefab == "wendy" then
+            desc = "She's about to find true release, but I can drag her back with a booster shot."
+        elseif owner.prefab == "wx78" then
+            desc = "Life signs critical. Reboot with booster shot."
+        elseif owner.prefab == "wickerbottom" then
+            desc = "Hold on, dear, the booster shot is coming!"
+        elseif owner.prefab == "woodie" then
+            desc = "Oh Lucy, we need to give it a booster shot, quick!"
+        elseif owner.prefab == "waxwell" then
+            desc = "Pathetic. You're too fragile. Bring the booster shot!"
+        elseif owner.prefab == "wathgrithr" then
+            desc = "A Viking never abandons a comrade! I shall find the booster shot!"
+        elseif owner.prefab == "webber" then
+            desc = "Sorry! We didn’t mean to hurt you that badly! Let’s go get a booster shot!"
+        elseif owner.prefab == "winona" then
+            desc = "This koalefant won’t last much longer. I need to craft a booster shot..."
+        elseif owner.prefab == "warly" then
+            desc = "You're not dinner, koalefant. The booster shot will save you."
+        elseif owner.prefab == "wortox" then
+            desc = "Eh? You died? Where’s the booster shot, quick!"
+        elseif owner.prefab == "wormwood" then
+            desc = "Fleshy ball friend needs the red spiky tube thing!"
+        elseif owner.prefab == "wurt" then
+            desc = "Glurgh glurgh, Miss Wicker says it needs that spiky shot-thing now!"
+        elseif owner.prefab == "walter" then
+            desc = "Woby, fetch the booster shot! We can’t let her die!"
+        elseif owner.prefab == "wanda" then
+            desc = "I’m not giving my second-chance watch to a koalefant. Where’s the booster shot?"
+        else
+            desc = "This koalefant is near death and needs a booster shot to survive."
+        end
+    
+    elseif leader and leader.components.inventoryitem and leader.components.inventoryitem:GetGrandOwner() == owner then 
+        if owner.prefab == "willow" then
+            desc = STRINGS.CHARACTERS.WILLOW.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wolfgang" then
+            desc = "The little elephant is following me!"
+        elseif owner.prefab == "wendy" then
+            desc = STRINGS.CHARACTERS.WENDY.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wx78" then
+            desc = STRINGS.CHARACTERS.WX78.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wickerbottom" then
+            desc = STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "woodie" then
+            desc = STRINGS.CHARACTERS.WOODIE.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "waxwell" then
+            desc = STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wathgrithr" then
+            desc = STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "webber" then
+            desc = STRINGS.CHARACTERS.WEBBER.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "winona" then
+            desc = STRINGS.CHARACTERS.WINONA.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "warly" then
+            desc = STRINGS.CHARACTERS.WARLY.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wortox" then
+            desc = STRINGS.CHARACTERS.WORTOX.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wormwood" then
+            desc = STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wurt" then
+            desc = STRINGS.CHARACTERS.WURT.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "walter" then
+            desc = STRINGS.CHARACTERS.WALTER.DESCRIBE.BEEFALO.FOLLOWER
+        elseif owner.prefab == "wanda" then
+            desc = STRINGS.CHARACTERS.WANDA.DESCRIBE.BEEFALO.FOLLOWER
+        else
+            desc = STRINGS.CHARACTERS.GENERIC.DESCRIBE.BEEFALO.FOLLOWER
+        end
+    
+    elseif inst.components.domesticatable and inst.components.domesticatable:IsDomesticated() then
+        if owner.prefab == "willow" then
+            desc = "I see fire in its eyes!"
+        elseif owner.prefab == "wolfgang" then
+            desc = "Wolfgang and the little elephant get along!"
+        elseif owner.prefab == "wendy" then
+            desc = "Its wildness is gone."
+        elseif owner.prefab == "wx78" then
+            desc = "Domestication complete."
+        elseif owner.prefab == "wickerbottom" then
+            desc = "A domesticated koalefant is a fine assistant."
+        elseif owner.prefab == "woodie" then
+            desc = "You don’t look so wild now, eh bud?"
+        elseif owner.prefab == "waxwell" then
+            desc = "It’s quite obedient now."
+        elseif owner.prefab == "wathgrithr" then
+            desc = "A noble war beast for a noble warrior!"
+        elseif owner.prefab == "webber" then
+            desc = "We're friends with the koalefant now!"
+        elseif owner.prefab == "winona" then
+            desc = "Alright, time to get to work!"
+        elseif owner.prefab == "warly" then
+            desc = "You're worth keeping off the dinner table."
+        elseif owner.prefab == "wortox" then
+            desc = "Fun!"
+        elseif owner.prefab == "wormwood" then
+            desc = "Fleshy ball friend is a good friend."
+        elseif owner.prefab == "wurt" then
+            desc = "Glurp! Squishy meaty friend!"
+        elseif owner.prefab == "walter" then
+            desc = "You're friends with Woby now!"
+        elseif owner.prefab == "wanda" then
+            desc = "Let’s hope you’re worth the time I spent."
+        else
+            desc = "Science tamed the wild in it!"
+        end
+    
+    else
+        if owner.prefab == "willow" then
+            desc = "Haha, you’re not afraid of me just because I fed you?"
+        elseif owner.prefab == "wolfgang" then
+            desc = "Wolfgang and the little elephant are friends!"
+        elseif owner.prefab == "wendy" then
+            desc = "It was too easy to gain this creature’s trust. How foolish."
+        elseif owner.prefab == "wx78" then
+            desc = "Organic trust is so cheap."
+        elseif owner.prefab == "wickerbottom" then
+            desc = "Feeding is an effective way to earn a koalefant’s trust."
+        elseif owner.prefab == "woodie" then
+            desc = "I feed you, you haul my logs. Fair trade, pal."
+        elseif owner.prefab == "waxwell" then
+            desc = "I don’t recall allowing them to act like this..."
+        elseif owner.prefab == "wathgrithr" then
+            desc = "Would you be my mighty war elephant?"
+        elseif owner.prefab == "webber" then
+            desc = "We’re getting along with the koalefant now!"
+        elseif owner.prefab == "winona" then
+            desc = "Ha! One bite and you’re already bought!"
+        elseif owner.prefab == "warly" then
+            desc = "You’re safe from the plate... for now."
+        elseif owner.prefab == "wortox" then
+            desc = "Softer than a beefalo!"
+        elseif owner.prefab == "wormwood" then
+            desc = "Fleshy ball friend is less scared now."
+        elseif owner.prefab == "wurt" then
+            desc = "Glurp! Not scared of me anymore!"
+        elseif owner.prefab == "walter" then
+            desc = "Woby, we might have a new friend!"
+        elseif owner.prefab == "wanda" then
+            desc = "How are you better than a beefalo, really?"
+        else
+            desc = "This big elephant has started to trust me. It’s not afraid anymore."
+        end
+    end
+    
 	return desc 
 end  
 
@@ -1020,7 +973,6 @@ local function koalebeef_winter()
     inst.components.health:SetMaxHealth(TUNING.KOALEFANT_HEALTH)
     inst.components.health.nofadeout = true
     
-	--考拉象理应没有牛的回血
 	--inst.components.health:StartRegen(TUNING.BEEFALO_HEALTH_REGEN*1.3, TUNING.BEEFALO_HEALTH_REGEN_PERIOD)
     
     inst:ListenForEvent("death", OnDeath) -- need to handle this due to being mountable
