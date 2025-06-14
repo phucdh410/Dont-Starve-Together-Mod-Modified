@@ -2,17 +2,12 @@
 
 local function RGBA(R, G, B, A) return {R / 255, G / 255, B / 255, A or 1} end
 local prefab_names = {
-    beefalo = true
+    beefalo = true,
+    koalefant_summer = true,
+    koalefant_winter = true,
+    koalebeef_summer = true,
+    koalebeef_winter = true
 }
-
-local koalefantCompatible = GetModConfigData("koalefantCompatible")
-
-if koalefantCompatible == true then
-    prefab_names.koalefant_summer = true
-    prefab_names.koalefant_winter = true
-    prefab_names.koalebeef_summer = true
-    prefab_names.koalebeef_winter = true
-end
 
 -- Server handlers
 
@@ -210,6 +205,7 @@ local function OnEat(inst, food, feeder)
 end
 
 local function BuffBeefalo(inst)
+    if not inst then return end
     if inst.components and inst.components.eater then
         inst.components.eater:SetOnEatFn(OnEat)
     end
@@ -229,8 +225,10 @@ if GetModConfigData("isBuffDomestication") == true then
     TUNING.BEEFALO_MIN_BUCK_TIME = 999 * 60 * 60 -- 999 hours
     TUNING.BEEFALO_MAX_BUCK_TIME = 9999 * 60 * 60 -- 9999 hours
     
-    for k, v in ipairs(prefab_names) do 
-        AddPrefabPostInit(k, BuffBeefalo)
-    end    
+    AddPrefabPostInit("beefalo", BuffBeefalo)
+    AddPrefabPostInit("koalebeef_summer", BuffBeefalo)
+    AddPrefabPostInit("koalebeef_winter", BuffBeefalo)
+    AddPrefabPostInit("koalefant_summer", BuffBeefalo)
+    AddPrefabPostInit("koalefant_winter", BuffBeefalo)
 end
  
