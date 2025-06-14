@@ -1,7 +1,10 @@
-name = "AI_farmer_catseventh_fixing"
-description = "会自己干活的农民,给他一个捕虫网就能帮你抓蝴蝶，给他一个锤子就不会再捡东西"
-author = "oldfish & catseventh"
-version = "5.2.5"
+name = "AI Farmer - DHPModified"
+description = [[
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3244792939
+From update version: 12 May 2024
+]]
+author = "PhucDH410"
+version = "1.0.0"
 api_version = 6
 api_version_dst = 10
 dst_compatible = true
@@ -18,31 +21,21 @@ server_filter_tags = {
 }
 configuration_options = {
     {
-        name = "language",
-        label = "language",
-        options =
-        {
-            
-            {description = "English", data = 1},
-            {description = "中文", data = 2},
-        },
-        default = 2,
-    },
-    {
         name = "backpack_setting",
-        label = "背包配置（backpack_setting）",
+        label = "Backpack Setting",
         options =
         {
 
-            {description = "(正常)normal", data = 1},
-            {description = "(保鲜)remain", data = 2},
-            {description = "(反鲜)reverse", data = 3},
+            {description = "Normal", data = 1},
+            {description = "Remain", data = 2},
+            {description = "Reverse", data = 3},
         },
         default = 3,
     },
     {
         name = "refresh_time",
-        label = "农民死亡刷新时间（Renewal Time of Farmers'Death）",
+        label = "Revival Time",
+        hover = "Revival time of farmer's death"
         options =
         {
 

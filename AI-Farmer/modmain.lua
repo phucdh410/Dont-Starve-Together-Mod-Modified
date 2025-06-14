@@ -1,3 +1,5 @@
+GLOBAL.setmetatable(env,{__index=function(t,k) return GLOBAL.rawget(GLOBAL,k) end})
+
 local require = GLOBAL.require
 local Ingredient = GLOBAL.Ingredient
 local RECIPETABS = GLOBAL.RECIPETABS
@@ -7,31 +9,17 @@ local TECH = GLOBAL.TECH
 STRINGS.REFRESH_TIME = GetModConfigData("refresh_time")
 STRINGS.BACKPACK_SETTING = GetModConfigData("backpack_setting")
 
-if GetModConfigData("language") == 1 then
-    STRINGS.FERTILIZER_NOTIFICATION = "Master, I have no material to fertilize"
-    STRINGS.PLANT_NOTIFICATION = "Master, I have no seeds to plant"
-    STRINGS.ACTIVATE_MUSHROOM = "Master, I need livinglog to activate the mushroom farm"
-    STRINGS.FIRESUPPRESSOR_FUEL = "Master, I have no material to fuel the firesuppressor"
-    STRINGS.CONTAINER_FULL = "Master, my bag is full and I can't put any more things in it."
+STRINGS.FERTILIZER_NOTIFICATION = "Master, I have no material to fertilize"
+STRINGS.PLANT_NOTIFICATION = "Master, I have no seeds to plant"
+STRINGS.ACTIVATE_MUSHROOM = "Master, I need livinglog to activate the mushroom farm"
+STRINGS.FIRESUPPRESSOR_FUEL = "Master, I have no material to fuel the firesuppressor"
+STRINGS.CONTAINER_FULL = "Master, my bag is full and I can't put any more things in it."
+STRINGS.NAMES.OLDFISH_FARMHOME = "AI Farmhome"
+STRINGS.RECIPE_DESC.OLDFISH_FARMHOME = "A cozy home for a hardworking farmer."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMHOME = "Feels like hope."
+STRINGS.NAMES.OLDFISH_FARMER = "Shi Zhenxiang"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMER = "Hard work never gets old!"
 
-    STRINGS.NAMES.OLDFISH_FARMHOME = "未来更好"
-    STRINGS.RECIPE_DESC.OLDFISH_FARMHOME = "农民温馨的家！"
-    STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMHOME = "future？"
-    STRINGS.NAMES.OLDFISH_FARMER = "史贞乡"
-    STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMER = "工作做得好 干活干到老！"
-else
-    STRINGS.FERTILIZER_NOTIFICATION = "主人 我没有材料施肥"
-    STRINGS.PLANT_NOTIFICATION = "主人 我没有种子种植了"
-    STRINGS.ACTIVATE_MUSHROOM = "主人 我需要活木激活蘑菇农场"
-    STRINGS.FIRESUPPRESSOR_FUEL = "主人 我没有材料给灭火器添加燃料了"
-    STRINGS.CONTAINER_FULL = "主人 我的袋子已经满了 无法再装下更多的东西了"
-
-    STRINGS.NAMES.OLDFISH_FARMHOME = "未来更好"
-    STRINGS.RECIPE_DESC.OLDFISH_FARMHOME = "农民温馨的家！"
-    STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMHOME = "未来？"
-    STRINGS.NAMES.OLDFISH_FARMER = "史贞乡"
-    STRINGS.CHARACTERS.GENERIC.DESCRIBE.OLDFISH_FARMER = "工作做得好 干活干到老！"
-end
 
 PrefabFiles = {
     "oldfish_farmer",
@@ -41,26 +29,16 @@ Assets = {
     Asset("ATLAS", "images/inventoryimages/oldfish_farmhome.xml"),
     Asset("ANIM", "anim/ui_chest_8x8.zip"),
 }
-local oldfish_farmhome = GLOBAL.Recipe(
-    "oldfish_farmhome",
-    {
-        Ingredient("boards", 10),
-        Ingredient("cutstone", 5)
-    },
-    RECIPETABS.FARM,
-    TECH.SCIENCE_TWO,
-    "oldfish_farmhome_placer",
-    1)
-
-oldfish_farmhome.atlas = "images/inventoryimages/oldfish_farmhome.xml"
-
-local function FuckGlobalUsingMetatable()
-    GLOBAL.setmetatable(env, {   __index = function(t, k)
-        return GLOBAL.rawget(GLOBAL, k)
-    end,  })
-end
-
-FuckGlobalUsingMetatable()
+AddRecipe2("oldfish_farmhome",
+{Ingredient("boards", 10),Ingredient("cutstone", 5)},
+GLOBAL.TECH.SCIENCE_ONE,
+{
+    placer = "oldfish_farmhome_placer",
+    min_spacing = 1,
+    atlas = "images/inventoryimages/oldfish_farmhome.xml",
+    image = "oldfish_farmhome.tex"
+},
+{"GARDENING", "STRUCTURES"})
 
 local PERDGIVE = Action()
 PERDGIVE.id = "PERDGIVE"
@@ -95,8 +73,6 @@ AUTO_PLANT.fn = function(act)
     return false
 end
 AddAction(AUTO_PLANT)
-
-
 
 local AUTO_FERTILIZE = GLOBAL.Action()
 AUTO_FERTILIZE.id = "AUTO_FERTILIZE"
@@ -183,7 +159,6 @@ AddMinimapAtlas("images/inventoryimages/oldfish_farmhome.xml")
 
 local needTags = {"berrybush","grass","berrybush2","berrybush_juicy","firesuppressor","berries","beebox","berries_juicy","cutgrass","twigs","mushroom_farm","meatrack","slow_farmplot","fast_farmplot"}
 
---添加独一无二的标签，方便农民快速定位
 for k,v in ipairs(needTags) do
     AddPrefabPostInit(v, function (inst)
         inst:AddTag("oldfish_"..v)
