@@ -4,7 +4,7 @@ Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=3258904941
 From update version: 12 Apr 2025
 ]]
 author = "PhucDH410"
-version = "1.0.0" 
+version = "1.0.1" 
 
 forumthread = ""
 

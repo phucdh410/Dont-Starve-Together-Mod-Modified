@@ -19,6 +19,10 @@ local UpvalueHacker = require("tools/upvaluehacker3")
 local writeables = require("writeables")
 local kinds = UpvalueHacker.GetUpvalue(writeables.makescreen, "kinds")
 
+if kinds == nil then
+    return
+end
+
 local beefalo_names
 local myprompt
 local mycancel
